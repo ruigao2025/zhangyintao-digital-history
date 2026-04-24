@@ -44,10 +44,21 @@ nav .links { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
 nav .links a {
   font-size: 12px; color: var(--text-light); letter-spacing: 1px;
   padding: 4px 10px; border-radius: 3px; transition: all .3s;
-  font-family: var(--sans);
+  font-family: var(--sans); text-align: center; line-height: 1.4;
 }
 nav .links a:hover, nav .links a.active {
   color: var(--gold); background: rgba(178,34,34,.15);
+}
+nav .links a small { display: block; }
+nav .links a:hover, nav .links a.active {
+  color: var(--gold); background: rgba(178,34,34,.15);
+}
+nav .links a .nav-years {
+  display: block; font-size: 9px; color: var(--text-light);
+  letter-spacing: 0; opacity: .6; margin-top: 1px;
+}
+nav .links a:hover .nav-years, nav .links a.active .nav-years {
+  opacity: 1; color: var(--gold);
 }
 nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 
@@ -311,6 +322,52 @@ footer .footer-text {
 }
 footer .dedication {
   color: var(--red); font-size: 14px; margin-top: 12px; letter-spacing: 4px;
+}
+
+/* EVENT COMPARISON TABLE */
+.event-table { width: 100%; border-collapse: collapse; font-family: var(--sans); }
+.event-table th {
+  font-size: 12px; color: var(--gold); letter-spacing: 1px;
+  padding: 8px 10px; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.event-table td {
+  font-size: 13px; color: var(--text); line-height: 1.8;
+  padding: 10px; border-bottom: 1px solid rgba(51,51,51,.4);
+  vertical-align: top;
+}
+.event-table tr:hover td { background: rgba(178,34,34,.04); }
+.event-table .td-year { color: var(--gold); font-weight: 600; white-space: nowrap; width: 70px; }
+.event-table .td-event { color: var(--text-light); width: 45%; }
+.event-table .td-self { color: var(--cream); font-weight: 500; width: 45%; }
+
+/* THOUGHT ANALYSIS */
+.thought-analysis { margin: 40px 0; }
+.thought-item {
+  margin-bottom: 20px; padding: 16px 20px;
+  background: var(--bg-card); border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+}
+.thought-item .thought-label {
+  font-size: 13px; color: var(--gold); font-weight: 600;
+  margin-bottom: 6px; font-family: var(--sans); letter-spacing: 1px;
+}
+.thought-item .thought-text {
+  font-size: 14px; line-height: 2; color: var(--text);
+}
+
+/* SECTION DIVIDER */
+.section-divider {
+  text-align: center; margin: 48px 0 36px; position: relative;
+}
+.section-divider::before {
+  content: ''; position: absolute; top: 50%; left: 0; right: 0;
+  height: 1px; background: var(--border);
+}
+.section-divider span {
+  position: relative; background: var(--bg-body); padding: 0 16px;
+  font-size: 14px; color: var(--gold); letter-spacing: 3px;
+  font-family: var(--sans);
 }
 
 /* RESPONSIVE */

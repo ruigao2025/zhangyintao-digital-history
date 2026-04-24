@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人物关系网络 — 张隐韬烈士纪念网站</title>
+<style>
+:root{--red:#b22222;--dark-red:#8b0000;--gold:#c9a84c;--cream:#f5f0e8;--dark:#1a1a1a;--darker:#111;--text:#d4cfc4;--text-light:#a09a8c;--border:#333}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Serif SC','Source Han Serif CN','Songti SC','SimSun',serif;background:var(--dark);color:var(--text);line-height:1.8}
+a{color:var(--gold);text-decoration:none;transition:color .3s}
+a:hover{color:var(--red)}
+html{scroll-behavior:smooth}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px}
+nav .logo{font-size:18px;font-weight:700;color:var(--gold);letter-spacing:4px}
+nav .links{display:flex;gap:6px;flex-wrap:wrap}
+nav .links a{font-size:13px;color:var(--text-light);letter-spacing:1px;padding:4px 8px;border-radius:3px;transition:all .3s}
+nav .links a:hover{color:var(--gold);background:rgba(178,34,34,.15)}
+
+.page-hero{min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:70px;background:linear-gradient(180deg,#0a0a0a,#1a0a0a,#0a0a0a)}
+.page-hero h1{font-size:32px;color:var(--cream);letter-spacing:8px}
+.page-hero .sub{color:var(--text-light);font-size:13px;margin-top:6px;letter-spacing:3px}
+
+.section{max-width:1000px;margin:0 auto;padding:60px 24px 40px}
+.section-title{font-size:26px;color:var(--cream);letter-spacing:6px;text-align:center;margin-bottom:12px}
+.section-title::before{content:'';display:inline-block;width:40px;height:2px;background:var(--red);vertical-align:middle;margin-right:16px}
+.section-title::after{content:'';display:inline-block;width:40px;height:2px;background:var(--red);vertical-align:middle;margin-left:16px}
+.section-sub{text-align:center;color:var(--text-light);font-size:13px;margin-bottom:48px;letter-spacing:2px}
+
+/* NETWORK VISUAL */
+.network-container{position:relative;width:100%;min-height:600px;margin-bottom:60px}
+.network-svg{width:100%;height:600px}
+.center-node{fill:var(--red);stroke:#fff;stroke-width:2}
+.group-node{stroke:#fff;stroke-width:1.5;cursor:pointer;transition:r .3s}
+.group-node:hover{stroke-width:3}
+.group-label{font-size:11px;fill:var(--cream);text-anchor:middle;pointer-events:none;font-family:inherit}
+.link-line{stroke:rgba(255,255,255,.15);stroke-width:1}
+.link-line.highlight{stroke:var(--gold);stroke-width:2;stroke-dasharray:4 2}
+
+/* CATEGORY CARDS */
+.cat-section{margin-bottom:48px}
+.cat-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.cat-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.cat-header h3{font-size:18px;color:var(--cream);letter-spacing:3px}
+.cat-header .cat-count{font-size:12px;color:var(--text-light);margin-left:auto}
+.person-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.person-card{background:#1e1e1e;border:1px solid var(--border);border-radius:8px;padding:18px;transition:all .3s}
+.person-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.person-card .person-name{font-size:16px;color:var(--cream);letter-spacing:2px;margin-bottom:4px}
+.person-card .person-alias{font-size:12px;color:var(--text-light);margin-bottom:8px}
+.person-card .person-relations{font-size:13px;color:var(--text);line-height:1.8}
+.person-card .relation-tag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;margin-right:4px;margin-bottom:4px}
+.tag-meet{background:rgba(178,34,34,.15);color:var(--red)}
+.tag-letter{background:rgba(201,168,76,.12);color:var(--gold)}
+.tag-work{background:rgba(74,170,153,.12);color:#4a9}
+.tag-critique{background:rgba(204,85,68,.12);color:#c54}
+
+/* ANALYSIS */
+.analysis-box{background:#1a1a1a;border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:24px}
+.analysis-box h3{font-size:18px;color:var(--gold);letter-spacing:2px;margin-bottom:12px}
+.analysis-box p{font-size:14px;line-height:2;text-indent:2em;margin-bottom:12px}
+
+footer{background:var(--darker);border-top:1px solid var(--border);text-align:center;padding:40px 24px}
+footer .footer-text{font-size:12px;color:var(--text-light);letter-spacing:2px;line-height:2}
+footer .dedication{color:var(--red);font-size:14px;margin-top:12px;letter-spacing:4px}
+@media(max-width:768px){.person-grid{grid-template-columns:1fr}nav .links a{font-size:11px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="logo">张隐韬</div>
+    <div class="links">
+      <a href="index.html">首页</a>
+      <a href="index.html#bio">生平</a>
+      <a href="analysis.html">思想分析</a>
+      <a href="network.html" style="color:var(--gold)">人物网络</a>
+      <a href="events.html">事件对照</a>
+      <a href="diary.html">日记</a>
+      <a href="research.html">史料</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div>
+    <h1>人物关系网络</h1>
+    <div class="sub">SOCIAL NETWORK · 从日记中提取的30余位交往人物</div>
+  </div>
+</div>
+
+<!-- NETWORK GRAPH -->
+<section class="section">
+  <div class="section-title">关系总览</div>
+  <div class="section-sub">NETWORK OVERVIEW · 张隐韬位于中心，四大类别向外辐射</div>
+
+  <div class="network-container">
+    <svg class="network-svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <line x1="500" y1="300" x2="250" y2="150" stroke="rgba(178,34,34,.2)" stroke-width="1"/>
+      <line x1="500" y1="300" x2="750" y2="150" stroke="rgba(201,168,76,.2)" stroke-width="1"/>
+      <line x1="500" y1="300" x2="250" y2="450" stroke="rgba(74,170,153,.2)" stroke-width="1"/>
+      <line x1="500" y1="300" x2="750" y2="450" stroke="rgba(204,85,68,.2)" stroke-width="1"/>
+      <circle cx="500" cy="300" r="28" fill="#b22222" filter="url(#glow)"/>
+      <text x="500" y="305" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">张隐韬</text>
+      <circle cx="250" cy="150" r="22" fill="rgba(178,34,34,.6)" class="group-node"/>
+      <text x="250" y="155" class="group-label" font-size="13">党内同志</text>
+      <text x="250" y="180" class="group-label" font-size="10" fill="#a09a8c">14人</text>
+      <circle cx="750" cy="150" r="22" fill="rgba(201,168,76,.6)" class="group-node"/>
+      <text x="750" y="155" class="group-label" font-size="13">黄埔人物</text>
+      <text x="750" y="180" class="group-label" font-size="10" fill="#a09a8c">6人</text>
+      <circle cx="250" cy="450" r="22" fill="rgba(74,170,153,.6)" class="group-node"/>
+      <text x="250" y="455" class="group-label" font-size="13">国民党</text>
+      <text x="250" y="480" class="group-label" font-size="10" fill="#a09a8c">6人</text>
+      <circle cx="750" cy="450" r="22" fill="rgba(204,85,68,.6)" class="group-node"/>
+      <text x="750" y="455" class="group-label" font-size="13">家人/乡友</text>
+      <text x="750" y="480" class="group-label" font-size="10" fill="#a09a8c">6人</text>
+    </svg>
+  </div>
+</section>
+
+<!-- CATEGORY DETAILS -->
+<section class="section" style="padding-top:0;">
+
+  <div class="cat-section">
+    <div class="cat-header">
+      <div class="cat-dot" style="background:var(--red)"></div>
+      <h3>党内同志</h3>
+      <div class="cat-count">14人 · 日记中出现最频繁的群体</div>
+    </div>
+    <div class="person-grid">
+      <div class="person-card"><div class="person-name">罗章龙</div><div class="person-alias">日记中称"章龙""文虎"</div><div class="person-relations"><span class="relation-tag tag-work">入党介绍人</span><span class="relation-tag tag-letter">多次书信</span>1923年11月1日来信"失望中渐去求希望"，是张隐韬精神上最重要的"药石"。在上海暂居其处，经济困窘中得到帮助。</div></div>
+      <div class="person-card"><div class="person-name">王尽美</div><div class="person-alias">日记中称"尽美兄"</div><div class="person-relations"><span class="relation-tag tag-meet">北京会面</span><span class="relation-tag tag-work">铁委共事</span>1923年9月前共同负责京绥铁路工委，王调济南后张对人事安排不满。</div></div>
+      <div class="person-card"><div class="person-name">邓中夏</div><div class="person-alias">日记中称"中夏"</div><div class="person-relations"><span class="relation-tag tag-meet">北京会面</span><span class="relation-tag tag-critique">谈话不快</span>1923年12月7日与邓谈话"引起我心之不快"，但表示"绝不因他的话败我的兴，适足以鼓励我工作之努力"。</div></div>
+      <div class="person-card"><div class="person-name">何孟雄</div><div class="person-alias">日记中称"孟雄"</div><div class="person-relations"><span class="relation-tag tag-meet">北京·天津</span><span class="relation-tag tag-letter">多次书信</span>1924年3月10日通知黄埔军校招考消息，是张隐韬南下的关键引路人。</div></div>
+      <div class="person-card"><div class="person-name">于树德</div><div class="person-alias">日记中称"永滋""树德"</div><div class="person-relations"><span class="relation-tag tag-work">工运搭档</span><span class="relation-tag tag-meet">广州会面</span>天津五五书报代卖社副主任。1924年3月11日资助川资18元。8月17日在广州面谈，劝其"不必抱悲观"。</div></div>
+      <div class="person-card"><div class="person-name">张昆弟</div><div class="person-alias">日记中称"昆弟兄"</div><div class="person-relations"><span class="relation-tag tag-meet">北京铁匠营</span><span class="relation-tag tag-work">铁委交接</span>全国铁路总工会（铁委）负责人，张隐韬向其报告京绥路情况。</div></div>
+      <div class="person-card"><div class="person-name">安体诚</div><div class="person-alias">日记中称"存斋"</div><div class="person-relations"><span class="relation-tag tag-meet">鲍家街新中学会</span><span class="relation-tag tag-work">工运同事</span>1923年8月5日谈论社会问题。7月11日张隐韬批评其"能做如花似玉的文字"但缺乏行动力。</div></div>
+      <div class="person-card"><div class="person-name">贾纤青</div><div class="person-alias">日记中称"纤青""纡青"</div><div class="person-relations"><span class="relation-tag tag-letter">频繁书信</span>11月4日来信"认定人生的价值，往前走去"是日记中最重要的精神对话之一。</div></div>
+      <div class="person-card"><div class="person-name">安幸生</div><div class="person-alias">日记中未直接出现</div><div class="person-relations"><span class="relation-tag tag-work">入党介绍人</span>与罗章龙共同介绍张隐韬入党，据生平综述记录。</div></div>
+      <div class="person-card"><div class="person-name">张国焘</div><div class="person-alias">日记中称"国焘""张胡子"</div><div class="person-relations"><span class="relation-tag tag-work">接办铁委</span>接替王尽美负责京绥铁路工委，张隐韬对其态度复杂——郑业信中替张抱不平："隐韬感京中同志之冷落与闹意见"。</div></div>
+      <div class="person-card"><div class="person-name">彭礼和</div><div class="person-alias">日记中称"利礼和"</div><div class="person-relations"><span class="relation-tag tag-work">工运战友</span>1922年同去唐山为五矿罢工被捕，1924年7月8日再次被捕，张"为之痛而欲泣"。</div></div>
+      <div class="person-card"><div class="person-name">邓培</div><div class="person-alias">日记中称"凤鸣"（化名唐凤鸣）</div><div class="person-relations"><span class="relation-tag tag-meet">张家口</span>京绥铁路工运中的同志，张隐韬去其处探访。</div></div>
+      <div class="person-card"><div class="person-name">杨其纲</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">同车南下</span>1924年3月12日同车从天津南下上海，同为黄埔一期生。</div></div>
+      <div class="person-card"><div class="person-name">江镇寰</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">同车南下</span>同车南下上海，7月14日从军校逃跑，欲去俄留学。</div></div>
+    </div>
+  </div>
+
+  <div class="cat-section">
+    <div class="cat-header">
+      <div class="cat-dot" style="background:var(--gold)"></div>
+      <h3>黄埔人物</h3>
+      <div class="cat-count">6人 · 军校中的同志与冲突对象</div>
+    </div>
+    <div class="person-grid">
+      <div class="person-card"><div class="person-name">蒋介石</div><div class="person-alias">日记中称"校长"</div><div class="person-relations"><span class="relation-tag tag-critique">专制批判</span>张隐韬对蒋最核心的批判：以"枪毙"威胁学生、开除宣侠父、对匿名信大怒。日记中未见任何对蒋的正面评价。</div></div>
+      <div class="person-card"><div class="person-name">宣侠父</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">同校</span><span class="relation-tag tag-critique">被开除</span>8月22日因坚持党权独立于校权被蒋介石开除。张隐韬"佩服其敌抗精神"但认为"一点代价没有，有点不值得"。</div></div>
+      <div class="person-card"><div class="person-name">金佛庄</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">同船赴省</span>8月17日同船从黄埔去广州，在船上"谈了很久的话"。</div></div>
+      <div class="person-card"><div class="person-name">李之龙</div><div class="person-alias">日记中称"李子龙"</div><div class="person-relations"><span class="relation-tag tag-critique">官僚作风</span>7月18日，当选党部委员的李之龙以"我是民党党员，我就有管你们的权力"压制同学，张隐韬极度反感："简直知不到天多高地多厚了！"</div></div>
+      <div class="person-card"><div class="person-name">胡公冕</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">黄埔偶遇</span>8月28日在洪福市偶遇其与夫人散步，此时胡已被开除卫兵长职。</div></div>
+      <div class="person-card"><div class="person-name">郑业</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">张家口</span><span class="relation-tag tag-work">京绥路</span>京绥铁路工委同事，写信给张昆弟替张隐韬抱不平："隐韬感京中同志之冷落与闹意见，甚觉失意"。</div></div>
+    </div>
+  </div>
+
+  <div class="cat-section">
+    <div class="cat-header">
+      <div class="cat-dot" style="background:#4a9"></div>
+      <h3>国民党人物</h3>
+      <div class="cat-count">6人 · 观察对象与批判靶心</div>
+    </div>
+    <div class="person-grid">
+      <div class="person-card"><div class="person-name">汪精卫</div><div class="person-alias">日记中称"汪先生"</div><div class="person-relations"><span class="relation-tag tag-meet">讲演</span>多次来黄埔讲演《国民党史》《民生主义》等。张隐韬对其讲演态度评价较高："讲二时之久，竟无一人蹈以前现象"，但对其政治立场持保留态度。</div></div>
+      <div class="person-card"><div class="person-name">胡汉民</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">讲演</span>来校讲演"代议制及比例选举制"和三民主义。</div></div>
+      <div class="person-card"><div class="person-name">戴季陶</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-critique">右派攻击</span>原军校政治部主任，因右派攻击而去上海。张隐韬此时将其视为左派代表："季君系革命之必要彻底者……先生之心，亦良苦哉！"</div></div>
+      <div class="person-card"><div class="person-name">张继</div><div class="person-alias">日记中称"张溥泉"</div><div class="person-relations"><span class="relation-tag tag-meet">上海·广州</span>在上海帮张隐韬等解决经济困难。8月17日在广州见面，张继告知"对俄应持之方针"和"党内暗潮"为最重议案——表明其右派立场。张隐韬将其《护党特刊》寄给于树德抗议。</div></div>
+      <div class="person-card"><div class="person-name">谢持</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-critique">右派</span>与张继同为右派中"反对共产党及民党之倾向此主义的尤甚者"。</div></div>
+      <div class="person-card"><div class="person-name">廖仲恺</div><div class="person-alias">日记中称"党代表"</div><div class="person-relations"><span class="relation-tag tag-meet">军校</span>黄埔军校党代表，日记中多次提及"党代表"的报告和命令，未见直接个人交往记录。</div></div>
+    </div>
+  </div>
+
+  <div class="cat-section">
+    <div class="cat-header">
+      <div class="cat-dot" style="background:#c54"></div>
+      <h3>家人与乡友</h3>
+      <div class="cat-count">6人 · 乡间生活的情感支柱</div>
+    </div>
+    <div class="person-grid">
+      <div class="person-card"><div class="person-name">母亲</div><div class="person-alias">日记中称"我母"</div><div class="person-relations"><span class="relation-tag tag-letter">频繁书信</span>日记中反复出现的牵挂对象。母亲在天津佣工，多次来信劝其回乡或谨慎外出。1924年9月2日来信告知直省水灾淹了七十余县。</div></div>
+      <div class="person-card"><div class="person-name">外祖母</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">郝庄</span>抚养张隐韬长大。1923年11月16日离别时"颇觉怅然"，因"年关在即，很不欲我出外"。</div></div>
+      <div class="person-card"><div class="person-name">魏华池</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">张家口·阳高</span><span class="relation-tag tag-letter">频繁书信</span>京绥路工运同志，日记中出现最频繁的乡友之一，多次书信讨论西北运动和债务问题。</div></div>
+      <div class="person-card"><div class="person-name">赵禹珍</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">张家口</span>西北运动促进会成员，多次讨论西北情形。</div></div>
+      <div class="person-card"><div class="person-name">崔清源</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">乡间</span>1923年10月24日来商量办书铺（学生消费合作社），张隐韬极为赞成。</div></div>
+      <div class="person-card"><div class="person-name">周振声</div><div class="person-alias"></div><div class="person-relations"><span class="relation-tag tag-meet">京绥路</span><span class="relation-tag tag-letter">书信</span>京绥铁路工运同志，康庄驻站，多次书信联络。</div></div>
+    </div>
+  </div>
+
+  <!-- ANALYSIS -->
+  <div class="analysis-box">
+    <h3>网络结构分析</h3>
+    <p>张隐韬的人际网络呈现出鲜明的"革命社交"特征：日记中超过80%的交往对象与革命活动直接相关，而家人和乡友的交往也往往交织着革命议题（如崔清源商议办书铺、魏华池讨论西北运动）。他的社交圈没有"纯粹的生活朋友"——几乎每一段关系都嵌入了组织、思想和行动的维度。</p>
+    <p>在党内同志中，罗章龙和于树德是两个最重要的精神支柱：罗章龙的来信让他在精神崩溃边缘找到"药石"，于树德的资助和劝勉则支撑他走过了最困难的经济危机和军校低谷。而邓中夏的"谈话不快"，恰恰从反面激发了"适足以鼓励我工作之努力"的反弹效应。</p>
+    <p>值得注意的是，张隐韬对黄埔人物的交往几乎全部带有"批判"色彩——对蒋介石的专制、李之龙的官僚作风、宣侠父被开除的无奈，他对军校没有留下任何正面的个人关系记录。这种"社交疏离"并非性格使然，而是思想立场的选择：他来军校"为主义预备而来"，而非"为主义活动而来"，本身就预设了与军校体制的距离。</p>
+    <p>在国民党人物中，张继是一个特殊的存在：他在上海帮张隐韬解决经济困难，但在广州又成为右派代表。这种"个人善意与政治立场的分裂"，恰恰是张隐韬对国民党产生根本质疑的缩影——"民党虽经一次改组，但内中之官僚式的无革命精神的人，尚是多的很。"</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-text">
+    资料来源：河北省南皮县档案馆 · 《张隐韬烈士日记》连载一至五<br>
+    本网站仅作学术纪念用途
+  </div>
+  <div class="dedication">—— 革命先烈永垂不朽 ——</div>
+</footer>
+</body>
+</html>

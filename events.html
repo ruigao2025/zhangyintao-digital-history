@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日记与历史事件对照 — 张隐韬烈士纪念网站</title>
+<style>
+:root{--red:#b22222;--dark-red:#8b0000;--gold:#c9a84c;--cream:#f5f0e8;--dark:#1a1a1a;--darker:#111;--text:#d4cfc4;--text-light:#a09a8c;--border:#333}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Serif SC','Source Han Serif CN','Songti SC','SimSun',serif;background:var(--dark);color:var(--text);line-height:1.8}
+a{color:var(--gold);text-decoration:none;transition:color .3s}
+a:hover{color:var(--red)}
+html{scroll-behavior:smooth}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px}
+nav .logo{font-size:18px;font-weight:700;color:var(--gold);letter-spacing:4px}
+nav .links{display:flex;gap:6px;flex-wrap:wrap}
+nav .links a{font-size:13px;color:var(--text-light);letter-spacing:1px;padding:4px 8px;border-radius:3px;transition:all .3s}
+nav .links a:hover{color:var(--gold);background:rgba(178,34,34,.15)}
+
+.page-hero{min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:70px;background:linear-gradient(180deg,#0a0a0a,#1a0a0a,#0a0a0a)}
+.page-hero h1{font-size:32px;color:var(--cream);letter-spacing:8px}
+.page-hero .sub{color:var(--text-light);font-size:13px;margin-top:6px;letter-spacing:3px}
+
+.section{max-width:1000px;margin:0 auto;padding:60px 24px 40px}
+.section-title{font-size:26px;color:var(--cream);letter-spacing:6px;text-align:center;margin-bottom:12px}
+.section-title::before{content:'';display:inline-block;width:40px;height:2px;background:var(--red);vertical-align:middle;margin-right:16px}
+.section-title::after{content:'';display:inline-block;width:40px;height:2px;background:var(--red);vertical-align:middle;margin-left:16px}
+.section-sub{text-align:center;color:var(--text-light);font-size:13px;margin-bottom:48px;letter-spacing:2px}
+
+/* COMPARISON TABLE */
+.comp-card{background:#1e1e1e;border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-bottom:24px;border-left:4px solid var(--red)}
+.comp-card:nth-child(2){border-left-color:var(--gold)}
+.comp-card:nth-child(3){border-left-color:#4a9}
+.comp-card:nth-child(4){border-left-color:#c54}
+.comp-card:nth-child(5){border-left-color:#a6c}
+.comp-card:nth-child(6){border-left-color:#ea3}
+.comp-card:nth-child(7){border-left-color:#5ab}
+.comp-card:nth-child(8){border-left-color:#d76}
+.comp-card h3{font-size:17px;color:var(--cream);letter-spacing:2px;margin-bottom:4px}
+.comp-card .comp-date{font-size:12px;color:var(--gold);letter-spacing:1px;margin-bottom:16px}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.comp-col{padding:14px 16px;border-radius:6px;font-size:13px;line-height:1.9}
+.col-diary{background:rgba(178,34,34,.06);border:1px solid rgba(178,34,34,.15)}
+.col-history{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15)}
+.col-analysis{background:rgba(74,170,153,.06);border:1px solid rgba(74,170,153,.15)}
+.comp-col .col-label{font-size:11px;letter-spacing:2px;margin-bottom:6px;font-weight:700}
+.col-diary .col-label{color:var(--red)}
+.col-history .col-label{color:var(--gold)}
+.col-analysis .col-label{color:#4a9}
+.comp-col p{color:var(--text);font-style:italic;text-indent:0}
+
+/* MUTUAL VERIFICATION */
+.verification{background:#1a1a1a;border:1px solid var(--border);border-radius:10px;padding:28px 32px;margin-top:48px}
+.verification h3{font-size:20px;color:var(--gold);letter-spacing:2px;margin-bottom:16px}
+.verification p{font-size:14px;line-height:2;text-indent:2em;margin-bottom:12px}
+.verif-item{padding:14px 18px;background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.1);border-radius:6px;margin-bottom:12px}
+.verif-item h4{font-size:14px;color:var(--cream);margin-bottom:6px}
+.verif-item p{font-size:13px;text-indent:0;margin-bottom:0}
+
+footer{background:var(--darker);border-top:1px solid var(--border);text-align:center;padding:40px 24px}
+footer .footer-text{font-size:12px;color:var(--text-light);letter-spacing:2px;line-height:2}
+footer .dedication{color:var(--red);font-size:14px;margin-top:12px;letter-spacing:4px}
+
+@media(max-width:768px){
+  .comp-grid{grid-template-columns:1fr}
+  nav .links a{font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="logo">张隐韬</div>
+    <div class="links">
+      <a href="index.html">首页</a>
+      <a href="index.html#bio">生平</a>
+      <a href="analysis.html">思想分析</a>
+      <a href="network.html">人物网络</a>
+      <a href="events.html" style="color:var(--gold)">事件对照</a>
+      <a href="diary.html">日记</a>
+      <a href="research.html">史料</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div>
+    <h1>日记与历史事件对照</h1>
+    <div class="sub">DIARY vs. HISTORY · 8组关键事件的交叉审视</div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-title">对照表</div>
+  <div class="section-sub">CROSS-REFERENCE · 日记视角·已知史实·对照分析 三栏并置</div>
+
+  <div class="comp-card">
+    <h3>欢迎加拉罕来华</h3>
+    <div class="comp-date">1923年9月2日</div>
+    <div class="comp-grid">
+      <div class="comp-col col-diary"><div class="col-label">日记记载</div><p>"苏俄代表加氏抵京，结队赴站欢迎者，共有十余团体。……此次之欢迎加氏，诚为中国与外国联盟以来所无之空前举动。于此，亦见人民之望解放，不啻枯苗之望雨矣。吾知东亚及世界之和平，将不久而突于实现也。"</p></div>
+      <div class="comp-col col-history"><div class="col-label">历史事件</div><p>1923年9月2日，苏联代表加拉罕抵达北京，受到北京各界热烈欢迎。加拉罕此行目的是与北洋政府谈判恢复邦交，此前已发表三次对华宣言，宣布废除沙俄在华特权。</p></div>
+      <div class="comp-col col-analysis"><div class="col-label">对照分析</div><p>张隐韬的记述突出了"人民之望解放"的情感层面，这与官方外交叙事形成互补。他关注的不是谈判细节，而是普通民众对"平等邦交"的渴望——"不啻枯苗之望雨"的比喻，揭示了中国民众对苏俄承诺的期待之深。这种视角是正式史书不会记录的。</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <h3>日本关东大地震</h3>
+    <div class="comp-date">1923年9月3—6日</div>
+    <div class="comp-grid">
+      <div class="comp-col col-diary"><div class="col-label">日记记载</div><p>"日本突然发生空前惨悲之大地震。受灾之重者，首推横滨、名古屋二处，其次则为东京，又次则为大阪。中部日本，几无一地幸免者。"</p><p>"我对于日本之此次地震，在人道上说，当然表以充分之同情和援助。惟日本之国势，将来恐步中国之国际压迫之后尘。"</p></div>
+      <div class="comp-col col-history"><div class="col-label">历史事件</div><p>1923年9月1日，日本关东地区发生7.9级大地震，造成约10万人死亡，东京、横滨等城市严重损毁。地震后日本政府散布"朝鲜人纵火"谣言，导致大规模屠杀在日朝鲜人和中国人。</p></div>
+      <div class="comp-col col-analysis"><div class="col-label">对照分析</div><p>张隐韬在"人道同情"与"政治判断"之间做出了微妙区分：他既不因民族仇恨而幸灾乐祸（"在人道上说，当然表以充分之同情"），也不因同情而放弃对日本帝国主义前途的冷静分析（"将来恐步中国之国际压迫之后尘"）。这种将人道主义与阶级分析分开处理的思维方式，是他区别于一般民族主义者的关键。</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <h3>京绥铁路工委人事变动</h3>
+    <div class="comp-date">1923年9月13日</div>
+    <div class="comp-grid">
+      <div class="comp-col col-diary"><div class="col-label">日记记载</div><p>"北京之铁委，自我至京，皆由尽美同志负责。近日不知中央局以若何原因将其调往济南，以张国焘同志接办。美兄此次之下台，当然有种心下不快！"</p></div>
+      <div class="comp-col col-history"><div class="col-label">历史事件</div><p>1923年9月，中共中央局调整京绥铁路工委负责人，王尽美调往济南负责山东党的工作，张国焘接手。这一调整与当时党内"铁委"系统的统一管理有关。</p></div>
+      <div class="comp-col col-analysis"><div class="col-label">对照分析</div><p>张隐韬对"中央局以若何原因"调整人事表示困惑，并对王尽美的"心下不快"表示同情。郑业后来写信给张昆弟，更直接指出"隐韬感京中同志之冷落与闹意见，甚觉失意"——这折射出北方党组织内部的人事矛盾和基层工作者被"冷落"的感受，是正式党史中很少提及的侧面。</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <h3>黄埔军校党部选举</h3>
+    <div class="comp-date">1924年7月3日</div>
+    <div class="comp-grid">
+      <div class="comp-col col-diary"><div class="col-label">日记记载</div><p>"今天选举的情形，真是笑话，投票时有写'石达开'、'林觉民'、'曹琨'及'蒋中正的雇佣人'；茅延桢写成'毛益蒸'等等字样。……假设此校系我主持，欲希望本党的成功，必要清理内部，将全体学生大加淘汰，虽革去大多半，亦所不惜。"</p></div>
+      <div class="comp-col col-history"><div class="col-label">历史事件</div><p>黄埔军校成立国民党特别区党部后，进行首次选举。蒋介石对选举乱象也非常不满，批评道："昨天开选举会的时候，不是有一二个人在票上写一些乱七八糟的话？这本来是个人的道德，但在会场上有这一种不好的现象，就是我们学校不幸的表现。"</p></div>
+      <div class="comp-col col-analysis"><div class="col-label">对照分析</div><p>蒋介石和张隐韬对同一事件的态度形成有趣对比：蒋将其归为"个人道德"问题，张则将其视为"党的前途"危机，要求"大加淘汰"。两人的反应体现了根本性的思想差异——蒋看到的是纪律问题，张看到的是革命合法性问题。</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <h3>宣侠父被开除事件</h3>
+    <div class="comp-date">1924年8月22日</div>
+    <div class="comp-grid">
+      <div class="comp-col col-diary"><div class="col-label">日记记载</div><p>"同志宣侠父今日开除。其原因为党中之组织上他为小组组长，但学校的校长令组织对学校也负每星期报告之责。他以为校长是党、校不分，乱用威权。……若说他这种敌抗的精神，我是佩服；然一点代价没有，无乃有点不值得。然学校的这种行动，亦堪恨哉！"</p></div>
+      <div class="comp-col col-history"><div class="col-label">历史事件</div><p>宣侠父是黄埔军校中第一个被开除的学生，也是唯一因政治原因被开除的一期生。他坚持国民党小组应向党部报告而非向校长报告，实质是"党权高于校权"还是"校权高于党权"的争论。蒋介石坚持后者，宣侠父被开除。</p></div>
+      <div class="comp-col col-analysis"><div class="col-label">对照分析</div><p>张隐韬的评价呈现出罕见的矛盾性：他"佩服"宣侠父的抵抗精神，但又认为"一点代价没有，有点不值得"。这种矛盾恰恰揭示了他的实用主义立场——他重视原则，但更重视"代价"和"效果"。这与他在7月2日写的"为主义预备而来"一脉相承：他来军校是学军事而非做政治斗争，任何偏离这一目标的行为在他看来都是"不值得"的。</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <h3>扣留商团军火</h3>
+    <div class="comp-date">1924年8月12—13日</div>
+    <div class="comp-grid">
+      <div class="comp-col col-diary"><div class="col-label">日记记载</div><p>"我在夜间警戒时，那种暴烈的风雨，要说是辛苦的很，但我认为国民党得这大批军火，诚是前途的幸事，高兴的很，故毫不觉苦！又，夜晚用的口令是：'得威必胜'四字，也是表示国民党得这批军火而欢喜出意外的意思。"</p></div>
+      <div class="comp-col col-history"><div class="col-label">历史事件</div><p>1924年8月上旬，广州商团向丹麦商行订购大批军火偷运广州，孙中山得到密报后命令扣留。8月12日，军校学生奉命参与搬运和警戒。这批军火包括步枪4500余支、手机枪100余架、子弹300余万发。</p></div>
+      <div class="comp-col col-analysis"><div class="col-label">对照分析</div><p>张隐韬的记录提供了官方史实中缺失的"现场感"：暴雨中搬运军火的辛苦、"得威必胜"口令的细节、学生夜间警戒时的紧张气氛。更重要的是，他的评价——"国民党得这大批军火，诚是前途的幸事"——暗示他已将"掌握军事力量"视为革命成功的前提条件，这与日后组建农民自卫军的逻辑完全一致。</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <h3>商团事变中的妥协</h3>
+    <div class="comp-date">1924年9月1日</div>
+    <div class="comp-grid">
+      <div class="comp-col col-diary"><div class="col-label">日记记载</div><p>"甲、孙中山的妥协性太甚。乙、老孙的作事魄力还缺乏。丙、既将枪械交还商团，以后的祸乱潜机更形利害，算是将资本家势力完全造成。丁、未罢市前将军火交还，国民党面子还算存在，等到罢市的威胁而交还，并许以五十万的款子，简直面子扫地，太无价值。——如长此以往，国民党没有希望！"</p></div>
+      <div class="comp-col col-history"><div class="col-label">历史事件</div><p>1924年8月下旬，在滇军范石生等调停下，孙中山被迫与商团妥协，同意有条件发还扣械。9月1日前后，条件基本确定。但妥协并未平息事态，10月10日商团制造"双十惨案"，孙中山最终采取武力镇压。</p></div>
+      <div class="comp-col col-analysis"><div class="col-label">对照分析</div><p>张隐韬的"四条感想"是对孙中山妥协路线最尖锐的党内批评之一。他在日记中直称"老孙"，用语之大胆在同期中共文献中极为罕见。更具预见性的是"丙"条——"既将枪械交还商团，以后的祸乱潜机更形利害"——10月的"双十惨案"证明了他的判断完全正确。这段日记的价值在于：它记录了一个基层党员在面对"统一战线中的妥协"时，如何从阶级立场出发做出独立的、不同于上级决策的判断。</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <h3>广州工团军成立</h3>
+    <div class="comp-date">1924年9月2日</div>
+    <div class="comp-grid">
+      <div class="comp-col col-diary"><div class="col-label">日记记载</div><p>"广州的资产阶级之罢市潮，同时引起无产阶级——劳动者之武装对峙的组织的工团军之成立。……他们的这次行动，是中国的无产者的武装的先声。……如若他们的组织里面，能以参加我们党的人，或者亦有一线的可为。如无有，可断言其绝无希望！"</p></div>
+      <div class="comp-col col-history"><div class="col-label">历史事件</div><p>广州工团军由广州工人代表会于1924年8月组建，是中共通过工会掌握的工人武装。黄埔军校学生负责其军事训练。工团军是中共早期武装力量的重要尝试，但组织较为松散。</p></div>
+      <div class="comp-col col-analysis"><div class="col-label">对照分析</div><p>张隐韬一方面将工团军视为"中国无产者的武装先声"而予以肯定，另一方面对其领袖"穿着漂亮洋服、持指挥棍"的作风提出严厉批评，并断言"如无我们党的人参加，绝无希望"。这一判断体现了他"实践优先"的用人标准和"组织决定论"的政治观——仅有阶级身份不够，还需要党的领导和真正代表无产者利益的干部。这种观点与他7月11日对存斋的批评一脉相承，也与他在黄埔军校中坚持"为主义预备而来"的定位完全一致。</p></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- MUTUAL VERIFICATION -->
+<section class="section" style="padding-top:0;">
+  <div class="verification">
+    <h3>五则新材料与日记的互证关系</h3>
+    <p>张洪涛整理的"五则新材料"与日记内容形成了多角度的互证，既印证了日记记载的可靠性，又补充了日记缺失的信息。</p>
+
+    <div class="verif-item">
+      <h4>五五书报代卖社 ↔ 日记8月15日</h4>
+      <p>日记记载1922年6月在津设立"工余补习学校、工人图书馆、五五代卖社、工人乐群会"，新发现的1922年6月12日《上海民国日报》启事与日记完全吻合，且补充了代卖社章程和正副主任署名（"主任张隐韬，副主任于树德"）。</p>
+    </div>
+    <div class="verif-item">
+      <h4>废督裁兵大会 ↔ 日记10月10日</h4>
+      <p>日记记载"在十一年这天的时候，曾在北京参与'裁兵废督'的国民大会"，新发现的《民本报》报道中"长辛店工人代表张仁超"的演讲词与日记吻合——张隐韬又名张仁超，且当时确在长辛店从事工运。</p>
+    </div>
+    <div class="verif-item">
+      <h4>国民党56次会议 ↔ 日记7月9日</h4>
+      <p>日记7月9日记载"政治部征求意见"，他提议"军事运动的分工"议题。新发现的10月27日《广州民国日报》报道其正式在国民党中央会议上提出"军事运动的分工案"，证明他的提议确实进入了国民党高层议事程序。</p>
+    </div>
+    <div class="verif-item">
+      <h4>胡景翼追悼会 ↔ 1925年毕业后</h4>
+      <p>日记止于1924年9月4日。新发现的胡景翼追悼会记录（1925年5月）填补了张隐韬毕业后在河南国民二军活动的空白，佐证了刘格平的回忆。</p>
+    </div>
+    <div class="verif-item">
+      <h4>快邮代电 ↔ 1925年11月</h4>
+      <p>刘格平回忆"张隐韬向南皮、盐山一带发了快邮代电"，新发现的《益世报》原文提供了完整文本，且与刘的回忆在主要事实上吻合（张隐韬为领导人之一），但细节有出入：快邮代电称"军长陈修福、副军长张隐韬"，刘回忆称"司令张隐韬、副司令陈秀福"。此差异值得进一步考证。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-text">
+    资料来源：河北省南皮县档案馆 · 《张隐韬烈士日记》连载一至五 · 张洪涛《关于张隐韬生平事迹的几则新材料》· 石慧《一名共产党员学生眼中的黄埔军校》<br>
+    本网站仅作学术纪念用途
+  </div>
+  <div class="dedication">—— 革命先烈永垂不朽 ——</div>
+</footer>
+</body>
+</html>

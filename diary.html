@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张隐韬烈士日记全文 — 纪念网站</title>
+<style>
+:root{--red:#b22222;--dark-red:#8b0000;--gold:#c9a84c;--cream:#f5f0e8;--dark:#1a1a1a;--darker:#111;--text:#d4cfc4;--text-light:#a09a8c;--border:#333}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Serif SC','Source Han Serif CN','Songti SC','SimSun',serif;background:var(--dark);color:var(--text);line-height:1.8}
+a{color:var(--gold);text-decoration:none;transition:color .3s}
+a:hover{color:var(--red)}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+nav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px}
+nav .logo{font-size:18px;font-weight:700;color:var(--gold);letter-spacing:4px}
+nav .links{display:flex;gap:6px;flex-wrap:wrap}
+nav .links a{font-size:13px;color:var(--text-light);letter-spacing:1px;padding:4px 8px;border-radius:3px;transition:all .3s}
+nav .links a:hover{color:var(--gold);background:rgba(178,34,34,.15)}
+.page-hero{min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:70px;background:linear-gradient(180deg,#0a0a0a,#1a0a0a,#0a0a0a)}
+.page-hero h1{font-size:32px;color:var(--cream);letter-spacing:8px}
+.page-hero .sub{color:var(--text-light);font-size:13px;margin-top:6px;letter-spacing:3px}
+.diary-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:900px;margin:32px auto 0;padding:0 16px}
+.diary-tabs button{background:#1e1e1e;border:1px solid var(--border);color:var(--text-light);padding:8px 18px;border-radius:4px;cursor:pointer;font-size:13px;font-family:inherit;transition:all .3s}
+.diary-tabs button.active,.diary-tabs button:hover{background:var(--red);border-color:var(--red);color:#fff}
+.diary-container{max-width:800px;margin:0 auto;padding:24px 24px 80px}
+.diary-panel{display:none}
+.diary-panel.active{display:block}
+.diary-panel h2{font-size:22px;color:var(--cream);text-align:center;letter-spacing:4px;margin-bottom:6px}
+.diary-panel .diary-meta{text-align:center;font-size:12px;color:var(--text-light);margin-bottom:36px;letter-spacing:1px}
+.diary-entry{margin-bottom:20px;padding:14px 18px;border-left:3px solid var(--border);transition:border-color .3s}
+.diary-entry:hover{border-left-color:var(--red)}
+.diary-entry .entry-date{font-size:13px;color:var(--gold);font-weight:700;margin-bottom:3px}
+.diary-entry .entry-text{font-size:14px;line-height:2;text-indent:2em}
+.diary-entry .entry-note{margin-top:6px;padding:6px 12px;background:rgba(178,34,34,.08);border-radius:4px;font-size:12px;color:var(--text-light)}
+.diary-entry .entry-annotation{margin-top:6px;padding:8px 12px;background:rgba(201,168,76,.06);border-left:2px solid var(--gold);border-radius:0 4px 4px 0;font-size:12px;color:var(--text-light);line-height:1.8}
+footer{background:var(--darker);border-top:1px solid var(--border);text-align:center;padding:32px 24px}
+footer .footer-text{font-size:11px;color:var(--text-light);letter-spacing:1px;line-height:2}
+footer .dedication{color:var(--red);font-size:13px;margin-top:8px;letter-spacing:3px}
+.back-link{max-width:800px;margin:0 auto;padding:16px 24px 0}
+.back-link a{font-size:13px;color:var(--text-light)}
+.back-link a:hover{color:var(--gold)}
+@media(max-width:768px){.diary-tabs button{padding:6px 12px;font-size:12px}.page-hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="logo">张隐韬</div>
+    <div class="links">
+      <a href="index.html">首页</a>
+      <a href="index.html#bio">生平</a>
+      <a href="analysis.html">思想分析</a>
+      <a href="network.html">人物网络</a>
+      <a href="events.html">事件对照</a>
+      <a href="diary.html" style="color:var(--gold)">日记</a>
+      <a href="research.html">史料</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div>
+    <h1>张隐韬烈士日记</h1>
+    <div class="sub">DIARY OF ZHANG YINTAO · 1923.8—1924.9 · 约五万余字</div>
+  </div>
+</div>
+
+<div class="diary-tabs" id="tabs">
+  <button class="active" onclick="showPanel(0)">第一册(上)</button>
+  <button onclick="showPanel(1)">第一册(下)</button>
+  <button onclick="showPanel(2)">赴粤途中</button>
+  <button onclick="showPanel(3)">黄埔军校(上)</button>
+  <button onclick="showPanel(4)">黄埔军校(下)</button>
+</div>
+
+<div class="diary-container">
+
+<!-- ===== PART 1: 1923.8.1—9.30 ===== -->
+<div class="diary-panel active" id="panel0">
+<h2>第一册（上）</h2>
+<div class="diary-meta">1923年8月1日 — 9月30日 · 北京</div>
+
+<div class="diary-entry"><div class="entry-date">八月一日</div><div class="entry-text">天晴。——我从今天算起，到京已十五天了（在七月十五日自张家口到京）。但光阴过去这样久，一点的事体也未曾办，倒不知"从早到晚"的忙碌些什么？真奇怪！莫非将"一寸光阴，一寸金"的话忘了不成？——从今天起，须要破釜沉舟的干点工作，别把青年光阴轻易放过去啊！</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月二日</div><div class="entry-text">晴。炎热如焚，在寓未外行，看《革命哲学》。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月五日</div><div class="entry-text">天晴。去鲍家街新中学会，与存斋兄①谈论解决社会问题。</div><div class="entry-note">①即安体诚，字存斋，笔名存真。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月八日</div><div class="entry-text">天晴。……看报，见各报所载：自临城匪变之后，各国之帝国主义者，均以为共管中国之良好机会，而尤以倭日进行为烈。……然此说未知确否？果真，则中国前途不堪设想矣！而一般军阀官僚，尚整日从事于地盘权力，置国事于不闻不问。噫，小民以血汗金钱，养得一些盗国贼。如此等政局，不加以根本改造，人民之流离困苦，是无论到于何时，必不能解决的。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月十日</div><div class="entry-text">天晴。树功兄送我游万寿山之免费券一张，故我于今日游该地。兹为之记，以作游之首次纪念。万寿山，亦名颐和园，系满清帝后之暑游地。然以何物之帝王匹夫，敢占名胜为私第？耗人民之血脂，快一己之所乐为。——此不过在民智不开之时犹可，宜其帝王之为物，不能存在于将要一阶级化之今日社会也。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月十三日</div><div class="entry-text">天晴。复周君振声函，并寄京绥路致安源路矿工人俱乐部周年纪念祝辞一纸。……临城案，各帝国主义者，已通牒于中国了。……咳！中国的糟，何竟到了这等天地？我们小民，若不内清政治，外敌外侮，恐怕种种危险形势，都要现于我们的眉睫了。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月十五日</div><div class="entry-text">今日为阴历之七月初五日，即余开始平民革命运动之一周年纪念日也。在上年六月间，永滋、存斋、启沃诸同志，在津地设立工余补习学校、工人图书馆、五五代卖社、工人乐群会及S.Y.机关等。以发行征书启事，工余、工图、五五，均被杨以德派警解散。余旋以母病归里。……出京之二日，即离津之五日，工乐捕人举动已暴作矣。沃兄等三人，均及难，余及存、滋则幸免。至今日，正一年之周也。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月二十五日</div><div class="entry-text">在上午九点时，余正坐院观书，及起立时，忽头昏目眩，倒于地上，头部磕伤二处，约五分钟始醒。然脑痛颇烈，拟于明日就医诊治。</div></div>
+
+<div class="diary-entry"><div class="entry-date">九月一日</div><div class="entry-text">加拉罕因有私事关系，闻于今日离奉，至明日晨当可来京。晚七时，党中开大会，由刘云静同志报告南京S.Y.大会之决议案，及党务报告后，关于本党若何进行，及对国民党的持之政策怎样？终未有一相当办法。……自劳运失败，遂深恨北洋军阀之残暴行为，不得不与一有力之革命团体相连属，以致军阀之死命。</div></div>
+
+<div class="diary-entry"><div class="entry-date">九月二日</div><div class="entry-text">晴。上午十时十五分，苏俄代表加氏抵京，结队赴站欢迎者，共有十余团体。各人手执黄绿两色之旗帜，书有：希望中俄本互助精神实现东亚和平；希望勿顾小利，以继续中俄邦交……等字样。此次之欢迎加氏，诚为中国与外国联盟以来所无之空前举动。于此，亦见人民之望解放，不啻枯苗之望雨矣。</div></div>
+
+<div class="diary-entry"><div class="entry-date">九月七日</div><div class="entry-text">晴。保定张太太来。上午，邀尽美兄①及杨子烈女士去中央公园。约半点钟，孟雄及缪伯英女士、史湘云女士均驾临，与张太太欢谈。至晚六点始回，十一时，张则已返保矣。</div><div class="entry-note">①即王尽美。</div></div>
+
+<div class="diary-entry"><div class="entry-date">九月十三日</div><div class="entry-text">北京之铁委，自我至京，皆由尽美同志负责。近日不知中央局以若何原因将其调往济南，以张国焘同志接办。美兄此次之下台，当然有种心下不快！即使再拖延下去，恐亦于各项事体毫无进展。</div></div>
+
+<div class="diary-entry"><div class="entry-date">九月二十日</div><div class="entry-text">大雨。……湖南赵恒惕，近来形势颇属不稳，民党之谭延闿已兵至衡州，洛吴已发枪弹援赵，恐不日将有战事发现。可惜湖南同胞，未免又要受军阀的一番蹂躏。</div></div>
+
+<div class="diary-entry"><div class="entry-date">九月二十二日</div><div class="entry-text">晴。……苏俄代表加拉罕已抵奉，北京学生会拍电欢迎。对于中国时局谈话，颇属痛砥其病源。恐中俄亲善将不久实现，姑志之，以看后日举动若何？</div></div>
+
+<div class="diary-entry"><div class="entry-date">九月二十八日</div><div class="entry-text">这一天以内甚觉劳苦，因乡中习俗，凡久客于外而归者，亲友必往问候，然我则觉太俗气而无趣味之举也。所好者，晚九时即就寝，乡间亦习惯然也。</div></div>
+
+<div class="diary-entry"><div class="entry-date">十月一日</div><div class="entry-text">即阴历八月二十一日，与丙瑞兄去金庄之立民家，晚始回。</div></div>
+
+</div>
+
+<!-- ===== PART 2: 1923.10—1924.2 ===== -->
+<div class="diary-panel" id="panel1">
+<h2>第一册（下）</h2>
+<div class="diary-meta">1923年10月 — 1924年2月 · 乡间·张家口·北京</div>
+
+<div class="diary-entry"><div class="entry-date">十月八日</div><div class="entry-text">苏俄代表加拉罕君，以诚恳之美意与中国合好。而中国在历史上、地理上、人群上之各种利益看来，本有合好之必要和可能。但半殖民地而受外国帝国主义者之胁迫，而一般媚外军阀，遂仰外人之鼻息，以致加氏几归于无望。</div></div>
+
+<div class="diary-entry"><div class="entry-date">十月二十一日</div><div class="entry-text">这几日所看的书——《社会主义史》，在今天晚上已经看完了，此书的内容很多兴味之处，并且材料也很丰富，原著者为克卡朴，经李季先生译为中文了。……此书我不知其何年著成，但民国九年七月，才被李季译成中文。关于马氏的学说，并未与以充分的同情，而俄国革命，也叙述的很不明了；而中国的初期，他说是孙逸仙先生在一九一二年南京组织的，然不久被袁世凯给解散了。我想这些事情著述的所以不十分阐明，是此书著的太早了，这十许年的社会运动，也该编辑的了。</div></div>
+
+<div class="diary-entry"><div class="entry-date">十月二十七日</div><div class="entry-text">我来家已许多日了，关于我家庭上所办理的一切事体，真令我无一处表示满意。我的心血已要尽了，伤心世事已达到了极点。咳，人情恶劣，风俗日堕，我觉着处在今日之社会，如捲入是非的旋涡。……这就是人间地狱，茫茫之罪海也！</div></div>
+
+<div class="diary-entry"><div class="entry-date">十一月一日</div><div class="entry-text">今日接章龙兄①信谓："……兄对北地同志失望，亦系事实使然。……而对于外来拂意现象，又何妨达观一些。历观能负革命使命的人，未有不于失望中渐去求希望也。……"此信我接到之后，读其辞而忆其旨，并回想前时之流离辛苦，已泪流满襟矣。噫，举大事，非有坚决不拔之志和百折不回之精神岂能成之乎？此信，真我病之药石也。</div><div class="entry-note">①即罗章龙。</div></div>
+
+<div class="diary-entry"><div class="entry-date">十一月四日</div><div class="entry-text">接纤青兄来信谓："……我因经济困难，甚事也不能作，而且债务日益加重，心思非常忧闷。……认定人生的价值，往前走去，没有牺牲，那能得到幸福？原来，人生是劳碌过世，幸福乃最后的一幕。缓进不成，急进也是不能，除非我们理想中的社会实现了。……"</div></div>
+
+<div class="diary-entry"><div class="entry-date">十一月五日</div><div class="entry-text">我在乡下住的非常忧闷，故联合我极可靠的同志，及在沧的故同学，设立西北运动促进会，专办理新、蒙及三特区诸事宜。</div></div>
+
+<div class="diary-entry"><div class="entry-date">十二月六日</div><div class="entry-text">去铁匠营昆弟兄①处，适中夏②自上海到京，为团体之意见事。并有唐山之阮章来京。</div><div class="entry-note">①即张昆弟。②即邓中夏。</div></div>
+
+<div class="diary-entry"><div class="entry-date">十二月七日</div><div class="entry-text">与中夏谈话，很引起我心之不快。但我绝不因他的话，败我的兴，适足以鼓励我工作之努力！</div></div>
+
+<div class="diary-entry"><div class="entry-date">十二月二十四日</div><div class="entry-text">今日崔清源兄来，和我商议办理书铺一座。——此事我很赞成，因为蔽塞的乡间必要有一正当的学生消费品，才能开此固定的风俗。并照我的计算是：成立书铺——即学生消费合作社，作为第一步，以后可以附设乡村图书馆及农民阅报室、农民消费社等等，那才是我的真正的对于南皮县的希望。</div></div>
+
+<div class="diary-entry"><div class="entry-date">十三年一月六日（1924年1月6日）</div><div class="entry-text">去铁匠营昆弟兄处，适中夏自上海到京，为团体之意见事。</div></div>
+
+<div class="diary-entry"><div class="entry-date">二月七日</div><div class="entry-text">今日为铁委开全国代表大会之期，派我作招待员，遂时招待一切。晚，忽染小疾，在纤青处，发汗即愈。</div></div>
+
+</div>
+
+<!-- ===== PART 3: 1924.2—3 (赴粤途中) ===== -->
+<div class="diary-panel" id="panel2">
+<h2>赴粤途中</h2>
+<div class="diary-meta">1924年2月 — 3月 · 张家口→北京→上海</div>
+
+<div class="diary-entry"><div class="entry-date">三月十日</div><div class="entry-text">至子静兄处。子静见我极大惊！问我何为来京之迟？安源的信早就来到，因等我今晚方走，仅去了陈奕濬、贺昌二人，路费亦带回。广州代表早已返北，每省要军官学生十五人，但仅有四人，定明晨起程，不知你的意思去不去？时间已迫，能否速行筹备，一同去粤？我闻此消息，亦大为慌张。遂急至王励素处取了介绍信，拟明晨去津永滋处，借路费去沪。晚，至新平我母处，使其急回里，办理家务，我一定去粤入学，不能旅里。</div><div class="entry-note">此处"子静兄"为何孟雄。军校招考消息由中共北京区委传达到张隐韬。</div></div>
+
+<div class="diary-entry"><div class="entry-date">三月十一日</div><div class="entry-text">上午十点，乘车去津。到法政找永滋，不遇。遂去师范丙吉处，讯其近日乡中景状。谈至晚间七句钟，便返到永滋处，与谈去军校事。伊颇赞成我之去粤，并加很多奖励语，谈其在粤之开会经过，付我川资十八元。</div></div>
+
+<div class="diary-entry"><div class="entry-date">三月十二日</div><div class="entry-text">今晨大风，天气颇冷。遂去总站上十点火车，与杨其纲兄相逢。转识汇镇寰兄，便同车南下。途中闲谈，尚不觉寂寞。惟大风迷漫，不见天日，火车慢慢前进，昏时方至济南。</div></div>
+
+<div class="diary-entry"><div class="entry-date">三月十四日</div><div class="entry-text">晨时至沪。……寓于吴淞江岸之大安旅店。与其纲等去环龙路之国民党执行部。讯其去粤情形，毛泽东君谓已考过一次，你们来迟了，须暂待两日，听本部的通知。我们遂回寓。</div></div>
+
+<div class="diary-entry"><div class="entry-date">三月十八日</div><div class="entry-text">我们来沪赴考军官学校之直隶学生共四人，因本省代表介绍，预想必很爽快，可以考取后领川资去粤，故每人所带路费到沪后已告罄矣。……我等去44号，与孙铁人（负考试之责者）严重交涉，务必得一完善结果，并必要先解决我等目下之经济问题，到执行部后，孙故推脱不见，我等没法，遂返大安旅店。</div></div>
+
+<div class="diary-entry"><div class="entry-date">三月二十一日</div><div class="entry-text">民党虽经一次改组，但内中之官僚式的无革命精神的人，尚是多的很。我们为考军官学校，不远几千里而来此，经济上早就用尽，感无穷之贫困。惟望上海执行部早日考试，领川资去粤。负责人一味延拖，终不能有明了之表示。……一日三变，终无确实日期，我们已到沪十许天，生活几乎不能再往下维持；每餐仅用铜元十余枚。这种生活状况，他们执行部的这些该死的东西那能得知，凡抱革命精神的人，也有作事这样摆架子的？无怪中山先生之奔波困苦，垂三十年之久而不能成功，此诚其根本之一大原因也。故我以为民党之改组，须从根本淘汰。把这些旧习不改的东西——如孙铁人等，都革去才是。</div></div>
+
+</div>
+
+<!-- ===== PART 4: 1924.6.25—8.15 (黄埔军校上) ===== -->
+<div class="diary-panel" id="panel3">
+<h2>黄埔军校（上）</h2>
+<div class="diary-meta">1924年6月25日 — 8月15日 · 广州黄埔</div>
+
+<div class="diary-entry"><div class="entry-date">六月二十五日</div><div class="entry-text">阴雨。昨日本校所发生的下级干部商议向校长要求减少伙食军装费一事，今日晨党代表及校长遂颁布命令。谓：第一队队长吕梦熊，派充执行官时，私开会议，要求加薪，实属不遵校令，违犯纪律，着即免职，永除党籍。等情。今日上午队长说："校长命令，关于下级干部的事，学生是不准提出质问。若有替下级干部说话的，官长和学生都要枪毙！……"此学校之中，发生此等压迫不平之事，真是为人争自由、为人民争平等的革命党的怪闻。既以此等手段施之于本党同志，亦可以此种手段施之于将来全国国民。然一般国民今日所感的痛苦，正是此等不平之压迫。若经一次革命，还是和现在一样，那么这等革命的工作，可说无有再革的必要了。</div><div class="entry-note">1924年5月黄埔军校成立时，孙中山派廖仲恺为党代表，蒋介石为校长。</div><div class="entry-annotation">⚑ 批注：入校第一天的这段记录，是张隐韬对黄埔军校失望的起点。他敏锐地将"以枪毙威胁本党同志"与"将来全国国民"联系起来——这不是一时的情绪反应，而是对专制逻辑的系统性批判。"若经一次革命还是和现在一样，则无再革的必要"——这句话几乎是他对国民革命合法性的根本质疑。</div></div>
+
+<div class="diary-entry"><div class="entry-date">六月二十九日</div><div class="entry-text">阴。晨开党员会议后，已决定"选举"为星期四。……与新洲之游。</div></div>
+
+<div class="diary-entry"><div class="entry-date">七月一日</div><div class="entry-text">晴。今日的学科系讲演三民主义，戴季陶先生去香港，校长将委托汪精卫先生讲演《中国国民党史》。</div></div>
+
+<div class="diary-entry"><div class="entry-date">七月三日</div><div class="entry-text">晴。今日是"再造共和纪念日"（云南起义）。至于今天选举的情形，真是笑话，投票时有写"石达开"、"林觉民"、"曹琨"及"蒋中正的雇佣人"；茅延桢写成"毛益蒸"等等字样。……假设此校系我主持，欲希望本党的成功，必要清理内部，将全体学生大加淘汰，虽革去大多半，亦所不惜。不然，何望党的成功？</div></div>
+
+<div class="diary-entry"><div class="entry-date">七月十一日</div><div class="entry-text">晴。今晨三时起床，是为野外演习。我以病未操……顺手取过一本书来，乃是《社会科学讲义》，看了几页竟引起我的一个感想。这书是存斋、存统……等他们的出版物，竟引起一般人的注意和赞同(其实做的是不错)。我以前和他们做事，在一处相聚很久，我是认他们是无用的人。因为我的取人之着眼点，第一要注重有没有作为，他们的作为我是看见一斑的了。然因其能做如花似玉的文字，提起笔来写的天花乱坠，一般人就徒见着文字好，都赞颂不已，我真是气的不了！无怪人人都愿作个文学者。——不知有没有人还愿当个实行家？</div><div class="entry-note">①即安体诚，字存斋。</div></div>
+
+<div class="diary-entry"><div class="entry-date">七月十七日</div><div class="entry-text">晴。我们今天的术科是减药射击，每人发给三粒子弹，望着五十米达距离的木靶去射击。我打了三枪，只中了一枪于三环的靶上。这是我有生以来第一次放枪，在未射之前，以为枪的坐力很大，尚惴惴有点不敢放。然在实射之后，才知以前的设顾虑太过了，何尝有那种恐怖之实在里边？凡人之服务社会亦然，在未进作之前，以为一种大事业很难成就的，然决意作起来，也无有什么难。所以拿破仑说："难这字，惟愚人之字典有之。"</div></div>
+
+<div class="diary-entry"><div class="entry-date">七月十九日</div><div class="entry-text">晴。今天得一消息：说是柯洛夫将军死了。柯氏为民党顾问，前几天还到我们这里来演说，他的柔和高浪的声音和他英雄气魄而可爱的态度，还深深存在我的心目中。……他是俄赤军的将军，曾经过多次的血战，现因共产党的基本原因，故特来帮助东方的中国民族独立。他方来到中国不久，他是想到东江去指挥东江的战事，方到石龙，遂堕江而死，岂不令人为此服务世界人类、而谋世界和平者可悲泣者乎！</div></div>
+
+<div class="diary-entry"><div class="entry-date">七月二十日</div><div class="entry-text">阴。近日民党中发生内部左、右派之争执，张继、谢持为右派中之反对共产党及民党之倾向此主义的尤甚者。戴季陶所以不能在广东立脚，而去上海，就是这个缘故。</div><div class="entry-note">1924年6月中旬，张继、谢持、邹鲁、邓泽如等已向国民党中央提出了反对共产党的所谓"弹劾案"，表明了他们的反共反人民之立场。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月八日</div><div class="entry-text">阴，上午小雨。……今日晚，接华池兄来信谓：(一)我所烦为担负债务事，亦可照办。(二)武汉事件及京国焘案，京绥路职员亦被波及。因在国焘处曾搜去名册，有京绥路的七人，即牛子贞、赵景和、周振声、李泽、李连升、张树珊及魏等七人。现已具保结脱，然同人会颇受影响，大有不能支持之现象。(三)阴历六月十二日早三时，张家口水灾暴发，房屋冲塌三分之二，死人二千许，诚空前之大灾也。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月十二日</div><div class="entry-text">阴，下午雨。商团私运军火案已发生。大雨骤作，我亦正值警戒之际，水深数寸，行动时皮鞋为水浸入，枪亦湿。……我在夜间警戒时，那种暴烈的风雨，要说是辛苦的很，但我认为国民党得这大批军火，诚是前途的幸事，高兴的很，故毫不觉苦！又，夜晚用的口令是："得威必胜"四字，也是表示国民党得这批军火而欢出意外的意思。</div><div class="entry-note">系指1924年8月广东革命政府扣留反动商团军陈廉伯私运军火之事。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月十四日</div><div class="entry-text">晴。商团非法的这种私购军火的行动，可说是无法无天，应有相当的手段惩办之。然其骨子里的原因，不能不说是他们对孙总理的民生主义不满，而武装联合起来为政治上之行动。主持阶级调和、代表各阶级利益的孙中山，反为资本家所反对。何若明明白白的表明态度，代表无产者，与此麻木不仁的资本家决战，以完成一劳永逸的彻底革命！</div></div>
+
+</div>
+
+<!-- ===== PART 5: 1924.8.16—9.4 (黄埔军校下) ===== -->
+<div class="diary-panel" id="panel4">
+<h2>黄埔军校（下）</h2>
+<div class="diary-meta">1924年8月16日 — 9月4日 · 广州黄埔</div>
+
+<div class="diary-entry"><div class="entry-date">八月十七日</div><div class="entry-text">晴。第一、二队放假，第三、四队警卫。曹区队长在晨饭后对我说："你的假，队长准你了，你自己可以去省。"……到船上忽遇金佛庄，乃共到省，并在船上谈了很久的话。及十一时半，乃到省城。下船后去高师，先晤张溥泉。以后他和我到饭厅晤树德，并于舫舟、王法勤、丁鼎臣、张维村、韩邻符诸位，共吃饭后，乃到树德寓谈。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月十七日（续）</div><div class="entry-text">我先见张溥泉（右派首领）时，我问他开会的重要议案，他说：第一重要的就是"对俄应持之方针"；第二就是对"党内的暗潮"（他所指的暗潮，就是共产党与国民党的左派的暗潮）。</div><div class="entry-text">于永滋兄问我说："我在上海听说你在校内很消极，甚事都不高兴作，真否？"以后又问我学校的情形，对我说："你无论若何不必抱悲观，只在你学到军事学，如毕业后，你不乐欲干下去，我在北方给你设法。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月十九日</div><div class="entry-text">晴。上午校长说话，并讲"巷战"。</div><div class="entry-text">因省城商团的私运军火案尚未解决，商团时有罢市之谣。……我们去，也是为的备战。全副武装，充分子弹，而实习"巷战"者也。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月二十二日</div><div class="entry-text">阴。同志宣侠父今日开除。其原因为党中之组织上他为小组组长，但学校的校长令组织对学校也负每星期报告之责。他以为校长是党、校不分，乱用威权，集第二区分部的组长开了个会，议决均不须报告，并在党部、政治部提出质问与弹劾。校长知此大怒，遂告各组长，如不速行报告者，即从严处罚。我也劝他，何必生这样的气，我们只有我们的目的……他以为虽牺牲自己的学业，或者警起几位同志，竟不报告，遂于今日校长及党代表开除之。——若说他这种敌抗的精神，我是佩服；然一点代价没有，无乃有点不值得。然学校的这种行动，亦堪恨哉！</div><div class="entry-annotation">⚑ 批注：宣侠父是黄埔军校唯一因政治原因被开除的一期生，核心争议是"党权高于校权"还是"校权高于党权"。张隐韬"佩服其敌抗精神"但又认为"不值得"，体现了他"为主义预备而来"的实用主义立场——任何偏离学军事目标的斗争都是"不值得"的。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月二十三日</div><div class="entry-text">阴，下午小雨。本校因在戒严期内，未放假晋省。午前，孙总理及许崇智等来校，下午返省。闻为商潮及所扣之军械有关，但不知其内容。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月二十五日</div><div class="entry-text">近日防资本家而行无产革命的我见：关于本月二十五日的广州罢市风潮，他们的起源，是由于谣传国民党赤化，将行共产制的原因。这件事引起我的十分注意，因为南方的人民是较北方的人民有点知识，所以他们的团体的结合也比北方"快"而且"早"。固然无产阶级的团体是成立已不算少，而同时资本家的结合也是很迅速，无产者与资产者团结势力之对垒，正是适为正比例。故我认为，是应期特别注意的一件事。</div></div>
+
+<div class="diary-entry"><div class="entry-date">八月二十九日</div><div class="entry-text">晴。自昨夜午后七时直至今日午后七时，为本队——第二队警戒时间。……我们将枪架上，将已湿的身上携带物一一取下，坐了约一点多钟，才渐渐的休息转来。……焉知，湿疹痒的很烈，又加上无情的蚊虫在头上乱咬乱叫……静观天象，见黑暗混沌的宇宙中，充满凄惨的景象。满天布列着耀耀的星辰，时而放其光明，以排此黑暗的势力。奈势有不支，只好悲悲惨望着地上的群生，表示他的光洁。……若非我要拯救这些群生，抱定的救民主义，简直军人的生活，我便毅然决然的不干。只为我决定要以彻底的革命改造社会，虽然受了这种深刻的印象，更足以振起我的坚决毅力！</div><div class="entry-annotation">⚑ 批注：这是全篇日记中最著名的段落，也是张隐韬"彻底革命"思想的宣言。注意其结构：先写黑暗（"黑暗混沌的宇宙""凄惨的景象"），再写挣扎（"湿疹""蚊虫""悲心"），最后写决断（"决定以彻底的革命改造社会"）。这不是空洞的口号，而是在肉体和精神的双重痛苦中做出的深思熟虑的结论。</div></div>
+
+<div class="diary-entry"><div class="entry-date">九月一日</div><div class="entry-text">晴。昨来校商议扣械事件。解决条件：（1）陈伯廉来电拥护政府，即取消其通缉令。（滑稽的儿戏的胡闹，岂有此理！）(2)商团给政府五十万元的军政费。(3)政府将军械及时交还商团。……孙总理迫于不得已，所以昨来校商议交还的手续。闻说蒋介石是很不赞成的。这一件事变发生，我有几个感想：甲、孙中山的妥协性太甚。乙、老孙的作事魄力还缺乏。丙、既将枪械交还商团，以后的祸乱潜机更形利害，算是将资本家势力完全造成。丁、未罢市前将军火交还，国民党面子还算存在，等到罢市的威胁而交还，并许以五十万的款子，简直面子扫地，太无价值。——如长此以往，国民党这样的作事，我恐惧国民党没有希望！</div><div class="entry-annotation">⚑ 批注：张隐韬的"四条感想"是对孙中山妥协路线最尖锐的党内批评之一。直称"老孙"，用语之大胆在同期中共文献中极为罕见。"丙"条最具预见性——10月的"双十惨案"证明其判断完全正确。这段记录的特殊价值在于：它是一个基层党员在面对"统一战线中的妥协"时，从阶级立场出发做出的独立判断，与上级决策形成了鲜明的张力。</div></div>
+
+<div class="diary-entry"><div class="entry-date">九月二日</div><div class="entry-text">晴。接我母亲来信：说直省的水灾淹了七十余县。我乡中年成还好，水灾虽然，也未被波及。但京城的粮米缺乏，非常恐惧。</div></div>
+
+<div class="diary-entry"><div class="entry-date">九月三日</div><div class="entry-text">本校之内的情形及趋势，我很觉悲观，我认为不是民党前途的好现象。……校的组织及地位的关系，并以身分、架子、思想新旧的关系，很显明的分为三个阶级。第一阶级是校长及各部主任、教官等；第二阶级是干部的队长、区队长等；第三阶级是学生。……假设成立新的适合潮流的学校，当然所有的学生，尽是焕然一新的青年。同时，将官长及其他的管理人物，更须一致刷新，才可以上下一致，和和蔼蔼、协力完成革命，如苏俄赤军之组织然。咳，此诚可悲之趋势也！</div><div class="entry-annotation">⚑ 批注：张隐韬用"三个阶级"分析军校内部结构，并以"苏俄赤军之组织"作为对照标准——这表明他的参照系始终是俄国革命而非国民党传统。"一致刷新"的主张与7月3日"大加淘汰"一脉相承，体现了他对革命组织纯洁性的执着追求。</div></div>
+
+<div class="diary-entry"><div class="entry-date">九月四日（日记最末一日）</div><div class="entry-text">晴，惟午后二时小雨。昨夜，轮到我们的警戒勤务，直至今晚返校。我的两腿夹中，起了很多的长凸形的肉疮，上面烂的很痛，到出汗的时候更是难受，大概与阳囊湿疹是一样的病。咳，苦哉！</div><div class="entry-text">（广州的商潮虽已复业，但为陈廉伯勾结了英国的领事团。他们声言："如政府对商团有暴烈行动，彼亦对政府有相当对待之手段云。"）</div></div>
+
+<div class="diary-entry"><div class="entry-date" style="text-align:center;color:var(--cream);">—— 日记终 ——</div><div class="entry-text" style="text-align:center;font-style:italic;color:var(--text-light);letter-spacing:2px;margin-top:12px;">后记：这本日记，记录于广东军校，专记我的生活情形及对学校的感想等等。这本记载的生活，可说安全的，境遇毫无变动。</div><div class="entry-text" style="text-align:center;margin-top:8px;">仁超题（一九二四，九月）</div></div>
+
+</div>
+
+</div><!-- end diary-container -->
+
+<footer>
+  <div class="footer-text">
+    资料来源：河北省南皮县档案馆 · 《张隐韬烈士日记》连载一至五 · 编者：王金凤 周秀珍 王炳仲<br>
+    本网站仅作学术纪念用途
+  </div>
+  <div class="dedication">—— 革命先烈永垂不朽 ——</div>
+</footer>
+
+<script>
+function showPanel(n){
+  var panels=document.querySelectorAll('.diary-panel');
+  var btns=document.querySelectorAll('.diary-tabs button');
+  panels.forEach(function(p){p.classList.remove('active')});
+  btns.forEach(function(b){b.classList.remove('active')});
+  document.getElementById('panel'+n).classList.add('active');
+  btns[n].classList.add('active');
+  window.scrollTo({top:document.querySelector('.diary-container').offsetTop-80,behavior:'smooth'});
+}
+if(window.location.hash){
+  var h=window.location.hash.replace('#','');
+  var map={'part1':0,'part2':1,'part3':2,'part4':3,'part5':4};
+  if(map[h]!==undefined) showPanel(map[h]);
+}
+</script>
+</body>
+</html>

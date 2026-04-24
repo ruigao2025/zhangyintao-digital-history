@@ -1,0 +1,369 @@
+{
+  "locations": [
+    {
+      "id": "tangjiawu",
+      "name": "唐家务村",
+      "lat": 38.05,
+      "lng": 116.85,
+      "chapter": 1,
+      "subsection": "1.1",
+      "description": "张隐韬出生地，河北省南皮县",
+      "diary_ref": null
+    },
+    {
+      "id": "haozhuang",
+      "name": "郝庄",
+      "lat": 38.05,
+      "lng": 116.85,
+      "chapter": 1,
+      "subsection": "1.1",
+      "description": "外祖父家，张隐韬寄养地",
+      "diary_ref": null
+    },
+    {
+      "id": "macun",
+      "name": "马村",
+      "lat": 38.07,
+      "lng": 116.83,
+      "chapter": 1,
+      "subsection": "1.1",
+      "description": "高小所在地",
+      "diary_ref": null
+    },
+    {
+      "id": "tianjin",
+      "name": "天津",
+      "lat": 39.12,
+      "lng": 117.20,
+      "chapter": 1,
+      "subsection": "1.2",
+      "description": "见习警察、五四运动、五五书报代卖社",
+      "diary_ref": null
+    },
+    {
+      "id": "beijing",
+      "name": "北京",
+      "lat": 39.90,
+      "lng": 116.40,
+      "chapter": 1,
+      "subsection": "1.3",
+      "description": "北长街喇嘛寺、铁委工作",
+      "diary_ref": "1923-08-01"
+    },
+    {
+      "id": "zhangjiakou",
+      "name": "张家口",
+      "lat": 40.81,
+      "lng": 114.88,
+      "chapter": 1,
+      "subsection": "1.3",
+      "description": "铁委工作、京绥路工运",
+      "diary_ref": "1923-08-01"
+    },
+    {
+      "id": "kangzhuang",
+      "name": "康庄",
+      "lat": 40.36,
+      "lng": 115.79,
+      "chapter": 2,
+      "subsection": "2.2",
+      "description": "京绥路站，谈工事",
+      "diary_ref": "1924-01-05"
+    },
+    {
+      "id": "yanggao",
+      "name": "阳高",
+      "lat": 40.03,
+      "lng": 113.75,
+      "chapter": 2,
+      "subsection": "2.2",
+      "description": "魏华池处",
+      "diary_ref": "1924-02-21"
+    },
+    {
+      "id": "wangguanrentun",
+      "name": "王官人屯",
+      "lat": 40.12,
+      "lng": 113.90,
+      "chapter": 2,
+      "subsection": "2.2",
+      "description": "组织共产党小组（定额三人）",
+      "diary_ref": "1924-02-23"
+    },
+    {
+      "id": "datong",
+      "name": "大同",
+      "lat": 40.08,
+      "lng": 113.30,
+      "chapter": 2,
+      "subsection": "2.2",
+      "description": "第五支会",
+      "diary_ref": null
+    },
+    {
+      "id": "guihua",
+      "name": "归化（呼和浩特）",
+      "lat": 40.84,
+      "lng": 111.74,
+      "chapter": 2,
+      "subsection": "2.2",
+      "description": "第七支会",
+      "diary_ref": null
+    },
+    {
+      "id": "cangzhou",
+      "name": "沧州",
+      "lat": 38.30,
+      "lng": 116.84,
+      "chapter": 2,
+      "subsection": "2.1",
+      "description": "中转站",
+      "diary_ref": "1923-10-08"
+    },
+    {
+      "id": "nanpi",
+      "name": "南皮",
+      "lat": 38.04,
+      "lng": 116.84,
+      "chapter": 2,
+      "subsection": "2.1",
+      "description": "回乡",
+      "diary_ref": "1923-09-20"
+    },
+    {
+      "id": "jinan",
+      "name": "济南",
+      "lat": 36.65,
+      "lng": 116.99,
+      "chapter": 2,
+      "subsection": "2.3",
+      "description": "南下路过",
+      "diary_ref": "1924-03-12"
+    },
+    {
+      "id": "xuzhou",
+      "name": "徐州",
+      "lat": 34.26,
+      "lng": 117.19,
+      "chapter": 2,
+      "subsection": "2.3",
+      "description": "南下路过",
+      "diary_ref": "1924-03-12"
+    },
+    {
+      "id": "pukou",
+      "name": "浦口",
+      "lat": 32.10,
+      "lng": 118.73,
+      "chapter": 2,
+      "subsection": "2.3",
+      "description": "渡江",
+      "diary_ref": "1924-03-13"
+    },
+    {
+      "id": "nanjing",
+      "name": "南京",
+      "lat": 32.06,
+      "lng": 118.79,
+      "chapter": 2,
+      "subsection": "2.3",
+      "description": "南下路过",
+      "diary_ref": "1924-03-13"
+    },
+    {
+      "id": "shanghai",
+      "name": "上海",
+      "lat": 31.23,
+      "lng": 121.47,
+      "chapter": 2,
+      "subsection": "2.3",
+      "description": "等考黄埔军校",
+      "diary_ref": "1924-03-14"
+    },
+    {
+      "id": "guangzhou",
+      "name": "广州",
+      "lat": 23.13,
+      "lng": 113.27,
+      "chapter": 3,
+      "subsection": "3.2",
+      "description": "黄埔军校所在地",
+      "diary_ref": "1924-06-25"
+    },
+    {
+      "id": "huangpu",
+      "name": "黄埔/长洲岛",
+      "lat": 23.09,
+      "lng": 113.44,
+      "chapter": 3,
+      "subsection": "3.2",
+      "description": "黄埔军校本部",
+      "diary_ref": "1924-06-25"
+    },
+    {
+      "id": "shengcheng",
+      "name": "广州市内",
+      "lat": 23.13,
+      "lng": 113.25,
+      "chapter": 3,
+      "subsection": "3.3",
+      "description": "商团事变期间活动",
+      "diary_ref": "1924-08-12"
+    },
+    {
+      "id": "xiguan",
+      "name": "西关",
+      "lat": 23.12,
+      "lng": 113.24,
+      "chapter": 3,
+      "subsection": "3.3",
+      "description": "广州资本家聚集地",
+      "diary_ref": "1924-08-14"
+    },
+    {
+      "id": "foshan",
+      "name": "佛山",
+      "lat": 23.02,
+      "lng": 113.12,
+      "chapter": 3,
+      "subsection": "3.3",
+      "description": "罢市、工团军",
+      "diary_ref": "1924-08-24"
+    },
+    {
+      "id": "kaifeng",
+      "name": "开封",
+      "lat": 34.80,
+      "lng": 114.35,
+      "chapter": 4,
+      "subsection": "4.1",
+      "description": "史可轩旅驻地（国民二军）",
+      "diary_ref": null
+    },
+    {
+      "id": "xinxiang",
+      "name": "新乡",
+      "lat": 35.30,
+      "lng": 113.93,
+      "chapter": 4,
+      "subsection": "4.1",
+      "description": "史可轩旅活动区域",
+      "diary_ref": null
+    },
+    {
+      "id": "bozhen",
+      "name": "泊镇",
+      "lat": 38.01,
+      "lng": 116.48,
+      "chapter": 4,
+      "subsection": "4.2",
+      "description": "农民自卫军成立地",
+      "diary_ref": null
+    },
+    {
+      "id": "yanshan",
+      "name": "盐山",
+      "lat": 38.02,
+      "lng": 117.23,
+      "chapter": 4,
+      "subsection": "4.2",
+      "description": "农民自卫军占领县城",
+      "diary_ref": null
+    },
+    {
+      "id": "qingyun",
+      "name": "庆云",
+      "lat": 37.78,
+      "lng": 117.39,
+      "chapter": 4,
+      "subsection": "4.2",
+      "description": "农民自卫军占领县城",
+      "diary_ref": null
+    },
+    {
+      "id": "jiuxianzhen",
+      "name": "旧县镇",
+      "lat": 37.90,
+      "lng": 117.30,
+      "chapter": 4,
+      "subsection": "4.3",
+      "description": "张隐韬牺牲地",
+      "diary_ref": null
+    },
+    {
+      "id": "beixuzhuang",
+      "name": "北徐庄",
+      "lat": 38.03,
+      "lng": 116.82,
+      "chapter": 4,
+      "subsection": "4.3",
+      "description": "张隐韬被俘地",
+      "diary_ref": null
+    }
+  ],
+  "routes": [
+    {
+      "id": "route-1-1",
+      "chapter": 1,
+      "subsection": "1.1",
+      "title": "16岁的第一次出走",
+      "points": ["tangjiawu", "tianjin"],
+      "color": "#b22222",
+      "description": "唐家务村 → 天津，1918年秋"
+    },
+    {
+      "id": "route-1-3",
+      "chapter": 1,
+      "subsection": "1.3",
+      "title": "工运奔走：密集的折返线",
+      "points": ["beijing", "zhangjiakou", "beijing", "datong", "beijing"],
+      "color": "#b22222",
+      "description": "北京 ↔ 张家口 ↔ 大同，1922—1923"
+    },
+    {
+      "id": "route-2-1",
+      "chapter": 2,
+      "subsection": "2.1",
+      "title": "回乡",
+      "points": ["zhangjiakou", "beijing", "cangzhou", "nanpi"],
+      "color": "#c9a84c",
+      "description": "张家口 → 北京 → 沧州 → 南皮，1923年9月"
+    },
+    {
+      "id": "route-2-2",
+      "chapter": 2,
+      "subsection": "2.2",
+      "title": "北上奔走：环形路线",
+      "points": ["beijing", "kangzhuang", "zhangjiakou", "yanggao", "wangguanrentun", "datong", "zhangjiakou", "beijing"],
+      "color": "#c9a84c",
+      "description": "北京 → 康庄 → 张家口 → 阳高 → 王官人屯 → 大同 → 张家口 → 北京，1924年1—2月"
+    },
+    {
+      "id": "route-2-3",
+      "chapter": 2,
+      "subsection": "2.3",
+      "title": "南下赴考",
+      "points": ["beijing", "tianjin", "jinan", "xuzhou", "pukou", "nanjing", "shanghai"],
+      "color": "#c9a84c",
+      "description": "北京 → 天津 → 济南 → 徐州 → 浦口 → 南京 → 上海，1924年3月"
+    },
+    {
+      "id": "route-4-1",
+      "chapter": 4,
+      "subsection": "4.1",
+      "title": "从黄埔到河南",
+      "points": ["guangzhou", "kaifeng", "xinxiang"],
+      "color": "#8b0000",
+      "description": "广州 → 开封 → 新乡，1925年3—9月"
+    },
+    {
+      "id": "route-4-2",
+      "chapter": 4,
+      "subsection": "4.2",
+      "title": "北上组建农民自卫军",
+      "points": ["xinxiang", "bozhen", "nanpi", "yanshan", "qingyun"],
+      "color": "#8b0000",
+      "description": "新乡 → 泊镇 → 南皮/盐山/庆云，1925年9—11月"
+    }
+  ]
+}

@@ -3,335 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>张隐韬烈士纪念网站</title>
-<style>
-:root{--red:#b22222;--dark-red:#8b0000;--gold:#c9a84c;--cream:#f5f0e8;--dark:#1a1a1a;--darker:#111;--text:#d4cfc4;--text-light:#a09a8c;--border:#333}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Serif SC','Source Han Serif CN','Songti SC','SimSun',serif;background:var(--dark);color:var(--text);line-height:1.8}
-a{color:var(--gold);text-decoration:none;transition:color .3s}
-a:hover{color:var(--red)}
-html{scroll-behavior:smooth}
-
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-nav .inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px}
-nav .logo{font-size:18px;font-weight:700;color:var(--gold);letter-spacing:4px}
-nav .links{display:flex;gap:6px;flex-wrap:wrap}
-nav .links a{font-size:13px;color:var(--text-light);letter-spacing:1px;padding:4px 8px;border-radius:3px;transition:all .3s}
-nav .links a:hover,nav .links a.active{color:var(--gold);background:rgba(178,34,34,.15)}
-
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(180deg,#0a0a0a 0%,#1a0a0a 50%,#0a0a0a 100%);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(178,34,34,.08) 0%,transparent 70%)}
-.hero-content{position:relative;z-index:1;padding:24px;max-width:800px}
-.hero h1{font-size:52px;font-weight:700;color:var(--cream);letter-spacing:12px;margin-bottom:16px;text-shadow:0 0 40px rgba(178,34,34,.3)}
-.hero .subtitle{font-size:18px;color:var(--gold);letter-spacing:6px;margin-bottom:32px}
-.hero .years{font-size:22px;color:var(--red);font-weight:700;letter-spacing:8px;margin-bottom:40px}
-.hero .quote{font-size:15px;color:var(--text-light);font-style:italic;line-height:2;max-width:600px;margin:0 auto 40px;border-left:2px solid var(--red);padding-left:20px;text-align:left}
-.hero .scroll-hint{display:inline-block;animation:bounce 2s infinite;color:var(--text-light);font-size:12px;letter-spacing:4px}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
-
-.section{max-width:1100px;margin:0 auto;padding:80px 24px 60px}
-.section-title{font-size:28px;color:var(--cream);letter-spacing:6px;text-align:center;margin-bottom:12px}
-.section-title::before{content:'';display:inline-block;width:40px;height:2px;background:var(--red);vertical-align:middle;margin-right:16px}
-.section-title::after{content:'';display:inline-block;width:40px;height:2px;background:var(--red);vertical-align:middle;margin-left:16px}
-.section-sub{text-align:center;color:var(--text-light);font-size:13px;margin-bottom:48px;letter-spacing:2px}
-
-/* THESIS */
-.thesis{text-align:center;max-width:800px;margin:-40px auto 60px;padding:32px 40px;background:linear-gradient(135deg,rgba(178,34,34,.08),rgba(201,168,76,.05));border:1px solid rgba(178,34,34,.2);border-radius:12px}
-.thesis h3{font-size:13px;color:var(--red);letter-spacing:4px;margin-bottom:12px}
-.thesis p{font-size:16px;color:var(--cream);line-height:2.2;text-indent:2em}
-
-/* STATS */
-.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:900px;margin:0 auto 80px}
-.stat-item{text-align:center;padding:20px 12px;background:#1e1e1e;border:1px solid var(--border);border-radius:8px}
-.stat-item .num{font-size:32px;font-weight:700;color:var(--gold);letter-spacing:2px}
-.stat-item .unit{font-size:12px;color:var(--text-light);margin-top:4px;letter-spacing:1px}
-
-/* READING PATHS */
-.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto 80px}
-.path-card{background:#1e1e1e;border:1px solid var(--border);border-radius:12px;padding:28px 24px;text-align:center;transition:all .3s;cursor:pointer}
-.path-card:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 8px 30px rgba(178,34,34,.15)}
-.path-card .icon{font-size:36px;margin-bottom:12px}
-.path-card h3{font-size:16px;color:var(--cream);letter-spacing:2px;margin-bottom:8px}
-.path-card p{font-size:13px;color:var(--text-light);line-height:1.8}
-.path-card .arrow{display:inline-block;margin-top:12px;color:var(--red);font-size:14px;letter-spacing:2px}
-
-.bio-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:60px}
-.bio-text{font-size:15px;line-height:2.2;color:var(--text)}
-.bio-text p{margin-bottom:16px;text-indent:2em}
-.bio-card{background:#222;border:1px solid var(--border);border-radius:8px;padding:32px}
-.bio-card .label{font-size:12px;color:var(--red);letter-spacing:4px;margin-bottom:12px}
-.bio-card .value{font-size:15px;color:var(--cream);line-height:2}
-.bio-card .value span{color:var(--text-light);font-size:13px}
-
-.timeline{position:relative;padding-left:32px}
-.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--red),var(--gold),var(--red))}
-.timeline-item{position:relative;margin-bottom:28px;padding-left:24px}
-.timeline-item::before{content:'';position:absolute;left:-32px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--dark);border:2px solid var(--red);z-index:1}
-.timeline-item.highlight::before{background:var(--red);box-shadow:0 0 12px rgba(178,34,34,.5)}
-.timeline-item .year{font-size:14px;color:var(--gold);font-weight:700;letter-spacing:2px}
-.timeline-item .event{font-size:14px;color:var(--text);margin-top:4px;line-height:1.8}
-.timeline-item .diary-excerpt{margin-top:6px;padding:8px 12px;background:rgba(201,168,76,.06);border-left:2px solid var(--gold);font-size:12px;color:var(--text-light);font-style:italic;line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease}
-.timeline-item .diary-excerpt.show{max-height:200px}
-.timeline-item .toggle-btn{font-size:11px;color:var(--gold);cursor:pointer;margin-top:4px;border:none;background:none;font-family:inherit;letter-spacing:1px;padding:0}
-.timeline-item .toggle-btn:hover{color:var(--red)}
-
-.diary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
-.diary-card{background:#1e1e1e;border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:pointer}
-.diary-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(178,34,34,.15);border-color:var(--red)}
-.diary-card .card-header{background:linear-gradient(135deg,var(--dark-red),var(--red));padding:20px}
-.diary-card .card-header h3{font-size:16px;color:#fff;letter-spacing:2px}
-.diary-card .card-header .date{font-size:12px;color:rgba(255,255,255,.7);margin-top:6px}
-.diary-card .card-body{padding:20px;font-size:13px;color:var(--text-light);line-height:1.9;max-height:180px;overflow:hidden;position:relative}
-.diary-card .card-body::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,#1e1e1e)}
-
-/* QUOTES BY THEME */
-.theme-group{margin-bottom:40px}
-.theme-group h3{font-size:18px;color:var(--gold);letter-spacing:3px;margin-bottom:6px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-.theme-group .theme-intro{font-size:13px;color:var(--text-light);line-height:1.8;margin-bottom:16px;text-indent:2em}
-.quotes-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.quote-item{background:linear-gradient(135deg,#1e1e1e,#1a1a1a);border:1px solid var(--border);border-radius:8px;padding:20px;position:relative}
-.quote-item::before{content:'\201C';font-size:36px;color:var(--red);opacity:.25;position:absolute;top:4px;left:12px;font-family:Georgia,serif}
-.quote-item p{font-size:13px;line-height:2;color:var(--text);margin-top:14px}
-.quote-item .source{font-size:11px;color:var(--text-light);margin-top:8px;text-align:right}
-
-.research-block{background:#1a1a1a;border:1px solid var(--border);border-radius:8px;padding:28px 32px;margin-bottom:24px}
-.research-block h3{font-size:18px;color:var(--gold);margin-bottom:8px;letter-spacing:2px}
-.research-block .meta{font-size:12px;color:var(--text-light);margin-bottom:16px}
-.research-block p{font-size:14px;line-height:2;text-indent:2em;margin-bottom:12px}
-
-footer{background:var(--darker);border-top:1px solid var(--border);text-align:center;padding:40px 24px}
-footer .footer-text{font-size:12px;color:var(--text-light);letter-spacing:2px;line-height:2}
-footer .dedication{color:var(--red);font-size:14px;margin-top:12px;letter-spacing:4px}
-
-@media(max-width:768px){
-  .hero h1{font-size:32px;letter-spacing:6px}
-  .bio-grid,.quotes-grid,.paths{grid-template-columns:1fr}
-  .stats-row{grid-template-columns:repeat(3,1fr)}
-  .diary-grid{grid-template-columns:1fr}
-  nav .links{gap:4px}
-  nav .links a{font-size:11px;padding:3px 5px}
-  .section{padding:60px 16px 40px}
-}
-@media(max-width:480px){
-  .stats-row{grid-template-columns:repeat(2,1fr)}
-  nav .links a{font-size:10px}
-  .hero h1{font-size:26px}
-}
-</style>
+<title>张隐韬：一个人如何成为一个政治行动者</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <nav>
   <div class="inner">
-    <div class="logo">张隐韬</div>
+    <a href="index.html" class="logo">张隐韬</a>
     <div class="links">
-      <a href="#hero">首页</a>
-      <a href="#bio">生平</a>
-      <a href="analysis.html">思想分析</a>
-      <a href="network.html">人物网络</a>
-      <a href="events.html">事件对照</a>
-      <a href="diary.html">日记</a>
-      <a href="research.html">史料</a>
+      <a href="chapter1.html">被动员</a>
+      <a href="chapter2.html">升级</a>
+      <a href="chapter3.html">不彻底</a>
+      <a href="chapter4.html">为什么死</a>
+      <span class="sep">|</span>
+      <a href="appendix-diary.html">日记</a>
+      <a href="appendix-sources.html">史料</a>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="hero">
+<section class="hero">
   <div class="hero-content">
-    <div class="subtitle">革命先驱 · 黄埔一期 · 共产党员</div>
+    <div class="subtitle">数字历史 · 一个共产党人的成长史</div>
     <h1>张隐韬</h1>
     <div class="years">1902 — 1926</div>
-    <div class="quote">
-      "要破釜沉舟地干点工作，别把青年光阴轻易放过去呵！"<br>
-      "认定人生的价值，往前走去，没有牺牲，哪能得到幸福？"<br>
-      "我决定要以彻底的革命改造社会。"
-    </div>
-    <div class="scroll-hint">↓ 向下滚动探索</div>
+    <p style="font-size:15px;color:var(--text-light);line-height:2.2;max-width:600px;margin:0 auto 40px;text-align:left;">
+      他24岁死了。死前他组建了一支1200人的农民武装。但在这之前，他是一个没有父亲、只有高小文化、在天津当见习警察的贫雇农儿子。他是怎么走到那一步的？
+    </p>
+    <div style="font-size:12px;color:var(--text-light);letter-spacing:2px;">↓ 选择一章开始阅读</div>
   </div>
 </section>
 
-<!-- CORE THESIS -->
-<div class="thesis" style="margin-top:-20px;">
-  <h3>核心论点</h3>
-  <p>张隐韬是从工人运动走向独立武装斗争的中国共产党早期党员。他的日记完整记录了这一思想转变的全过程：从工运失败后的愤懑，到黄埔军校中对军事力量的自觉追求，再到对国民党妥协路线的根本批判，最终组建了我党独立领导的"津南农民自卫军"——这是他"彻底革命"思想的实践终点，也是他年仅二十四岁英勇就义的起点。</p>
-</div>
-
-<!-- STATS -->
-<div class="stats-row">
-  <div class="stat-item"><div class="num">30+</div><div class="unit">交往人物</div></div>
-  <div class="stat-item"><div class="num">5万</div><div class="unit">日记字数</div></div>
-  <div class="stat-item"><div class="num">12</div><div class="unit">跨越城市</div></div>
-  <div class="stat-item"><div class="num">20+</div><div class="unit">记录事件</div></div>
-  <div class="stat-item"><div class="num">24</div><div class="unit">享年</div></div>
-</div>
-
-<!-- READING PATHS -->
-<div style="max-width:1100px;margin:0 auto;padding:0 24px 80px;">
-  <div class="section-title" style="margin-bottom:40px;">阅读路径</div>
-  <div class="paths">
-    <div class="path-card" onclick="location.href='analysis.html'">
-      <div class="icon">◈</div>
-      <h3>理解思想演变</h3>
-      <p>从工运到武装——四阶段思想脉络 + 三篇专题深度分析</p>
-      <div class="arrow">深入分析 →</div>
-    </div>
-    <div class="path-card" onclick="location.href='#bio'">
-      <div class="icon">◉</div>
-      <h3>了解生平事迹</h3>
-      <p>传记、年表与空间轨迹，全面还原24年短暂而壮烈的一生</p>
-      <div class="arrow">开始阅读 →</div>
-    </div>
-    <div class="path-card" onclick="location.href='diary.html'">
-      <div class="icon">◇</div>
-      <h3>研读原始史料</h3>
-      <p>日记全文 + 人物网络 + 事件对照，从第一手材料出发</p>
-      <div class="arrow">查看史料 →</div>
-    </div>
+<div class="section">
+  <div style="text-align:center;margin-bottom:40px;">
+    <h2 style="font-size:24px;color:var(--cream);letter-spacing:4px;margin-bottom:8px;">四章叙事</h2>
+    <p style="font-size:13px;color:var(--text-light);letter-spacing:2px;">从底层出身到独立武装——一个人如何成为一个政治行动者</p>
   </div>
-</div>
 
-<!-- BIOGRAPHY -->
-<section id="bio" class="section">
-  <div class="section-title">生平传记</div>
-  <div class="section-sub">BIOGRAPHY</div>
-  <div class="bio-grid">
-    <div class="bio-text">
-      <p>张隐韬，原名张宝驹，又名张仁超，1902年生于河北省南皮县唐家务村一个贫雇农家庭。父亲张安文在他出世之前就给地主扛活累死，寡母无法维持生活，被迫去天津佣工，张隐韬被托付给郝庄外祖父家抚养。善良的舅父、舅母将他视作亲生儿子，精心照管。</p>
-      <p>张隐韬小时在郝庄小学念书，十五岁考入马村高小，聪敏好学，每次考试名列前茅。1918年秋到天津见习警察，为实现救国安邦的远大理想，改名隐韬。1919年参加五四爱国运动，接受革命思想，经常与于方舟、于树德等深入工厂、学校，秘密进行革命活动。</p>
-      <p>1921年加入北京大学马克思学说研究会，成为在津通讯会员。1922年春由罗章龙和安幸生介绍加入中国共产党，同时成为北方劳动组合书记部成员。此后奔波于张家口、长辛店及京津唐地区发展党的力量，组织领导了唐山开滦五矿大罢工、正太铁路工人罢工和京汉铁路"二七"大罢工。</p>
-      <p>1924年3月经中共北京区委选派赴黄埔军校，毛泽东亲自与其面谈应试问题。5月经统考入学黄埔军校第一期，与左权、徐向前、陈赓等同为第一期同学。在校期间对蒋介石的专制深为不满，坚持革命立场。</p>
-      <p>1925年3月从黄埔军校毕业后受党派遣到河南国民二军史可轩旅作兵运工作。9月带二三十人沿平汉路北上，至泊镇时已有六七百人。11月底于泊镇宣布成立我党领导的"津南农民自卫军"，张隐韬任司令兼党代表。很快发展到1200人，占领南皮、盐山、庆云等县城。</p>
-      <p>1926年初，自卫军遭国民二军弓富魁旅截击，张隐韬不幸被俘。2月5日被害于盐山县旧县镇北门外，年仅二十四岁。张隐韬是沧州开展革命活动的第一位共产党员，他组织的农民自卫军是我党独立领导武装革命斗争实践的早期尝试之一。</p>
-    </div>
-    <div>
-      <div class="bio-card" style="margin-bottom:20px;">
-        <div class="label">基本信息</div>
-        <div class="value">
-          姓 名：<span>张隐韬（原名张宝驹，又名张仁超）</span><br>
-          生 卒：<span>1902 — 1926.2.5</span><br>
-          籍 贯：<span>河北省南皮县唐家务村</span><br>
-          出 身：<span>贫雇农家庭</span><br>
-          入 党：<span>1922年春，由罗章龙、安幸生介绍</span><br>
-          军 校：<span>黄埔军校第一期（1924.5入学）</span><br>
-          牺牲地：<span>盐山县旧县镇北门外</span>
-        </div>
+  <div class="chapter-timeline">
+    <a href="chapter1.html" class="chapter-node" style="text-decoration:none;">
+      <div class="ch-years">1902—1922</div>
+      <div class="ch-title">他凭什么被动员</div>
+      <div class="ch-question">底层出身的人怎么进入革命网络？</div>
+    </a>
+    <a href="chapter2.html" class="chapter-node" style="text-decoration:none;">
+      <div class="ch-years">1922—1924春</div>
+      <div class="ch-title">他凭什么升级</div>
+      <div class="ch-question">组织者靠什么不可替代性上升？</div>
+    </a>
+    <a href="chapter3.html" class="chapter-node" style="text-decoration:none;">
+      <div class="ch-years">1924.3—9</div>
+      <div class="ch-title">所有不彻底的路径都走不通</div>
+      <div class="ch-question">为什么"为主义预备"而非"为主义活动"？</div>
+    </a>
+    <a href="chapter4.html" class="chapter-node" style="text-decoration:none;">
+      <div class="ch-years">1925—1926</div>
+      <div class="ch-title">他为什么能组建军队又为什么死了</div>
+      <div class="ch-question">连接者的悖论——哪里都能去，哪里都没有根？</div>
+    </a>
+  </div>
+
+  <div style="max-width:700px;margin:40px auto;padding:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;">
+    <h3 style="font-size:16px;color:var(--gold);letter-spacing:3px;margin-bottom:16px;font-family:var(--sans);">关于这个项目</h3>
+    <p style="font-size:14px;line-height:2;color:var(--text-light);margin-bottom:12px;text-indent:2em;">
+      这是一个数字历史研究项目，不是烈士纪念网站。它试图还原一个人——张隐韬——如何从一个贫雇农的儿子，一步步成为一个能独立组建武装的政治行动者。每一章都有一个"核心追问"：一个可以争论的命题，而不是一个已经确定的结论。
+    </p>
+    <p style="font-size:14px;line-height:2;color:var(--text-light);margin-bottom:12px;text-indent:2em;">
+      主要史料来源是《张隐韬烈士日记》（现存第一册1923.8—1924.3和第三册1924.6—9，第二册缺失），以及2025年新发现的五则史料。日记有表演性，编者有加工，回忆有偏颇——这些局限在每一章末尾都有讨论。
+    </p>
+    <p style="font-size:14px;line-height:2;color:var(--text-light);text-indent:2em;">
+      地图、社会网络图、书信对话、关键词搜索等数字工具不是装饰，而是服务于历史追问的：地图回答"一个组织者要跑多少路"，网络图回答"为什么没有一个圈层能救他"，书信对话展示"失望→药石"的循环，关键词搜索揭示"商团期阶级话语突增"。
+    </p>
+  </div>
+
+  <div style="max-width:700px;margin:40px auto;padding:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;">
+    <h3 style="font-size:16px;color:var(--gold);letter-spacing:3px;margin-bottom:16px;font-family:var(--sans);">数字工具一览</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="padding:12px;background:#0d0d0d;border-radius:4px;">
+        <div style="font-size:14px;color:var(--red);margin-bottom:4px;font-family:var(--sans);">地图</div>
+        <div style="font-size:12px;color:var(--text-light);line-height:1.8;">唐家务村→天津→北京→张家口→大同→广州→开封→泊镇——一个组织者跑过的所有路线</div>
       </div>
-      <div class="bio-card">
-        <div class="label">关键身份</div>
-        <div class="value">
-          ◆ 中国共产党早期党员<br>
-          ◆ 北方劳动组合书记部成员<br>
-          ◆ 黄埔军校第一期学生<br>
-          ◆ 津南农民自卫军司令兼党代表<br>
-          ◆ 沧州第一位共产党员
-        </div>
+      <div style="padding:12px;background:#0d0d0d;border-radius:4px;">
+        <div style="font-size:14px;color:var(--red);margin-bottom:4px;font-family:var(--sans);">社会网络图</div>
+        <div style="font-size:12px;color:var(--text-light);line-height:1.8;">四个圈层：知识圈、工人圈、乡间圈、军事圈——他在每个圈层都是边缘</div>
+      </div>
+      <div style="padding:12px;background:#0d0d0d;border-radius:4px;">
+        <div style="font-size:14px;color:var(--red);margin-bottom:4px;font-family:var(--sans);">书信对话</div>
+        <div style="font-size:12px;color:var(--text-light);line-height:1.8;">罗章龙、贾纤青、于树德——失望与药石的循环</div>
+      </div>
+      <div style="padding:12px;background:#0d0d0d;border-radius:4px;">
+        <div style="font-size:14px;color:var(--red);margin-bottom:4px;font-family:var(--sans);">关键词搜索</div>
+        <div style="font-size:12px;color:var(--text-light);line-height:1.8;">搜索"蒋介石""妥协""革命"——看一个词在黄埔时期如何反复出现</div>
       </div>
     </div>
   </div>
-</section>
-
-<!-- TIMELINE WITH EXCERPTS -->
-<section id="timeline" class="section">
-  <div class="section-title">生平年表</div>
-  <div class="section-sub">CHRONOLOGY · 点击"日记原文"展开当日摘录</div>
-  <div class="timeline">
-    <div class="timeline-item highlight"><div class="year">1902年</div><div class="event">生于河北省南皮县唐家务村。父亲张安文在他出世前给地主扛活累死，由外祖父家抚养长大。</div></div>
-    <div class="timeline-item"><div class="year">1918年秋</div><div class="event">到天津警察局当见习警察，改名张隐韬，立志救国安邦。</div></div>
-    <div class="timeline-item highlight"><div class="year">1919年</div><div class="event">参加五四爱国运动，接受革命思想，与于方舟、于树德等秘密进行革命活动。</div></div>
-    <div class="timeline-item highlight"><div class="year">1922年春</div><div class="event">由罗章龙和安幸生介绍加入中国共产党。与何孟雄等奔波于张家口、长辛店及京津唐地区发展党的力量。</div></div>
-    <div class="timeline-item"><div class="year">1923年8月1日</div><div class="event">日记第一册由此开始。从张家口回京，写下"破釜沉舟"的自我鞭策。</div><button class="toggle-btn" onclick="toggleExcerpt(this)">▸ 日记原文</button><div class="diary-excerpt">"我从今天算起，到京已十五天了……一点的事体也未曾办……从今天起，须要破釜沉舟的干点工作，别把青年光阴轻易放过去啊！"</div></div>
-    <div class="timeline-item"><div class="year">1923年9月2日</div><div class="event">欢迎苏俄代表加拉罕抵京，记录空前欢迎盛况。</div><button class="toggle-btn" onclick="toggleExcerpt(this)">▸ 日记原文</button><div class="diary-excerpt">"此次之欢迎加氏，诚为中国与外国联盟以来所无之空前举动。于此，亦见人民之望解放，不啻枯苗之望雨矣。"</div></div>
-    <div class="timeline-item"><div class="year">1923年10月21日</div><div class="event">读完全部《社会主义史》，写下系统读书笔记和对马克思主义的思考。</div><button class="toggle-btn" onclick="toggleExcerpt(this)">▸ 日记原文</button><div class="diary-excerpt">"此书的内容很多兴味之处……关于马氏的学说，并未与以充分的同情，而俄国革命，也叙述的很不明了……这十许年的社会运动，也该编辑的了。"</div></div>
-    <div class="timeline-item"><div class="year">1923年11月1日</div><div class="event">接罗章龙来信，读后"泪流满襟"，写下"举大事，非有坚决不拔之志"。</div><button class="toggle-btn" onclick="toggleExcerpt(this)">▸ 日记原文</button><div class="diary-excerpt">"历观能负革命使命的人，未有不于失望中渐去求希望也。……举大事，非有坚决不拔之志和百折不回之精神岂能成之乎？此信，真我病之药石也。"</div></div>
-    <div class="timeline-item highlight"><div class="year">1924年3月10日</div><div class="event">何孟雄告知黄埔军校招考消息，张隐韬"大为慌张"但决意南下。</div><button class="toggle-btn" onclick="toggleExcerpt(this)">▸ 日记原文</button><div class="diary-excerpt">"每省要军官学生十五人，但仅有四人，定明晨起程，不知你的意思去不去？时间已迫……我闻此消息，亦大为慌张。遂急至王励素处取了介绍信……我一定去粤入学。"</div></div>
-    <div class="timeline-item"><div class="year">1924年3月14日</div><div class="event">抵上海，毛泽东亲自与其面谈应试问题。</div></div>
-    <div class="timeline-item highlight"><div class="year">1924年6月25日</div><div class="event">入黄埔军校后首篇日记，即记录蒋介石以"枪毙"威胁学生的专制行径。</div><button class="toggle-btn" onclick="toggleExcerpt(this)">▸ 日记原文</button><div class="diary-excerpt">"若有替下级干部说话的，官长和学生都要枪毙！……此学校之中，发生此等压迫不平之事，真是为人争自由、为人民争平等的革命党的怪闻。"</div></div>
-    <div class="timeline-item"><div class="year">1924年7月2日</div><div class="event">明确"为主义预备而来"的军校定位，拒绝参与政治活动。</div><button class="toggle-btn" onclick="toggleExcerpt(this)">▸ 日记原文</button><div class="diary-excerpt">"我来这学校并不是为主义活动而来，我是为主义预备而来，也就是要作我的那个伟大的一劳永逸的运动。"</div></div>
-    <div class="timeline-item"><div class="year">1924年8月14日</div><div class="event">商团事变中，公开主张武力镇压资产阶级叛乱。</div><button class="toggle-btn" onclick="toggleExcerpt(this)">▸ 日记原文</button><div class="diary-excerpt">"主持阶级调和、代表各阶级利益的孙中山，反为资本家所反对。何若明明白白的表明态度，代表无产者，与此麻木不仁的资本家决战！"</div></div>
-    <div class="timeline-item"><div class="year">1924年8月29日</div><div class="event">夜间警戒时写下最著名的自我宣言。</div><button class="toggle-btn" onclick="toggleExcerpt(this)">▸ 日记原文</button><div class="diary-excerpt">"若非我要拯救这些群生，抱定的救民主义，简直军人的生活，我便毅然决然的不干。只为我决定要以彻底的革命改造社会，虽然受了这种深刻的印象，更足以振起我的坚决毅力！"</div></div>
-    <div class="timeline-item highlight"><div class="year">1924年9月1日</div><div class="event">得知孙中山向商团妥协后，写下"四条感想"，断言国民党没有希望。</div><button class="toggle-btn" onclick="toggleExcerpt(this)">▸ 日记原文</button><div class="diary-excerpt">"甲、孙中山的妥协性太甚。乙、老孙的作事魄力还缺乏。丙、既将枪械交还商团，以后的祸乱潜机更形利害。丁、等到罢市的威胁而交还，简直面子扫地，太无价值。——如长此以往，国民党没有希望！"</div></div>
-    <div class="timeline-item highlight"><div class="year">1925年11月</div><div class="event">于泊镇宣布成立"津南农民自卫军"，任司令兼党代表，发展到1200人。</div></div>
-    <div class="timeline-item highlight"><div class="year">1926年2月5日</div><div class="event">被捕后在盐山县旧县镇北门外英勇就义，年仅二十四岁。</div></div>
-  </div>
-</section>
-
-<!-- THEMED QUOTES -->
-<section id="quotes" class="section">
-  <div class="section-title">思想光芒</div>
-  <div class="section-sub">REVOLUTIONARY THOUGHTS · 按主题分组</div>
-
-  <div class="theme-group">
-    <h3>爱国与忧民</h3>
-    <div class="theme-intro">张隐韬出身贫雇农家庭，对底层民众的苦难有切身体验。他在日记中反复将个人困窘与国族危亡联系起来，形成了一种"由己及国"的忧患意识——经济压迫不只是个人困境，更是"组织不合法之政府"的系统性问题。</div>
-    <div class="quotes-grid">
-      <div class="quote-item"><p>小民以血汗金钱，养得一些盗国贼。如此等政局，不加以根本改造，人民之流离困苦，是无论到于何时，必不能解决的。</p><div class="source">——1923年8月8日</div></div>
-      <div class="quote-item"><p>我们小民，若不内清政治，外敌外侮，恐怕种种危险形势，都要现于我们的眉睫了。</p><div class="source">——1923年8月13日</div></div>
-    </div>
-  </div>
-
-  <div class="theme-group">
-    <h3>革命信念</h3>
-    <div class="theme-intro">面对经济困窘、工运失败、团体内耗，张隐韬多次濒临精神崩溃，但每一次都被信念拉回。罗章龙的来信、贾纤青的倾诉、于树德的劝勉，都成为他重新振作的"药石"。这种"失望中渐去求希望"的韧性，是他最突出的精神特质。</div>
-    <div class="quotes-grid">
-      <div class="quote-item"><p>举大事，非有坚决不拔之志和百折不回之精神岂能成之乎？</p><div class="source">——1923年11月1日</div></div>
-      <div class="quote-item"><p>认定人生的价值，往前走去，没有牺牲，哪能得到幸福？……缓进不成，急进也是不能，除非我们理想中的社会实现了。</p><div class="source">——1923年11月4日（引贾纤青来信）</div></div>
-      <div class="quote-item"><p>我决定要以彻底的革命改造社会，虽然受了这种深刻的印象，更足以振起我的坚决毅力！</p><div class="source">——1924年8月29日</div></div>
-      <div class="quote-item"><p>历观能负革命使命的人，未有不于失望中渐去求希望也。</p><div class="source">——1923年11月1日（引罗章龙来信）</div></div>
-    </div>
-  </div>
-
-  <div class="theme-group">
-    <h3>对专制的批判</h3>
-    <div class="theme-intro">入黄埔军校后，张隐韬发现"革命学校"内部同样存在专制压迫。蒋介石以"枪毙"威胁学生、李之龙以"党部委员"身份压制同学、宣侠父因坚持党权独立被开除——这些事件让他看到了"以革命之名行专制之实"的实质，并预见到"既以此等手段施之于本党同志，亦可以此种手段施之于将来全国国民"。</div>
-    <div class="quotes-grid">
-      <div class="quote-item"><p>此学校之中，发生此等压迫不平之事，真是为人争自由、为人民争平等的革命党的怪闻。</p><div class="source">——1924年6月25日</div></div>
-      <div class="quote-item"><p>假设此校系我主持，欲希望本党的成功，必要清理内部，将全体学生大加淘汰，虽革去大多半，亦所不惜。</p><div class="source">——1924年7月3日</div></div>
-    </div>
-  </div>
-
-  <div class="theme-group">
-    <h3>阶级意识</h3>
-    <div class="theme-intro">张隐韬的阶级意识贯穿日记始终：游颐和园时批判"无产之苦同胞绝不能达游此地之目的"，在乡间同情农民"作牛似的活，吃猪似的食"，商团事变中断言"真心拥护政府者乃是无产者"。这种从日常体验中提炼出的阶级分析视角，是他区别于一般爱国青年的根本所在。</div>
-    <div class="quotes-grid">
-      <div class="quote-item"><p>社会上人，享社会之幸福，本是应当的事。然为资本制度所限制，不能开此眼界，亦社会上事之不平者。</p><div class="source">——1923年8月10日（游颐和园后）</div></div>
-      <div class="quote-item"><p>主持阶级调和、代表各阶级利益的孙中山，反为资本家所反对。何若明明白白的表明态度，代表无产者，与此麻木不仁的资本家决战，以完成一劳永逸的彻底革命！</p><div class="source">——1924年8月14日</div></div>
-      <div class="quote-item"><p>真心拥护政府者，乃是无产者。不知代表资产阶级利害者，作何感想？</p><div class="source">——1924年8月24日</div></div>
-      <div class="quote-item"><p>如若无产者的革命暴发于最近的将来时，必严防南方的资本家之结合。北方还倒比南方好办的多。</p><div class="source">——1924年8月25日</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- MEMORIAL -->
-<section id="memorial" class="section" style="text-align:center;padding-bottom:120px;">
-  <div class="section-title">缅怀</div>
-  <div class="section-sub">IN MEMORIAM</div>
-  <div style="max-width:600px;margin:0 auto;">
-    <div style="font-size:64px;color:var(--red);letter-spacing:16px;margin-bottom:24px;">✦</div>
-    <p style="font-size:20px;color:var(--cream);line-height:2.4;margin-bottom:24px;">
-      张隐韬烈士以二十四岁的短暂生命，<br>书写了一名共产党员的坚定信念。<br>从北方工运到黄埔军校，<br>从日记中的忧国忧民到沙场上的英勇就义，<br>他用生命践行了<br>
-      <span style="color:var(--gold);">"彻底的革命改造社会"</span>的誓言。
-    </p>
-    <p style="font-size:14px;color:var(--text-light);letter-spacing:4px;">
-      1902 — 1926 · 永远铭记
-    </p>
-  </div>
-</section>
+</div>
 
 <footer>
   <div class="footer-text">
     资料来源：河北省南皮县档案馆 · 《张隐韬烈士日记》连载一至五 · 张洪涛《关于张隐韬生平事迹的几则新材料》· 石慧《一名共产党员学生眼中的黄埔军校》<br>
-    本网站仅作学术纪念用途
+    本网站为数字历史研究项目
   </div>
-  <div class="dedication">—— 革命先烈永垂不朽 ——</div>
 </footer>
 
-<script>
-function toggleExcerpt(btn){
-  var ex=btn.nextElementSibling;
-  if(ex.classList.contains('show')){ex.classList.remove('show');btn.textContent='▸ 日记原文'}
-  else{ex.classList.add('show');btn.textContent='▾ 收起原文'}
-}
-</script>
 </body>
 </html>

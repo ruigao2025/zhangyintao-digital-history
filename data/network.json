@@ -1,0 +1,503 @@
+{
+  "nodes": [
+    {
+      "id": "zhangyintao",
+      "name": "张隐韬",
+      "group": "self",
+      "label": "张隐韬（宝驹/仁超）"
+    },
+    {
+      "id": "yufangzhou",
+      "name": "于方舟",
+      "group": "tianjin",
+      "label": "于方舟",
+      "chapters": [1],
+      "relation": "五四运动接触，天津学生运动领袖"
+    },
+    {
+      "id": "yushude",
+      "name": "于树德（永滋）",
+      "group": "tianjin",
+      "label": "于树德（永滋）",
+      "chapters": [1, 2, 3],
+      "relation": "工运搭档、黄埔会面、18元川资"
+    },
+    {
+      "id": "luozhanglong",
+      "name": "罗章龙（文虎）",
+      "group": "beijing_intellectuals",
+      "label": "罗章龙（文虎）",
+      "chapters": [1, 2],
+      "relation": "入党介绍人、北方党组织核心、上海借住"
+    },
+    {
+      "id": "anxingsheng",
+      "name": "安幸生",
+      "group": "tianjin",
+      "label": "安幸生",
+      "chapters": [1],
+      "relation": "入党介绍人"
+    },
+    {
+      "id": "wangjinmei",
+      "name": "王尽美",
+      "group": "beijing_intellectuals",
+      "label": "王尽美",
+      "chapters": [1],
+      "relation": "铁委共事"
+    },
+    {
+      "id": "hemengxiong",
+      "name": "何孟雄",
+      "group": "beijing_intellectuals",
+      "label": "何孟雄（子静）",
+      "chapters": [2],
+      "relation": "黄埔招考通知"
+    },
+    {
+      "id": "dengzhongxia",
+      "name": "邓中夏",
+      "group": "beijing_intellectuals",
+      "label": "邓中夏",
+      "chapters": [1],
+      "relation": "谈话不快"
+    },
+    {
+      "id": "zhangkundi",
+      "name": "张昆弟",
+      "group": "beijing_intellectuals",
+      "label": "张昆弟",
+      "chapters": [1],
+      "relation": "铁委负责人"
+    },
+    {
+      "id": "zhangguotao",
+      "name": "张国焘",
+      "group": "beijing_intellectuals",
+      "label": "张国焘",
+      "chapters": [1],
+      "relation": "接办铁委，态度复杂"
+    },
+    {
+      "id": "jiaxianqing",
+      "name": "贾纤青（纡青）",
+      "group": "beijing_intellectuals",
+      "label": "贾纤青（纡青）",
+      "chapters": [2],
+      "relation": "11.4来信「认定人生的价值」"
+    },
+    {
+      "id": "weihuachi",
+      "name": "魏华池",
+      "group": "workers",
+      "label": "魏华池",
+      "chapters": [2],
+      "relation": "西北运动、阳高处、频繁书信"
+    },
+    {
+      "id": "cuiqingyuan",
+      "name": "崔清源",
+      "group": "countryside",
+      "label": "崔清源",
+      "chapters": [2],
+      "relation": "办书铺方案"
+    },
+    {
+      "id": "zhaoyuzhen",
+      "name": "赵禹珍",
+      "group": "countryside",
+      "label": "赵禹珍",
+      "chapters": [2],
+      "relation": "西北运动促进会"
+    },
+    {
+      "id": "zhengye",
+      "name": "郑业",
+      "group": "workers",
+      "label": "郑业",
+      "chapters": [1, 2],
+      "relation": "「与工友甚洽」评价、替他抱不平"
+    },
+    {
+      "id": "zhouzhensheng",
+      "name": "周振声",
+      "group": "workers",
+      "label": "周振声",
+      "chapters": [2],
+      "relation": "京绥路工运"
+    },
+    {
+      "id": "dengpei",
+      "name": "邓培（唐凤鸣）",
+      "group": "workers",
+      "label": "邓培（唐凤鸣）",
+      "chapters": [2],
+      "relation": "张家口工运"
+    },
+    {
+      "id": "maozedong",
+      "name": "毛泽东",
+      "group": "beijing_intellectuals",
+      "label": "毛泽东",
+      "chapters": [2],
+      "relation": "上海面谈应试问题"
+    },
+    {
+      "id": "zhangji",
+      "name": "张继（张溥泉）",
+      "group": "nationalist",
+      "label": "张继（张溥泉）",
+      "chapters": [2],
+      "relation": "帮忙解决经济困难→后来成为右派"
+    },
+    {
+      "id": "suntieren",
+      "name": "孙铁人",
+      "group": "nationalist",
+      "label": "孙铁人",
+      "chapters": [3],
+      "relation": "黄埔招考负责人，延拖不见"
+    },
+    {
+      "id": "jiangjieshi",
+      "name": "蒋介石",
+      "group": "nationalist",
+      "label": "蒋介石（校长）",
+      "chapters": [3],
+      "relation": "专制批判"
+    },
+    {
+      "id": "wangjingwei",
+      "name": "汪精卫",
+      "group": "nationalist",
+      "label": "汪精卫",
+      "chapters": [3],
+      "relation": "讲演，评价较高"
+    },
+    {
+      "id": "lizhilong",
+      "name": "李之龙（李子龙）",
+      "group": "huangpu",
+      "label": "李之龙",
+      "chapters": [3],
+      "relation": "「狗委员」批评"
+    },
+    {
+      "id": "xuanxiafu",
+      "name": "宣侠父",
+      "group": "huangpu",
+      "label": "宣侠父",
+      "chapters": [3],
+      "relation": "被开除，「佩服但觉得不值得」"
+    },
+    {
+      "id": "jinfozhuang",
+      "name": "金佛庄",
+      "group": "huangpu",
+      "label": "金佛庄",
+      "chapters": [3],
+      "relation": "同船赴省"
+    },
+    {
+      "id": "dingdingchen",
+      "name": "丁鼎臣",
+      "group": "nationalist",
+      "label": "丁鼎臣",
+      "chapters": [3],
+      "relation": "「但升官不要发财」"
+    },
+    {
+      "id": "shikexuan",
+      "name": "史可轩",
+      "group": "military",
+      "label": "史可轩",
+      "chapters": [4],
+      "relation": "国民二军旅长，同意他北上"
+    },
+    {
+      "id": "chenxiufu",
+      "name": "陈修夫",
+      "group": "military",
+      "label": "陈修夫",
+      "chapters": [4],
+      "relation": "农民自卫军军长"
+    },
+    {
+      "id": "liugeping",
+      "name": "刘格平",
+      "group": "military",
+      "label": "刘格平",
+      "chapters": [4],
+      "relation": "回忆录作者"
+    },
+    {
+      "id": "antuicheng",
+      "name": "安体诚（存斋）",
+      "group": "beijing_intellectuals",
+      "label": "安体诚（存斋）",
+      "chapters": [3],
+      "relation": "「实行家」批评"
+    },
+    {
+      "id": "sunzhongshan",
+      "name": "孙中山",
+      "group": "nationalist",
+      "label": "孙中山（总理）",
+      "chapters": [3],
+      "relation": "商团妥协批判"
+    }
+  ],
+  "links": [
+    {
+      "source": "zhangyintao",
+      "target": "yufangzhou",
+      "type": "五四接触",
+      "chapter": 1,
+      "subsection": "1.2",
+      "strength": 3,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "yushude",
+      "type": "工运搭档→川资→黄埔会面",
+      "chapter": 1,
+      "subsection": "1.2",
+      "strength": 5,
+      "letters": ["1924-08-17"]
+    },
+    {
+      "source": "zhangyintao",
+      "target": "luozhanglong",
+      "type": "入党介绍人→药石信→上海借住",
+      "chapter": 1,
+      "subsection": "1.2",
+      "strength": 5,
+      "letters": ["1923-11-01", "1924-03-15"]
+    },
+    {
+      "source": "zhangyintao",
+      "target": "anxingsheng",
+      "type": "入党介绍人",
+      "chapter": 1,
+      "subsection": "1.2",
+      "strength": 4,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "dengzhongxia",
+      "type": "谈话不快",
+      "chapter": 1,
+      "subsection": "1.3",
+      "strength": 2,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "zhengye",
+      "type": "工运同事→替他抱不平",
+      "chapter": 1,
+      "subsection": "1.3",
+      "strength": 4,
+      "letters": ["1924-01-01"]
+    },
+    {
+      "source": "zhengye",
+      "target": "zhangkundi",
+      "type": "郑业致信张昆弟",
+      "chapter": 1,
+      "subsection": "1.3",
+      "strength": 2,
+      "letters": ["1924-01-01"]
+    },
+    {
+      "source": "zhangyintao",
+      "target": "jiaxianqing",
+      "type": "药石信",
+      "chapter": 2,
+      "subsection": "2.1",
+      "strength": 4,
+      "letters": ["1923-11-04"]
+    },
+    {
+      "source": "zhangyintao",
+      "target": "weihuachi",
+      "type": "西北运动→频繁书信",
+      "chapter": 2,
+      "subsection": "2.2",
+      "strength": 4,
+      "letters": ["1924-08-08"]
+    },
+    {
+      "source": "zhangyintao",
+      "target": "cuiqingyuan",
+      "type": "办书铺方案",
+      "chapter": 2,
+      "subsection": "2.1",
+      "strength": 3,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "zhaoyuzhen",
+      "type": "西北运动促进会",
+      "chapter": 2,
+      "subsection": "2.1",
+      "strength": 3,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "hemengxiong",
+      "type": "黄埔招考通知",
+      "chapter": 2,
+      "subsection": "2.3",
+      "strength": 4,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "maozedong",
+      "type": "上海面谈",
+      "chapter": 2,
+      "subsection": "2.3",
+      "strength": 3,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "zhangji",
+      "type": "解决经济困难",
+      "chapter": 2,
+      "subsection": "2.3",
+      "strength": 2,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "suntieren",
+      "type": "招考延拖",
+      "chapter": 3,
+      "subsection": "3.1",
+      "strength": 2,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "jiangjieshi",
+      "type": "专制批判",
+      "chapter": 3,
+      "subsection": "3.2",
+      "strength": 3,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "lizhilong",
+      "type": "「狗委员」批评",
+      "chapter": 3,
+      "subsection": "3.2",
+      "strength": 2,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "xuanxiafu",
+      "type": "佩服但不值得",
+      "chapter": 3,
+      "subsection": "3.2",
+      "strength": 2,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "dingdingchen",
+      "type": "「但升官不要发财」",
+      "chapter": 3,
+      "subsection": "3.2",
+      "strength": 3,
+      "letters": ["1924-08-17"]
+    },
+    {
+      "source": "zhangyintao",
+      "target": "sunzhongshan",
+      "type": "商团妥协批判",
+      "chapter": 3,
+      "subsection": "3.3",
+      "strength": 3,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "shikexuan",
+      "type": "军运工作→同意北上",
+      "chapter": 4,
+      "subsection": "4.1",
+      "strength": 5,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "chenxiufu",
+      "type": "农民自卫军军长（名义上级）",
+      "chapter": 4,
+      "subsection": "4.2",
+      "strength": 4,
+      "letters": []
+    },
+    {
+      "source": "zhangyintao",
+      "target": "liugeping",
+      "type": "回忆录作者",
+      "chapter": 4,
+      "subsection": "4.3",
+      "strength": 3,
+      "letters": []
+    }
+  ],
+  "groups": [
+    {
+      "id": "tianjin",
+      "name": "天津圈",
+      "color": "#4e9a51",
+      "description": "五四运动、入党、五五书报代卖社"
+    },
+    {
+      "id": "beijing_intellectuals",
+      "name": "北京知识圈",
+      "color": "#5c7ebb",
+      "description": "马克思学说研究会、铁委、入党介绍"
+    },
+    {
+      "id": "workers",
+      "name": "工人圈",
+      "color": "#c9a84c",
+      "description": "工运搭档、京绥路、矿工"
+    },
+    {
+      "id": "countryside",
+      "name": "乡间圈",
+      "color": "#8b6914",
+      "description": "南皮乡间、书铺、西北运动促进会"
+    },
+    {
+      "id": "nationalist",
+      "name": "国民党/黄埔圈",
+      "color": "#8b0000",
+      "description": "黄埔军校、国民党上层"
+    },
+    {
+      "id": "huangpu",
+      "name": "黄埔同学",
+      "color": "#b22222",
+      "description": "黄埔军校同期学生"
+    },
+    {
+      "id": "military",
+      "name": "军事圈",
+      "color": "#666",
+      "description": "国民二军、农民自卫军"
+    }
+  ]
+}

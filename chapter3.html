@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>所有不彻底的路径都走不通 · 张隐韬</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="index.html" class="logo">张隐韬</a>
+    <div class="links">
+      <a href="chapter1.html">被动员</a>
+      <a href="chapter2.html">升级</a>
+      <a href="chapter3.html" class="active">不彻底</a>
+      <a href="chapter4.html">为什么死</a>
+      <span class="sep">|</span>
+      <a href="appendix-diary.html">日记</a>
+      <a href="appendix-sources.html">史料</a>
+    </div>
+  </div>
+</nav>
+
+<div class="chapter-hero">
+  <div class="ch-number">第三章</div>
+  <h1>所有不彻底的路径都走不通</h1>
+  <div class="ch-years">1924.3 — 9</div>
+  <div class="core-question">为什么"为主义预备"而非"为主义活动"？</div>
+</div>
+
+<div class="section">
+
+  <div class="subsection" id="s3-1">
+    <h2 class="subsection-title"><span class="sec-num">3.1</span> 上海——第一次看清革命组织的官僚化</h2>
+    <div class="narrative">
+      <p>1924年3月14日抵达上海，等待黄埔军校补考。这一等就是十几天。每餐仅用铜元十余枚。负责人孙铁人一味延拖，"孙故推脱不见"。</p>
+      <blockquote class="diary-quote">
+        <p>民党虽经一次改组，但内中之官僚式的无革命精神的人，尚是多的很。我们为考军官学校，不远几千里而来此，经济上早就用尽，感无穷之贫困。……凡抱革命精神的人，也有作事这样摆架子的？无怪中山先生之奔波困苦，垂三十年之久而不能成功，此诚其根本之一大原因也。</p>
+        <cite>——日记 1924年3月21日【连载三】</cite>
+      </blockquote>
+      <p>3月23日补考，5月经统考入学，编入第二队。</p>
+    </div>
+  </div>
+
+  <div class="subsection" id="s3-2">
+    <h2 class="subsection-title"><span class="sec-num">3.2</span> 黄埔——"为主义预备而来"</h2>
+    <div class="narrative">
+      <p>6月25日入校第一天，他就遇到了令他震惊的事。蒋介石对学生说：</p>
+      <blockquote class="diary-quote">
+        <p>校长命令，关于下级干部的事，学生是不准提出质问。若有替下级干部说话的，官长和学生都要枪毙！</p>
+        <cite>——日记 1924年6月25日【连载四】</cite>
+      </blockquote>
+      <p>他写下的不是恐惧，而是推论：</p>
+      <blockquote class="diary-quote">
+        <p>此学校之中，发生此等压迫不平之事，真是为人争自由、为人民争平等的革命党的怪闻。既以此等手段施之于本党同志，亦可以此种手段施之于将来全国国民。若经一次革命，还是和现在一样，那么这等革命的工作，可说无有再革的必要了。</p>
+        <cite>——日记 1924年6月25日【连载四】</cite>
+      </blockquote>
+      <p>7月2日，校长演说介绍各队中曾在社会团体活动过的人，"列名者，我亦在内"。他写下了他来军校的定位：</p>
+      <blockquote class="diary-quote">
+        <p>但我已有一个决心，我来这学校并不是为主义活动而来，我是为主义预备而来，也就是要作我的那个伟大的一劳永逸的运动，这步是我应走的过程。所以，我的用意和别人都是不同。并且青年运动，是爱出风头的人所爱作的事。故我决心学习点预备学识，集中点自己精神。其他的事我是不爱参与的。</p>
+        <cite>——日记 1924年7月2日【连载四】</cite>
+      </blockquote>
+      <p><strong>"为主义预备而来"——他来军校不是参加革命，而是为将来的独立行动做准备。</strong>他来学军事，不是为国民党打仗，而是为自己将来的组织积累能力。</p>
+      <p>7月11日，他在半休时看《社会科学讲义》，写了一段意味深长的感慨：</p>
+      <blockquote class="diary-quote">
+        <p>我以前和他们做事，在一处相聚很久，我是认他们是无用的人。因为我的取人之着眼点，第一要注重有没有作为……不知有没有人还愿当个实行家？</p>
+        <cite>——日记 1924年7月11日【连载四】</cite>
+      </blockquote>
+      <p><strong>"不知有没有人还愿当个实行家？"——他一辈子都在回答这个问题。他就是那个实行家。</strong></p>
+    </div>
+
+    <div class="component-container">
+      <div class="component-title">关键词搜索：在日记中搜索关键词</div>
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="输入关键词，如：蒋介石、妥协、革命、无产者、预备">
+        <button id="search-btn">搜索</button>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+
+    <div class="narrative">
+      <p>8月17日，于树德专程到广州来看他。于问他：</p>
+      <blockquote class="diary-quote">
+        <p>我在上海听说你在校内很消极，甚事都不高兴作，很消极，真否？</p>
+        <cite>——日记 1924年8月17日【连载五】</cite>
+      </blockquote>
+    </div>
+
+    <div class="component-container">
+      <div class="component-title">书信对话：于树德广州会面</div>
+      <div class="chat-container" id="chat-yushude"></div>
+    </div>
+
+    <div class="narrative">
+      <p>8月22日，宣侠父因坚持党权独立于校权被开除，他"佩服其敌抗的精神"但认为"一点代价没有，无乃有点不值得"。</p>
+      <p>9月3日，他对军校的趋势做了系统分析，认为校内"很显明的分为三个阶级"——校长及各部主任为第一阶级，干部的队长区队长为第二阶级，学生为第三阶级。他提出的解决方案是："成立新的适合潮流的学校……如苏俄赤军之组织然。"</p>
+      <blockquote class="diary-quote">
+        <p>很显明的分为三个阶级——校长及各部主任为第一阶级，干部的队长区队长为第二阶级，学生为第三阶级。第一阶级"头脑很旧的官僚式的军人……他们的手段只是专制"，第二阶级和第三阶级"感情更坏"，结果"学生对学校、党的前途绝望！"</p>
+        <cite>——日记 1924年9月3日【连载五】</cite>
+      </blockquote>
+      <p><strong>他不是在发牢骚，他是在做组织诊断——这个学校的问题不是某个人坏，而是组织形式错了。</strong></p>
+      <p>日记有没有"表演性"？他在军校中是要汇报的，某些表态可能带有"给组织看"的自觉。但他在8月30日自己写道：</p>
+      <blockquote class="diary-quote">
+        <p>待略过些时，一回想这该日的情形，才觉有些苦痛在里面。……我以后记苦痛的笔记时，不在当日，而在过去，将当时的印象再详细写来。</p>
+        <cite>——日记 1924年8月30日【连载五】</cite>
+      </blockquote>
+      <p>这证实了他是在事后回忆中重新书写那夜的。但核心判断"以彻底的革命改造社会"不是修辞。</p>
+    </div>
+  </div>
+
+  <div class="subsection" id="s3-3">
+    <h2 class="subsection-title"><span class="sec-num">3.3</span> 商团——一个组织者的阶级直觉</h2>
+    <div class="narrative">
+      <p>1924年8月，广州商团事变。这是张隐韬亲历的最重大事件。</p>
+    </div>
+
+    <div class="component-container">
+      <div class="component-title">商团事变时间线</div>
+      <div class="event-timeline">
+        <div class="event-item highlight">
+          <div class="event-date">8月12日 · 扣械</div>
+          <div class="event-desc">暴雨中搬运军火一整夜，口令"得威必胜"——他连密码都记下来，因为那四个字就是他此刻的心情。</div>
+          <blockquote>大雨骤作，我亦正值警戒之际，水深数寸，行动时皮鞋为水浸入，枪亦湿。……我认为国民党得这大批军火，诚是前途的幸事，高兴的很，故毫不觉苦！</blockquote>
+        </div>
+        <div class="event-item highlight">
+          <div class="event-date">8月14日 · 阶级判断</div>
+          <div class="event-desc">第一个也是最直白的阶级判断——</div>
+          <blockquote>主持阶级调和、代表各阶级利益的孙中山，反为资本家所反对。何若明明白白的表明态度，代表无产者，与此麻木不仁的资本家决战，以完成一劳永逸的彻底革命！</blockquote>
+        </div>
+        <div class="event-item">
+          <div class="event-date">8月15日 · 军阀与商团勾结</div>
+          <div class="event-desc">革命政府最大的敌人不是北洋军阀，而是内部的军阀。</div>
+          <blockquote>许崇智及其他的武人，均派人向大元帅或直接来本校索枪械及子弹。这种目无帅戍、自私自立的军队不法之行动，非全体解散之不足以定粤之局。</blockquote>
+        </div>
+        <div class="event-item">
+          <div class="event-date">8月24日 · 佛山罢市</div>
+          <div class="event-desc">真心拥护政府者，乃是无产者。</div>
+          <blockquote>参加此会者，多属工人、农人，商人特少。真心拥护政府者，乃是无产者。不知代表资产阶级利害者，作何感想？</blockquote>
+        </div>
+        <div class="event-item">
+          <div class="event-date">8月25日 · 南方资本家分析</div>
+          <div class="event-desc">如若无产者的革命暴发于最近的将来时，必严防南方的资本家之结合。</div>
+          <blockquote>南方有稍觉悟的劳动者，同时也有坚固联合防御的资本家。所以我看，如若无产者的革命暴发于最近的将来时，必严防南方的资本家之结合。</blockquote>
+        </div>
+        <div class="event-item highlight">
+          <div class="event-date">8月29日 · 夜间警戒——"彻底革命"</div>
+          <div class="event-desc">静观天象，见黑暗昏沌的宇宙中，充满凄惨的景象……</div>
+          <blockquote>若非我要拯救这些群生，抱定的救民主义，简直军人的生活，我便毅然决然的不干。只为我决定要以彻底的革命改造社会，虽然受了这种深刻的印象，更足以振起我的坚决毅力！</blockquote>
+        </div>
+        <div class="event-item highlight">
+          <div class="event-date">9月1日 · 妥协——四条感想</div>
+          <div class="event-desc">甲、妥协性太甚。乙、魄力缺乏。丙、祸乱潜机更形利害。丁、面子扫地。——"丙"后来被双十惨案证明完全正确。</div>
+          <blockquote>甲、孙中山的妥协性太甚。乙、老孙的作事魄力还缺乏。丙、既将枪械交还商团，以后的祸乱潜机更形利害。丁、等到罢市的威胁而交还，简直面子扫地，太无价值。——如长此以往，国民党没有希望！</blockquote>
+        </div>
+        <div class="event-item">
+          <div class="event-date">10月10日 · 双十惨案</div>
+          <div class="event-desc">商团开枪射击游行群众，"丙"被证明完全正确——祸乱潜机更形利害。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="narrative">
+      <p><strong>所有不彻底的路径都走通了——工运失败、乡间绝望、国民党官僚化、黄埔专制、商团妥协——每一次都把他推向同一个结论：必须建立自己的武装。</strong></p>
+    </div>
+  </div>
+
+  <details class="source-critique">
+    <summary>关于本章史料的局限</summary>
+    <p>第三章主要依据日记第三册（1924.6.25—9.4）和连载三（赴粤途中）。第二册缺失——恰好覆盖了他从上海到入校的关键过渡期。我们永远不知道那本日记里写了什么。</p>
+    <p>日记有表演性。张隐韬在黄埔军校写日记时，是在一个需要向组织汇报的环境中。他的某些表态——比如"我决定要以彻底的革命改造社会"——究竟是完全的内心独白，还是带有"给组织看"的自觉？我们无法从文本内部完全区分。但8月30日他自己写"痛定思痛"方法论，证实8月29日那段是事后加工的。</p>
+    <p>日记经过编者加工。王金凤等人在整理出版时"除错字及标点作了适当注释和调整外，其余内容概留原貌"——但"适当"二字本身就留下了干预的空间。</p>
+  </details>
+
+</div>
+
+<div class="chapter-nav">
+  <a href="chapter2.html">← 第二章：他凭什么升级</a>
+  <a href="chapter4.html">第四章：他为什么能组建军队又为什么死了 →</a>
+</div>
+
+<footer>
+  <div class="footer-text">
+    资料来源：河北省南皮县档案馆 · 《张隐韬烈士日记》连载一至五 · 张洪涛《关于张隐韬生平事迹的几则新材料》· 石慧《一名共产党员学生眼中的黄埔军校》<br>
+    本网站为数字历史研究项目
+  </div>
+</footer>
+
+<script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+loadChat('yushude-guangzhou-1924', 'chat-yushude');
+initSearch();
+</script>
+</body>
+</html>

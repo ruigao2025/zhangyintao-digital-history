@@ -34,14 +34,10 @@
 <div class="section">
 
   <div class="subsection" id="s3-1">
-    <h2 class="subsection-title"><span class="sec-num">3.1</span> 上海——第一次看清革命组织的官僚化</h2>
+    <h2 class="subsection-title"><span class="sec-num">3.1</span> 上海——等考的十几天</h2>
     <div class="narrative">
-      <p>1924年3月14日抵达上海，等待黄埔军校补考。这一等就是十几天。每餐仅用铜元十余枚。负责人孙铁人一味延拖，"孙故推脱不见"。</p>
-      <blockquote class="diary-quote">
-        <p>民党虽经一次改组，但内中之官僚式的无革命精神的人，尚是多的很。我们为考军官学校，不远几千里而来此，经济上早就用尽，感无穷之贫困。……凡抱革命精神的人，也有作事这样摆架子的？无怪中山先生之奔波困苦，垂三十年之久而不能成功，此诚其根本之一大原因也。</p>
-        <cite>——日记 1924年3月21日【连载三】</cite>
-      </blockquote>
-      <p>3月23日补考，5月经统考入学，编入第二队。</p>
+      <p>1924年3月14日抵达上海，等待黄埔军校补考。这一等就是十几天。每餐仅用铜元十余枚。负责人孙铁人一味延拖，"孙故推脱不见"。他在上海第一次看清了革命组织的官僚化——那些坐在办公室里的人如何对待从基层赶来的人。</p>
+      <p>3月23日补考，5月经统考入学，编入第二队。第二册日记恰好覆盖了这段过渡期——但第二册缺失，我们永远不知道那本日记里写了什么。</p>
     </div>
   </div>
 
@@ -81,6 +77,11 @@
       <div id="search-results" class="search-results"></div>
     </div>
 
+    <div class="component-container">
+      <div class="component-title">黄埔时期人物网络</div>
+      <div id="network-graph"></div>
+    </div>
+
     <div class="narrative">
       <p>8月17日，于树德专程到广州来看他。于问他：</p>
       <blockquote class="diary-quote">
@@ -115,6 +116,11 @@
     <h2 class="subsection-title"><span class="sec-num">3.3</span> 商团——一个组织者的阶级直觉</h2>
     <div class="narrative">
       <p>1924年8月，广州商团事变。这是张隐韬亲历的最重大事件。</p>
+    </div>
+
+    <div class="component-container">
+      <div class="component-title">广州与黄埔：商团事变的空间</div>
+      <div id="map-gz"></div>
     </div>
 
     <div class="component-container">
@@ -162,6 +168,12 @@
       </div>
     </div>
 
+    <div class="component-container">
+      <div class="component-title">书信：魏华池来信——北方消息</div>
+      <div class="chat-container" id="chat-wei"></div>
+      <p style="font-size:12px;color:var(--text-light);margin-top:12px;line-height:1.8;">武汉事件、张国焘案波及京绥路七人、张家口水灾——北方的消息让他更加感到：自己与那边的联系正在一条一条被切断。</p>
+    </div>
+
     <div class="narrative">
       <p><strong>工运失败、乡间绝望、国民党官僚化、黄埔专制、商团妥协——每一次妥协的失败都把他推向同一个结论：必须建立自己的武装，必须彻底革命。</strong></p>
     </div>
@@ -188,10 +200,21 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"></script>
 <script src="js/main.js"></script>
 <script>
+(function(){
+  var map = L.map('map-gz').setView([23.1,113.3],11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:14}).addTo(map);
+  var pts=[[23.09,113.44,'黄埔军校（长洲岛）'],[23.13,113.27,'广州市内'],[23.12,113.24,'西关（资本家聚集地）'],[23.02,113.12,'佛山（罢市）']];
+  pts.forEach(function(p){L.marker([p[0],p[1]]).addTo(map).bindPopup('<b>'+p[2]+'</b>');});
+  map.fitBounds(L.latLngBounds(pts.map(function(p){return[p[0],p[1]];})).pad(0.15));
+})();
+
+loadNetwork(3);
 loadChat('yushude-guangzhou-1924', 'chat-yushude');
+loadChat('wei-zhang-1924', 'chat-wei');
 initSearch();
 </script>
 </body>

@@ -251,6 +251,46 @@
       "diary_ref": null
     },
     {
+      "id": "gaocheng",
+      "name": "藁城",
+      "lat": 38.03,
+      "lng": 114.63,
+      "chapter": 4,
+      "subsection": "4.2",
+      "description": "部队集结地",
+      "diary_ref": null
+    },
+    {
+      "id": "jinxian",
+      "name": "晋县",
+      "lat": 38.03,
+      "lng": 115.20,
+      "chapter": 4,
+      "subsection": "4.2",
+      "description": "行军路过",
+      "diary_ref": null
+    },
+    {
+      "id": "shenxian",
+      "name": "深县",
+      "lat": 38.00,
+      "lng": 115.55,
+      "chapter": 4,
+      "subsection": "4.2",
+      "description": "行军路过",
+      "diary_ref": null
+    },
+    {
+      "id": "wuqiang",
+      "name": "武强",
+      "lat": 38.05,
+      "lng": 115.96,
+      "chapter": 4,
+      "subsection": "4.2",
+      "description": "行军路过",
+      "diary_ref": null
+    },
+    {
       "id": "bozhen",
       "name": "泊镇",
       "lat": 38.01,

@@ -223,22 +223,14 @@ blockquote.diary-quote cite {
 
 /* TIMELINE (for 商团事变) */
 .event-timeline {
-  position: relative; padding-left: 40px;
-}
-.event-timeline::before {
-  content: ''; position: absolute; left: 15px; top: 0; bottom: 0;
-  width: 2px; background: linear-gradient(180deg, var(--red), var(--gold), var(--red));
+  position: relative; padding-left: 20px;
+  border-left: 1px solid var(--border);
 }
 .event-item {
   position: relative; margin-bottom: 32px; padding-left: 20px;
 }
-.event-item::before {
-  content: ''; position: absolute; left: -40px; top: 8px;
-  width: 12px; height: 12px; border-radius: 50%;
-  background: var(--dark); border: 2px solid var(--red); z-index: 1;
-}
-.event-item.highlight::before {
-  background: var(--red); box-shadow: 0 0 10px rgba(178,34,34,.5);
+.event-item.highlight {
+  border-left: 2px solid var(--red); padding-left: 18px; margin-left: -1px;
 }
 .event-item .event-date {
   font-size: 13px; color: var(--gold); font-weight: 700;

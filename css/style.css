@@ -385,3 +385,4 @@ footer .dedication {
 .footnotes ol { padding-left: 20px; }
 .footnotes li { font-size: 12px; color: var(--text-light); line-height: 1.8; margin-bottom: 6px; }
 .footnotes li::marker { color: var(--gold); }
+.src-warn { font-size: 0.75em; vertical-align: super; color: var(--red); cursor: help; margin: 0 2px; font-family: var(--sans); font-weight: 600; }

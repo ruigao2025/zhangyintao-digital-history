@@ -385,4 +385,7 @@ footer .dedication {
 .footnotes ol { padding-left: 20px; }
 .footnotes li { font-size: 12px; color: var(--text-light); line-height: 1.8; margin-bottom: 6px; }
 .footnotes li::marker { color: var(--gold); }
-.src-warn { font-size: 0.75em; vertical-align: super; color: var(--red); cursor: help; margin: 0 2px; font-family: var(--sans); font-weight: 600; }
+.src-warn { font-size: 0.75em; vertical-align: super; color: var(--red); cursor: help; margin: 0 2px; font-family: var(--sans); font-weight: 600; position: relative; }
+.src-warn { font-size: 0.75em; vertical-align: super; color: var(--red); cursor: help; margin: 0 2px; font-family: var(--sans); font-weight: 600; position: relative; }
+.src-warn:hover::after, .src-warn:focus::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: #1a1a1a; color: var(--cream); font-size: 12px; font-weight: 400; line-height: 1.6; padding: 8px 12px; border-radius: 4px; border: 1px solid var(--red); white-space: normal; width: max-content; max-width: 280px; z-index: 100; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,.6); }
+.src-warn.show-tip::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: #1a1a1a; color: var(--cream); font-size: 12px; font-weight: 400; line-height: 1.6; padding: 8px 12px; border-radius: 4px; border: 1px solid var(--red); white-space: normal; width: max-content; max-width: 280px; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,.6); }

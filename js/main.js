@@ -214,3 +214,13 @@ function toggleSubsection(id) {
   if (!el) return;
   el.style.display = el.style.display === 'none' ? 'block' : 'none';
 }
+
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('src-warn')) {
+    e.target.classList.toggle('show-tip');
+    return;
+  }
+  document.querySelectorAll('.src-warn.show-tip').forEach(function(el) {
+    el.classList.remove('show-tip');
+  });
+});

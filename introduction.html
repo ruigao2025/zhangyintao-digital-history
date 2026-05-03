@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>非典型革命者 · 张隐韬</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="index.html" class="logo">张隐韬</a>
+    <div class="links">
+      <a href="introduction.html" class="active">引言<br><small style="font-size:9px;color:var(--text-light);">1902—1918</small></a>
+      <a href="chapter1.html">破壁<br><small style="font-size:9px;color:var(--text-light);">1919—1922</small></a>
+      <a href="chapter2.html">狂飙<br><small style="font-size:9px;color:var(--text-light);">1922—1924</small></a>
+      <a href="chapter3.html">觉醒<br><small style="font-size:9px;color:var(--text-light);">1924.3—9</small></a>
+      <a href="chapter4.html">燎原<br><small style="font-size:9px;color:var(--text-light);">1925—1926</small></a>
+      <span class="sep">|</span>
+      <a href="appendix-diary.html">日记</a>
+      <a href="appendix-sources.html">史料</a>
+    </div>
+  </div>
+</nav>
+
+<div class="chapter-hero">
+  <div class="ch-number">引言</div>
+  <h1>非典型革命者</h1>
+  <div class="ch-years">1902 — 1918</div>
+  <div class="core-question">一个没有父亲、没有学历、没有资源的人，怎么走进革命？</div>
+</div>
+
+<div class="section">
+
+  <div style="max-width:800px;margin:0 auto 20px;padding:10px 16px;border-left:3px solid var(--red);font-size:12px;color:var(--text-light);line-height:1.8;">
+    <sup class="src-warn">⚠</sup> 表示此处史料来源存在可靠性问题，悬停可查看具体说明。详见<a href="appendix-sources.html" style="color:var(--gold);">史料说明与批判</a>。
+  </div>
+
+  <div class="subsection" id="s0-1">
+    <h2 class="subsection-title"><span class="sec-num">0.1</span> 唐家务村（1902—1918）</h2>
+    <div class="narrative">
+      <p>他出生之前，父亲就死了。</p>
+      <p>综述记载父亲张安文给地主扛活，累死。但《红旗飘飘》记录他在牺牲演讲中自述"我是个木生（遗腹子）"——若"遗腹子"属实，则父亲在他出生前即去世，与"累死"不同。两种说法目前无法确证。母亲无法维持生活，去了天津佣工。刚出生的张宝驹被送到郝庄外祖父家，舅父舅母当亲儿子养。<a class="fn" href="#fn0-1">[1]</a><a class="fn" href="#fn0-2">[2]</a></p>
+      <p>他聪明。郝庄小学念书，十五岁考入马村高小。每次考试都名列前茅，深受老师喜爱。一个贫雇农的儿子，没有书香气味的家庭，却偏偏会读书——他不该属于那个阶层，但他偏偏有那个能力。</p>
+      <p>这种能力后来反复救他：他凭什么给工人讲课？因为他读书快。他凭什么看《社会主义史》就能写出批评？因为他真看懂了。他凭什么在黄埔军校立足？因为他学东西比大多数同学快。</p>
+      <p>但他只有高小文化。这个边界永远在：他不是知识分子，他只是"比底层多一点文化"的人。而这一点"多"，恰好让他能在底层和知识圈之间穿行。</p>
+      <p>1918年秋，十六岁，他到了天津，在警察局当见习警察。给自己改了名字：张隐韬。</p>
+      <p>一个十几岁的少年改名，意味着什么？他不愿意再做"张宝驹"了——那个父亲早逝、母亲离家、寄人篱下的农家孩子。他要"隐其锋而韬其略"。他已经想好了，他要干点什么。</p>
+      <p>但干什么？怎么干？他不知道。</p>
+    </div>
+
+    <div class="component-container">
+      <div class="component-title">16岁的第一次出走</div>
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <details class="source-critique">
+    <summary>关于引言史料的局限</summary>
+    <p>1902—1918年无任何一手史料。身世全据王金凤等人编写的综述，叙事框架受党史传统影响，可能简化了张隐韬的早年经历。于方舟、于树德的视角完全缺失——我们不知道他们怎么看张隐韬。</p>
+    <p>张隐韬改名的时间点（1918年秋）及其含义（"隐其锋而韬其略"）为推测，无直接史料佐证。</p>
+    <p>身世差异：现有综述称张隐韬"父亲累死"，但朱殿封《红旗飘飘》记录他在牺牲演讲中自述"我是个木生（遗腹子）"——若"遗腹子"属实，则父亲在他出生前即去世，与"累死"不同。此差异目前无法确证。</p>
+  </details>
+
+  <div class="footnotes">
+    <h3>本节引用</h3>
+    <ol>
+      <li id="fn0-1">河北省南皮县档案馆等，《张隐韬烈士日记》连载及综述</li>
+      <li id="fn0-2">朱殿封《红旗飘飘》（2020）</li>
+    </ol>
+  </div>
+
+</div>
+
+<div class="chapter-nav">
+  <a href="index.html">← 首页</a>
+  <a href="chapter1.html">一、破壁 →</a>
+</div>
+
+<footer>
+  <div class="footer-text">
+    资料来源：河北省南皮县档案馆 · 《张隐韬烈士日记》连载一至五 · 朱殿封《红旗飘飘》（2020）<br>
+    本网站为数字历史研究项目
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var map1 = L.map('map').setView([38.5,117],8);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:12}).addTo(map1);
+  var pts1=[[38.05,116.85],[39.12,117.20]];
+  var n1=['唐家务村','天津'];
+  pts1.forEach(function(p,i){L.marker(p).addTo(map1).bindPopup('<b>'+n1[i]+'</b>');});
+  L.polyline(pts1,{color:'#b22222',weight:3,dashArray:'8,6'}).addTo(map1);
+  map1.fitBounds(L.latLngBounds(pts1).pad(0.3));
+})();
+</script>
+</body>
+</html>

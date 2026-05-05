@@ -142,6 +142,7 @@ function loadChat(conversationId, containerId) {
         nameEl.textContent = msg.from_name;
 
         var textEl = document.createElement('div');
+        textEl.className = 'letter-text';
         textEl.textContent = msg.content;
 
         var dateEl = document.createElement('div');
@@ -165,6 +166,26 @@ function initSearch() {
   fetch('data/keywords.json')
     .then(function(r) { return r.json(); })
     .then(function(data) {
+      var presets = document.getElementById('keyword-presets');
+      if (presets) {
+        data.keywords.forEach(function(kw) {
+          var chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = 'keyword-chip';
+          chip.textContent = kw.display + ' (' + kw.occurrences.length + ')';
+          chip.style.fontSize = Math.min(22, 12 + kw.occurrences.length * 2) + 'px';
+          chip.addEventListener('click', function() {
+            input.value = kw.word;
+            document.querySelectorAll('.keyword-chip.active').forEach(function(el) {
+              el.classList.remove('active');
+            });
+            chip.classList.add('active');
+            doSearch();
+          });
+          presets.appendChild(chip);
+        });
+      }
+
       btn.addEventListener('click', doSearch);
       input.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') doSearch();
@@ -183,6 +204,14 @@ function initSearch() {
           results.innerHTML = '<p style="color:var(--text-light);font-size:13px;">未找到"' + query + '"的相关记录</p>';
           return;
         }
+
+        var total = matches.reduce(function(sum, kw) {
+          return sum + kw.occurrences.length;
+        }, 0);
+        var summary = document.createElement('p');
+        summary.style.cssText = 'color:var(--text-light);font-size:12px;margin-bottom:10px;font-family:var(--sans);';
+        summary.textContent = '找到 ' + total + ' 条相关记录。';
+        results.appendChild(summary);
 
         matches.forEach(function(kw) {
           kw.occurrences.forEach(function(occ) {

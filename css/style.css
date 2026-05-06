@@ -326,6 +326,30 @@ blockquote.diary-quote cite {
   margin: -4px 0 14px; font-family: var(--sans);
 }
 
+/* ARCHIVAL IMAGES */
+.archive-figure {
+  max-width: 860px;
+  margin: 0 auto 32px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.archive-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.archive-figure figcaption {
+  margin-top: 12px;
+  color: var(--text-light);
+  font-family: var(--serif);
+  font-size: 13px;
+  line-height: 1.9;
+  text-align: left;
+}
+
 /* MAP */
 #map { height: 400px; border-radius: 6px; z-index: 1; }
 .leaflet-popup-content { font-family: var(--sans); font-size: 13px; }

@@ -145,14 +145,14 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 
 /* SECTIONS */
 .section {
-  max-width: 900px; margin: 0 auto; padding: 60px 24px 40px;
+  max-width: 1320px; margin: 0 auto; padding: 56px 16px 40px;
 }
 .subsection {
   margin-bottom: 60px;
 }
 .subsection-title {
   font-size: 22px; color: var(--cream); letter-spacing: 4px;
-  margin-bottom: 20px; padding-bottom: 8px;
+  max-width: 900px; margin: 0 auto 20px; padding-bottom: 8px;
   border-bottom: 1px solid rgba(178,34,34,.3);
   font-family: var(--sans);
 }
@@ -161,8 +161,12 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 }
 
 /* NARRATIVE TEXT */
+.narrative {
+  max-width: 900px;
+  margin: 0 auto;
+}
 .narrative p {
-  font-size: 15px; line-height: 2.2; color: var(--text);
+  font-size: 16px; line-height: 2.22; color: var(--text);
   margin-bottom: 16px; text-indent: 2em;
 }
 .narrative p.no-indent { text-indent: 0; }
@@ -178,9 +182,8 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   overflow: visible;
 }
 .micro-note.marginal-note {
-  float: right;
-  width: 286px;
-  margin: 4px -18px 18px 24px;
+  width: 264px;
+  margin: 4px 0 20px;
   padding: 14px 16px;
   background: #141414;
   border-color: rgba(201,168,76,.28);
@@ -188,8 +191,9 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 }
 .micro-note.deep-dive {
   position: relative;
-  margin: 34px 0;
-  padding: 22px 24px 24px;
+  width: 286px;
+  margin: 8px 0 24px;
+  padding: 20px 20px 22px;
   background:
     linear-gradient(135deg, rgba(201,168,76,.14), rgba(178,34,34,.06) 42%, rgba(10,10,10,.16)),
     #151510;
@@ -241,6 +245,25 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   clear: both;
 }
 
+@media (min-width: 1180px) {
+  .micro-note.note-left,
+  .micro-note.note-right {
+    clear: none;
+  }
+
+  .micro-note.note-left {
+    float: left;
+    margin-left: -310px;
+    margin-right: 28px;
+  }
+
+  .micro-note.note-right {
+    float: right;
+    margin-left: 28px;
+    margin-right: -310px;
+  }
+}
+
 .gloss-term {
   color: var(--cream);
   border-bottom: 1px dotted var(--gold);
@@ -285,7 +308,7 @@ blockquote.diary-quote cite {
 
 /* COMPONENT CONTAINERS */
 .component-container {
-  margin: 40px 0; padding: 24px;
+  max-width: 980px; margin: 40px auto; padding: 24px;
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: 8px;
 }
@@ -499,7 +522,10 @@ footer .dedication {
   #map { height: 300px; }
   #network-graph { height: 350px; }
   .section { padding: 40px 16px 30px; }
-  .micro-note.marginal-note {
+  .narrative { max-width: none; }
+  .narrative p { font-size: 15px; }
+  .micro-note.marginal-note,
+  .micro-note.deep-dive {
     float: none;
     width: auto;
     margin: 24px 0;

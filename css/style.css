@@ -145,14 +145,14 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 
 /* SECTIONS */
 .section {
-  max-width: 1320px; margin: 0 auto; padding: 56px 16px 40px;
+  max-width: 1100px; margin: 0 auto; padding: 56px 16px 40px;
 }
 .subsection {
   margin-bottom: 60px;
 }
 .subsection-title {
   font-size: 22px; color: var(--cream); letter-spacing: 4px;
-  max-width: 900px; margin: 0 auto 20px; padding-bottom: 8px;
+  max-width: 760px; margin: 0 auto 20px; padding-bottom: 8px;
   border-bottom: 1px solid rgba(178,34,34,.3);
   font-family: var(--sans);
 }
@@ -162,7 +162,7 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 
 /* NARRATIVE TEXT */
 .narrative {
-  max-width: 900px;
+  max-width: 760px;
   margin: 0 auto;
 }
 .narrative p {
@@ -182,7 +182,7 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   overflow: visible;
 }
 .micro-note.marginal-note {
-  width: 264px;
+  width: 230px;
   margin: 4px 0 20px;
   padding: 14px 16px;
   background: #141414;
@@ -191,7 +191,7 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 }
 .micro-note.deep-dive {
   position: relative;
-  width: 286px;
+  width: 250px;
   margin: 8px 0 24px;
   padding: 20px 20px 22px;
   background:
@@ -253,14 +253,14 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 
   .micro-note.note-left {
     float: left;
-    margin-left: -310px;
-    margin-right: 28px;
+    margin-left: -260px;
+    margin-right: 24px;
   }
 
   .micro-note.note-right {
     float: right;
-    margin-left: 28px;
-    margin-right: -310px;
+    margin-left: 24px;
+    margin-right: -260px;
   }
 }
 
@@ -308,7 +308,7 @@ blockquote.diary-quote cite {
 
 /* COMPONENT CONTAINERS */
 .component-container {
-  max-width: 980px; margin: 40px auto; padding: 24px;
+  max-width: 860px; margin: 40px auto; padding: 24px;
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: 8px;
 }

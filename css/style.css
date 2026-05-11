@@ -248,6 +248,21 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   text-indent: 0;
 }
 .micro-note p:last-child { margin-bottom: 0; }
+.cost-list {
+  margin: 10px 0 10px;
+  padding-left: 18px;
+  color: var(--text-light);
+  font-family: var(--sans);
+}
+.cost-list li {
+  font-size: 12px;
+  line-height: 1.8;
+  margin-bottom: 6px;
+}
+.cost-list b {
+  color: var(--cream);
+  font-weight: 700;
+}
 .narrative::after {
   content: '';
   display: block;

@@ -244,6 +244,36 @@ function toggleSubsection(id) {
   el.style.display = el.style.display === 'none' ? 'block' : 'none';
 }
 
+function findPreviousNoteAnchor(note) {
+  var node = note.previousElementSibling;
+  while (node) {
+    if (node.classList && node.classList.contains('note-anchor')) return node;
+    if (node.querySelectorAll) {
+      var anchors = node.querySelectorAll('.note-anchor');
+      if (anchors.length) return anchors[anchors.length - 1];
+    }
+    node = node.previousElementSibling;
+  }
+  return null;
+}
+
+function alignMarginalNotes() {
+  var wideLayout = window.matchMedia('(min-width: 1400px)').matches;
+  document.querySelectorAll('.micro-note.note-left, .micro-note.note-right').forEach(function(note) {
+    note.style.top = '';
+    if (!wideLayout) return;
+
+    var narrative = note.closest('.narrative');
+    var anchor = findPreviousNoteAnchor(note);
+    if (!narrative || !anchor) return;
+
+    var narrativeBox = narrative.getBoundingClientRect();
+    var anchorBox = anchor.getBoundingClientRect();
+    var top = anchorBox.top - narrativeBox.top + narrative.scrollTop;
+    note.style.top = Math.max(0, top) + 'px';
+  });
+}
+
 document.addEventListener('click', function(e) {
   if (e.target.classList.contains('src-warn')) {
     e.target.classList.toggle('show-tip');
@@ -253,3 +283,21 @@ document.addEventListener('click', function(e) {
     el.classList.remove('show-tip');
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  alignMarginalNotes();
+  window.setTimeout(alignMarginalNotes, 80);
+  window.setTimeout(alignMarginalNotes, 300);
+});
+
+window.addEventListener('load', alignMarginalNotes);
+
+var marginalResizeTimer;
+window.addEventListener('resize', function() {
+  window.clearTimeout(marginalResizeTimer);
+  marginalResizeTimer = window.setTimeout(alignMarginalNotes, 120);
+});
+
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(alignMarginalNotes);
+}

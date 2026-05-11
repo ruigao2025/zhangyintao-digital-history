@@ -170,6 +170,15 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   margin-bottom: 16px; text-indent: 2em;
 }
 .narrative p.no-indent { text-indent: 0; }
+.note-anchor {
+  color: var(--cream);
+  font-weight: 700;
+  background: linear-gradient(180deg, transparent 48%, rgba(201,168,76,.18) 48%);
+  border-bottom: 1px solid rgba(201,168,76,.5);
+  padding: 0 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
 
 /* MICRO HISTORY NOTES */
 .micro-note {

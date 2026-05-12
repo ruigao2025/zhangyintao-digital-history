@@ -294,6 +294,21 @@ function alignMarginalNotes() {
   });
 }
 
+function ensureRouteMapContainers() {
+  ['map', 'map-2', 'map-3', 'map-gz'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+
+    var isMobile = window.matchMedia('(max-width: 768px)').matches;
+    var expectedHeight = isMobile ? '300px' : '400px';
+    el.style.minHeight = expectedHeight;
+
+    if (el.getBoundingClientRect().height < 80) {
+      el.style.height = expectedHeight;
+    }
+  });
+}
+
 document.addEventListener('click', function(e) {
   if (e.target.classList.contains('src-warn')) {
     e.target.classList.toggle('show-tip');
@@ -305,17 +320,24 @@ document.addEventListener('click', function(e) {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+  ensureRouteMapContainers();
   alignMarginalNotes();
   window.setTimeout(alignMarginalNotes, 80);
   window.setTimeout(alignMarginalNotes, 300);
 });
 
-window.addEventListener('load', alignMarginalNotes);
+window.addEventListener('load', function() {
+  ensureRouteMapContainers();
+  alignMarginalNotes();
+});
 
 var marginalResizeTimer;
 window.addEventListener('resize', function() {
   window.clearTimeout(marginalResizeTimer);
-  marginalResizeTimer = window.setTimeout(alignMarginalNotes, 120);
+  marginalResizeTimer = window.setTimeout(function() {
+    ensureRouteMapContainers();
+    alignMarginalNotes();
+  }, 120);
 });
 
 if (document.fonts && document.fonts.ready) {

@@ -259,7 +259,8 @@ function findPreviousNoteAnchor(note) {
 
 function alignMarginalNotes() {
   var wideLayout = window.matchMedia('(min-width: 1400px)').matches;
-  document.querySelectorAll('.micro-note.note-left, .micro-note.note-right').forEach(function(note) {
+  var notes = Array.prototype.slice.call(document.querySelectorAll('.micro-note.note-left, .micro-note.note-right'));
+  notes.forEach(function(note) {
     note.style.top = '';
     if (!wideLayout) return;
 
@@ -271,6 +272,25 @@ function alignMarginalNotes() {
     var anchorBox = anchor.getBoundingClientRect();
     var top = anchorBox.top - narrativeBox.top + narrative.scrollTop;
     note.style.top = Math.max(0, top) + 'px';
+  });
+
+  if (!wideLayout) return;
+
+  document.querySelectorAll('.narrative').forEach(function(narrative) {
+    ['note-left', 'note-right'].forEach(function(sideClass) {
+      var sideNotes = Array.prototype.slice.call(narrative.querySelectorAll('.micro-note.' + sideClass));
+      sideNotes.sort(function(a, b) {
+        return parseFloat(a.style.top || '0') - parseFloat(b.style.top || '0');
+      });
+
+      var lastBottom = -Infinity;
+      sideNotes.forEach(function(note) {
+        var currentTop = parseFloat(note.style.top || '0');
+        var nextTop = Math.max(currentTop, lastBottom + 18);
+        note.style.top = nextTop + 'px';
+        lastBottom = nextTop + note.getBoundingClientRect().height;
+      });
+    });
   });
 }
 

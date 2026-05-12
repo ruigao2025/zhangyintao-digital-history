@@ -608,6 +608,7 @@ footer .dedication {
   .narrative { max-width: none; }
   .narrative p { font-size: 15px; }
   .micro-note.marginal-note,
+  .micro-note.context-card,
   .micro-note.deep-dive {
     float: none;
     width: auto;

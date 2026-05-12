@@ -416,7 +416,14 @@ blockquote.diary-quote cite {
 }
 
 /* MAP */
-#map { height: 400px; border-radius: 6px; z-index: 1; }
+#map,
+#map-2,
+#map-3,
+#map-gz {
+  height: 400px;
+  border-radius: 6px;
+  z-index: 1;
+}
 .leaflet-popup-content { font-family: var(--sans); font-size: 13px; }
 
 /* NETWORK */
@@ -608,7 +615,12 @@ footer .dedication {
   .chapter-node { min-width: 260px; }
   .subsection-title { font-size: 18px; }
   nav .links a { font-size: 11px; padding: 3px 6px; }
-  #map { height: 300px; }
+  #map,
+  #map-2,
+  #map-3,
+  #map-gz {
+    height: 300px;
+  }
   #network-graph { height: 350px; }
   .section { padding: 40px 16px 30px; }
   .narrative { max-width: none; }

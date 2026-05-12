@@ -182,17 +182,6 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   position: relative;
   overflow: hidden;
 }
-.chapter-node .ch-index {
-  position: absolute;
-  top: 9px;
-  right: 12px;
-  color: rgba(201,168,76,.22);
-  font-family: var(--serif);
-  font-size: 28px;
-  line-height: 1;
-  letter-spacing: 0;
-  font-weight: 700;
-}
 .chapter-node::before {
   content: '';
   position: absolute;

@@ -87,11 +87,24 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 .hero {
   min-height: 100vh; display: flex; align-items: center; justify-content: center;
   text-align: center; position: relative; overflow: hidden;
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a0a0a 50%, #0a0a0a 100%);
+  background: #070707;
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, rgba(178,34,34,.08) 0%, transparent 70%);
+  background:
+    linear-gradient(180deg, rgba(5,5,5,.68), rgba(12,4,4,.82) 52%, rgba(5,5,5,.92)),
+    linear-gradient(90deg, rgba(0,0,0,.92), rgba(0,0,0,.28) 45%, rgba(0,0,0,.9)),
+    url('../assets/images/zhang-diary-facsimile.png') center 47% / cover no-repeat;
+  filter: sepia(.22) saturate(.82) contrast(1.02);
+  transform: scale(1.03);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(178,34,34,.12) 0%, transparent 55%),
+    linear-gradient(180deg, transparent 74%, var(--bg-body) 100%);
 }
 .hero-content { position: relative; z-index: 1; padding: 24px; max-width: 800px; }
 .hero-content::before {
@@ -106,7 +119,7 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 .hero h1 {
   font-size: 48px; font-weight: 700; color: var(--cream);
   letter-spacing: 10px; margin-bottom: 16px;
-  text-shadow: 0 0 40px rgba(178,34,34,.3);
+  text-shadow: 0 0 40px rgba(178,34,34,.42), 0 2px 16px rgba(0,0,0,.7);
 }
 .hero .subtitle {
   font-size: 16px; color: var(--gold); letter-spacing: 6px; margin-bottom: 24px;
@@ -143,6 +156,17 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   flex-wrap: nowrap;
   gap: 8px;
   max-width: 960px;
+  position: relative;
+  padding-top: 20px;
+}
+.chapter-timeline.home-timeline::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,.45), transparent);
 }
 .chapter-node {
   flex: 1; min-width: 180px; padding: 24px 16px;
@@ -157,6 +181,17 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   min-width: 0;
   position: relative;
   overflow: hidden;
+}
+.chapter-node .ch-index {
+  position: absolute;
+  top: 9px;
+  right: 12px;
+  color: rgba(201,168,76,.22);
+  font-family: var(--serif);
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: 0;
+  font-weight: 700;
 }
 .chapter-node::before {
   content: '';

@@ -34,6 +34,18 @@ body {
   color: var(--text);
   line-height: 1.8;
 }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, rgba(245,240,232,.018) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(0deg, rgba(201,168,76,.018) 0 1px, transparent 1px 96px),
+    linear-gradient(180deg, rgba(201,168,76,.025), transparent 34%, rgba(178,34,34,.025));
+  opacity: .72;
+}
 a { color: var(--gold); text-decoration: none; transition: color .3s; }
 a:hover { color: var(--red); }
 
@@ -82,6 +94,15 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   background: radial-gradient(ellipse at center, rgba(178,34,34,.08) 0%, transparent 70%);
 }
 .hero-content { position: relative; z-index: 1; padding: 24px; max-width: 800px; }
+.hero-content::before {
+  content: '';
+  display: block;
+  width: 42px;
+  height: 1px;
+  margin: 0 auto 24px;
+  background: var(--gold);
+  opacity: .55;
+}
 .hero h1 {
   font-size: 48px; font-weight: 700; color: var(--cream);
   letter-spacing: 10px; margin-bottom: 16px;
@@ -91,8 +112,26 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   font-size: 16px; color: var(--gold); letter-spacing: 6px; margin-bottom: 24px;
   font-family: var(--sans);
 }
+.hero .subtitle span {
+  font-size: .75em;
+  letter-spacing: 4px;
+}
 .hero .years {
   font-size: 20px; color: var(--red); font-weight: 700; letter-spacing: 8px; margin-bottom: 40px;
+}
+.hero-summary {
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 2.2;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+.scroll-cue {
+  font-size: 12px;
+  color: var(--text-light);
+  letter-spacing: 2px;
+  font-family: var(--sans);
 }
 
 /* CHAPTER NAV TIMELINE (for index.html) */
@@ -100,16 +139,41 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   display: flex; justify-content: center; gap: 0; max-width: 900px; margin: 0 auto 60px;
   flex-wrap: wrap;
 }
+.chapter-timeline.home-timeline {
+  flex-wrap: nowrap;
+  gap: 8px;
+  max-width: 960px;
+}
 .chapter-node {
   flex: 1; min-width: 180px; padding: 24px 16px;
   text-align: center; cursor: pointer; transition: all .3s;
-  border: 1px solid var(--border); border-radius: 8px;
-  background: var(--bg-card); margin: 4px;
+  border: 1px solid var(--border); border-radius: 6px;
+  background:
+    linear-gradient(180deg, rgba(245,240,232,.025), transparent 38%),
+    var(--bg-card);
+  margin: 4px;
   font-family: var(--sans);
+  text-decoration: none;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+}
+.chapter-node::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,.7), transparent);
+  opacity: .42;
 }
 .chapter-node:hover {
-  border-color: var(--red); transform: translateY(-3px);
-  box-shadow: 0 6px 24px rgba(178,34,34,.15);
+  border-color: rgba(201,168,76,.5); transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.28);
+  background:
+    linear-gradient(180deg, rgba(201,168,76,.05), transparent 42%),
+    var(--bg-card);
 }
 .chapter-node .ch-years {
   font-size: 13px; color: var(--red); font-weight: 700; letter-spacing: 2px; margin-bottom: 8px;
@@ -119,6 +183,57 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 }
 .chapter-node .ch-question {
   font-size: 11px; color: var(--text-light); line-height: 1.6;
+}
+
+.project-brief,
+.tool-index {
+  max-width: 740px;
+  margin: 40px auto;
+  padding: 30px 34px;
+  background:
+    linear-gradient(90deg, rgba(201,168,76,.055), transparent 28%),
+    var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid rgba(201,168,76,.58);
+  border-radius: 6px;
+}
+.project-brief h3,
+.tool-index h3 {
+  font-size: 16px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+  font-family: var(--sans);
+}
+.project-brief p {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  text-indent: 2em;
+}
+.project-brief p:last-child { margin-bottom: 0; }
+.tool-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.tool-card {
+  padding: 14px 14px 13px;
+  background: #0d0d0d;
+  border: 1px solid rgba(51,51,51,.75);
+  border-radius: 4px;
+}
+.tool-title {
+  font-size: 14px;
+  color: var(--red);
+  margin-bottom: 4px;
+  font-family: var(--sans);
+}
+.tool-desc {
+  font-size: 12px;
+  color: var(--text-light);
+  line-height: 1.8;
 }
 
 /* CHAPTER PAGE */
@@ -360,10 +475,17 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
 /* DIARY QUOTE */
 blockquote.diary-quote {
   margin: 24px 0; padding: 16px 20px;
-  background: rgba(178,34,34,.06);
+  background:
+    linear-gradient(90deg, rgba(178,34,34,.08), rgba(178,34,34,.025) 44%, transparent),
+    #111;
   border-left: 3px solid var(--red);
+  border-top: 1px solid rgba(201,168,76,.12);
+  border-bottom: 1px solid rgba(201,168,76,.08);
   font-size: 14px; line-height: 2; color: var(--text);
   font-style: normal;
+}
+blockquote.diary-quote p {
+  text-indent: 0;
 }
 blockquote.diary-quote cite {
   display: block; margin-top: 8px; font-size: 12px;
@@ -374,8 +496,12 @@ blockquote.diary-quote cite {
 /* COMPONENT CONTAINERS */
 .component-container {
   max-width: 860px; margin: 40px auto; padding: 24px;
-  background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(245,240,232,.025), transparent 30%),
+    var(--bg-card);
+  border: 1px solid var(--border);
+  border-top-color: rgba(201,168,76,.38);
+  border-radius: 6px;
 }
 .component-title {
   font-size: 14px; color: var(--gold); letter-spacing: 2px;
@@ -625,6 +751,16 @@ footer .dedication {
   .section { padding: 40px 16px 30px; }
   .narrative { max-width: none; }
   .narrative p { font-size: 15px; }
+  .chapter-timeline.home-timeline {
+    flex-wrap: wrap;
+  }
+  .tool-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-brief,
+  .tool-index {
+    padding: 24px 22px;
+  }
   .micro-note.marginal-note,
   .micro-note.context-card,
   .micro-note.deep-dive {

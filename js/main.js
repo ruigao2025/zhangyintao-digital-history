@@ -246,22 +246,33 @@ function toggleSubsection(id) {
 
 function findPreviousNoteAnchor(note) {
   var node = note.previousElementSibling;
+  var fallback = null;
   while (node) {
+    if (node.classList && node.classList.contains('micro-note')) {
+      node = node.previousElementSibling;
+      continue;
+    }
     if (node.classList && node.classList.contains('note-anchor')) return node;
     if (node.querySelectorAll) {
       var anchors = node.querySelectorAll('.note-anchor');
       if (anchors.length) return anchors[anchors.length - 1];
     }
+    if (!fallback) fallback = node;
     node = node.previousElementSibling;
   }
-  return null;
+  return fallback;
 }
 
 function alignMarginalNotes() {
-  var wideLayout = window.matchMedia('(min-width: 1400px)').matches;
-  var notes = Array.prototype.slice.call(document.querySelectorAll('.micro-note.note-left, .micro-note.note-right'));
+  var wideLayout = window.matchMedia('(min-width: 1000px)').matches;
+  var notes = Array.prototype.slice.call(document.querySelectorAll('.micro-note.is-collapsible'));
+  document.querySelectorAll('.narrative').forEach(function(narrative) {
+    narrative.style.minHeight = '';
+  });
+
   notes.forEach(function(note) {
     note.style.top = '';
+    note.dataset.naturalTop = '';
     if (!wideLayout) return;
 
     var narrative = note.closest('.narrative');
@@ -271,25 +282,137 @@ function alignMarginalNotes() {
     var narrativeBox = narrative.getBoundingClientRect();
     var anchorBox = anchor.getBoundingClientRect();
     var top = anchorBox.top - narrativeBox.top + narrative.scrollTop;
-    note.style.top = Math.max(0, top) + 'px';
+    var naturalTop = Math.max(0, top);
+    note.dataset.naturalTop = naturalTop;
+    note.style.top = naturalTop + 'px';
   });
 
   if (!wideLayout) return;
 
   document.querySelectorAll('.narrative').forEach(function(narrative) {
-    ['note-left', 'note-right'].forEach(function(sideClass) {
-      var sideNotes = Array.prototype.slice.call(narrative.querySelectorAll('.micro-note.' + sideClass));
-      sideNotes.sort(function(a, b) {
-        return parseFloat(a.style.top || '0') - parseFloat(b.style.top || '0');
-      });
+    var sideNotes = Array.prototype.slice.call(narrative.querySelectorAll('.micro-note.is-collapsible'));
+    sideNotes.sort(function(a, b) {
+      return parseFloat(a.dataset.naturalTop || '0') - parseFloat(b.dataset.naturalTop || '0');
+    });
 
-      var lastBottom = -Infinity;
-      sideNotes.forEach(function(note) {
-        var currentTop = parseFloat(note.style.top || '0');
-        var nextTop = Math.max(currentTop, lastBottom + 18);
-        note.style.top = nextTop + 'px';
-        lastBottom = nextTop + note.getBoundingClientRect().height;
-      });
+    var lastBottom = -Infinity;
+    sideNotes.forEach(function(note) {
+      var naturalTop = parseFloat(note.dataset.naturalTop || '0');
+      var adjustedTop = Math.max(naturalTop, lastBottom + 12);
+      note.style.top = adjustedTop + 'px';
+      lastBottom = adjustedTop + note.getBoundingClientRect().height;
+    });
+
+    if (Number.isFinite(lastBottom)) {
+      narrative.style.minHeight = Math.ceil(lastBottom + 28) + 'px';
+    }
+  });
+}
+
+function collapseNote(note) {
+  if (!note || !note.classList.contains('is-expanded')) return;
+  var toggle = note.querySelector('.micro-note-toggle');
+  var content = note.querySelector('.micro-note-content');
+  note.classList.remove('is-expanded');
+  note.classList.add('is-collapsed');
+  if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  if (content) content.hidden = true;
+  setLinkedAnchorActive(note, false);
+}
+
+function getMicroNoteType(labelText) {
+  if (labelText.indexOf('历史背景') !== -1) return 'background';
+  if (labelText.indexOf('史料辨析') !== -1 || labelText.indexOf('史料旁注') !== -1) return 'source';
+  if (labelText.indexOf('空间旁注') !== -1) return 'space';
+  if (labelText.indexOf('微观') !== -1 || labelText.indexOf('Deep') !== -1 || labelText.indexOf('DEEP') !== -1) return 'deep';
+  return 'analysis';
+}
+
+function linkNoteToAnchor(note, noteType, idx) {
+  var anchor = null;
+  if (note.dataset.anchorTarget) {
+    anchor = document.getElementById(note.dataset.anchorTarget);
+  }
+  if (!anchor) anchor = findPreviousNoteAnchor(note);
+  if (!anchor || !anchor.classList || !anchor.classList.contains('note-anchor')) return;
+  if (!anchor.id) anchor.id = 'note-anchor-' + idx + '-' + Math.random().toString(36).slice(2, 7);
+  anchor.dataset.noteType = anchor.dataset.noteType || noteType;
+  note.dataset.anchorId = anchor.id;
+}
+
+function setLinkedAnchorActive(note, active) {
+  if (!note || !note.dataset.anchorId) return;
+  var anchor = document.getElementById(note.dataset.anchorId);
+  if (!anchor) return;
+  anchor.classList.toggle('is-linked-active', active);
+}
+
+function initCollapsibleNotes() {
+  var notes = Array.prototype.slice.call(document.querySelectorAll('.micro-note'));
+
+  notes.forEach(function(note, idx) {
+    if (note.dataset.collapsibleReady === 'true') return;
+
+    var directChildren = Array.prototype.slice.call(note.children);
+    var labelEl = directChildren.find(function(child) {
+      return child.classList && child.classList.contains('micro-label');
+    });
+    var titleEl = directChildren.find(function(child) {
+      return child.tagName && child.tagName.toLowerCase() === 'h3';
+    });
+    if (!titleEl) return;
+
+    var labelText = labelEl ? labelEl.textContent.trim() : (note.classList.contains('deep-dive') ? '微观史' : '辅助说明');
+    var titleText = titleEl.textContent.trim();
+    var noteType = getMicroNoteType(labelText);
+    var contentId = 'micro-note-content-' + idx + '-' + Math.random().toString(36).slice(2, 7);
+
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'micro-note-toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', contentId);
+    toggle.innerHTML =
+      '<span>' +
+        '<span class="micro-note-type">' + labelText + '</span>' +
+        '<span class="micro-note-title">' + titleText + '</span>' +
+      '</span>' +
+      '<span class="micro-note-chevron" aria-hidden="true">›</span>';
+
+    var content = document.createElement('div');
+    content.className = 'micro-note-content';
+    content.id = contentId;
+    content.hidden = true;
+
+    Array.prototype.slice.call(note.childNodes).forEach(function(child) {
+      if (child === labelEl || child === titleEl) {
+        note.removeChild(child);
+        return;
+      }
+      content.appendChild(child);
+    });
+
+    note.dataset.noteType = noteType;
+    note.dataset.collapsibleReady = 'true';
+    linkNoteToAnchor(note, noteType, idx);
+    note.classList.add('is-collapsible', 'is-collapsed');
+    note.appendChild(toggle);
+    note.appendChild(content);
+
+    toggle.addEventListener('click', function() {
+      var willExpand = !note.classList.contains('is-expanded');
+      if (willExpand) {
+        Array.prototype.slice.call(document.querySelectorAll('.micro-note.is-expanded')).forEach(function(openNote) {
+          if (openNote !== note) collapseNote(openNote);
+        });
+      }
+      var expanded = willExpand;
+      note.classList.toggle('is-expanded', expanded);
+      note.classList.toggle('is-collapsed', !expanded);
+      toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      content.hidden = !expanded;
+      setLinkedAnchorActive(note, expanded);
+      window.setTimeout(alignMarginalNotes, 40);
     });
   });
 }
@@ -320,6 +443,7 @@ document.addEventListener('click', function(e) {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+  initCollapsibleNotes();
   ensureRouteMapContainers();
   alignMarginalNotes();
   window.setTimeout(alignMarginalNotes, 80);
@@ -327,6 +451,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.addEventListener('load', function() {
+  initCollapsibleNotes();
   ensureRouteMapContainers();
   alignMarginalNotes();
 });

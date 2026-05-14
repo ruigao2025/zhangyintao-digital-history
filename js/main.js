@@ -78,11 +78,13 @@ function loadNetwork(chapterFilter) {
           color: {
             background: isSelf ? '#8b0000' : (grp.color || '#444'),
             border: isSelf ? '#b22222' : '#222',
-            highlight: { background: isSelf ? '#b22222' : (grp.color || '#666'), border: '#b22222' }
+            highlight: { background: isSelf ? '#b22222' : (grp.color || '#666'), border: '#c9a84c' },
+            hover: { background: isSelf ? '#b22222' : (grp.color || '#666'), border: '#c9a84c' }
           },
-          font: { color: isSelf ? '#f5f0e8' : '#d4cfc4', size: isSelf ? 16 : 13, face: 'Noto Sans SC' },
-          size: isSelf ? 30 : 18,
+          font: { color: isSelf ? '#f5f0e8' : '#d4cfc4', size: isSelf ? 20 : 16, face: 'Noto Sans SC', strokeWidth: 3, strokeColor: '#0d0d0d' },
+          size: isSelf ? 38 : 24,
           borderWidth: isSelf ? 3 : 1,
+          borderWidthSelected: isSelf ? 5 : 3,
           title: n.relation || ''
         };
       }));
@@ -93,7 +95,9 @@ function loadNetwork(chapterFilter) {
           to: l.target,
           label: l.type,
           font: { color: '#a09a8c', size: 10, face: 'Noto Sans SC', strokeWidth: 0 },
-          color: { color: '#444', highlight: '#b22222' },
+          color: { color: '#444', highlight: '#c9a84c', hover: '#c9a84c' },
+          selectionWidth: 2,
+          hoverWidth: 2,
           width: Math.min(l.strength, 3),
           arrows: 'to',
           smooth: { type: 'curvedCW', roundness: 0.2 }
@@ -103,15 +107,30 @@ function loadNetwork(chapterFilter) {
       var options = {
         physics: {
           solver: 'forceAtlas2Based',
-          forceAtlas2Based: { gravitationalConstant: -80, centralGravity: 0.01, springLength: 120 },
+          forceAtlas2Based: { gravitationalConstant: -92, centralGravity: 0.012, springLength: 150 },
           stabilization: { iterations: 100 }
         },
-        interaction: { hover: true, tooltipDelay: 100 },
+        interaction: {
+          hover: true,
+          hoverConnectedEdges: true,
+          selectConnectedEdges: true,
+          tooltipDelay: 80,
+          zoomView: false,
+          keyboard: false
+        },
         nodes: { shape: 'dot' },
         edges: { smooth: { type: 'curvedCW', roundness: 0.2 } }
       };
 
-      new vis.Network(container, { nodes: visNodes, edges: visEdges }, options);
+      var network = new vis.Network(container, { nodes: visNodes, edges: visEdges }, options);
+      network.on('hoverNode', function(params) {
+        container.classList.add('is-network-hovering');
+        container.style.cursor = 'pointer';
+      });
+      network.on('blurNode', function() {
+        container.classList.remove('is-network-hovering');
+        container.style.cursor = '';
+      });
     });
 }
 
@@ -432,6 +451,85 @@ function ensureRouteMapContainers() {
   });
 }
 
+function initSideRail() {
+  if (document.querySelector('.side-rail')) return;
+
+  var links = [
+    ['introduction.html', '引言', '1902—1918', 'story', [
+      ['introduction.html#s0-1', '唐家务村']
+    ]],
+    ['chapter1.html', '破壁', '1919—1922', 'story', [
+      ['chapter1.html#s1-1', '天津：被动员'],
+      ['chapter1.html#s1-2', '工运：升级']
+    ]],
+    ['chapter2.html', '狂飙', '1922—1924春', 'story', [
+      ['chapter2.html#s2-1', '乡间：他看到了什么'],
+      ['chapter2.html#s2-2', '北上奔走'],
+      ['chapter2.html#s2-3', '南下黄埔']
+    ]],
+    ['chapter3.html', '觉醒', '1924.3—1924.9', 'story', [
+      ['chapter3.html#s3-1', '上海等考'],
+      ['chapter3.html#s3-2', '黄埔学习'],
+      ['chapter3.html#s3-3', '商团事变']
+    ]],
+    ['chapter4.html', '燎原', '1925—1926', 'story', [
+      ['chapter4.html#s4-1', '从军校到河南'],
+      ['chapter4.html#s4-2', '农民自卫军'],
+      ['chapter4.html#s4-3', '为什么牺牲']
+    ]],
+    ['appendix-diary.html', '日记', '日记原文', 'appendix', [
+      ['appendix-diary.html', '日记摘录']
+    ]],
+    ['appendix-sources.html', '史料', '史料说明', 'appendix', [
+      ['appendix-sources.html', '史料与方法']
+    ]]
+  ];
+  var current = window.location.pathname.split('/').pop() || 'index.html';
+
+  var rail = document.createElement('aside');
+  rail.className = 'side-rail';
+  rail.setAttribute('aria-label', '章节快速导航');
+
+  links.forEach(function(item) {
+    var group = document.createElement('div');
+    group.className = 'side-rail-item';
+    if (item[3] === 'appendix') group.classList.add('side-rail-appendix');
+
+    var main = document.createElement('a');
+    main.className = 'side-rail-main';
+    main.href = item[0];
+    if (current === item[0]) main.classList.add('active');
+
+    var title = document.createElement('span');
+    title.className = 'side-rail-title';
+    title.textContent = item[1];
+
+    var meta = document.createElement('span');
+    meta.className = 'side-rail-meta';
+    meta.textContent = item[2];
+
+    main.appendChild(title);
+    main.appendChild(meta);
+    group.appendChild(main);
+
+    if (item[4] && item[4].length) {
+      var submenu = document.createElement('div');
+      submenu.className = 'side-rail-submenu';
+      item[4].forEach(function(child) {
+        var childLink = document.createElement('a');
+        childLink.href = child[0];
+        childLink.textContent = child[1];
+        submenu.appendChild(childLink);
+      });
+      group.appendChild(submenu);
+    }
+
+    rail.appendChild(group);
+  });
+
+  document.body.appendChild(rail);
+}
+
 document.addEventListener('click', function(e) {
   if (e.target.classList.contains('src-warn')) {
     e.target.classList.toggle('show-tip');
@@ -443,6 +541,7 @@ document.addEventListener('click', function(e) {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+  initSideRail();
   initCollapsibleNotes();
   ensureRouteMapContainers();
   alignMarginalNotes();

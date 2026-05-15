@@ -1115,6 +1115,114 @@ blockquote.diary-quote cite {
   letter-spacing: 3px;
 }
 
+.diary-volume-fold {
+  margin-bottom: 16px;
+  border: 1px solid rgba(201,166,74,.28);
+  border-radius: 8px;
+  background: rgba(255,255,255,.025);
+}
+
+.diary-volume-summary,
+.diary-month-summary,
+.diary-day-summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.diary-volume-summary::-webkit-details-marker,
+.diary-month-summary::-webkit-details-marker,
+.diary-day-summary::-webkit-details-marker {
+  display: none;
+}
+
+.diary-volume-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  position: relative;
+}
+
+.diary-volume-summary::after,
+.diary-month-summary::after,
+.diary-day-summary::after {
+  content: '›';
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  transition: transform .18s ease;
+}
+
+.diary-volume-fold[open] > .diary-volume-summary::after,
+.diary-month-fold[open] > .diary-month-summary::after,
+.diary-day-fold[open] > .diary-day-summary::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.diary-volume-summary-title {
+  color: var(--gold);
+  font-size: 19px;
+  letter-spacing: 3px;
+}
+
+.diary-volume-summary-note {
+  color: var(--text-light);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.diary-volume-body {
+  padding: 0 18px 18px;
+}
+
+.diary-month-fold {
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(0,0,0,.18);
+}
+
+.diary-month-summary {
+  position: relative;
+  padding: 14px 18px;
+  color: var(--cream);
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+.diary-month-body {
+  padding: 0 12px 12px;
+}
+
+.diary-day-fold {
+  margin-top: 10px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px;
+  background: rgba(255,255,255,.02);
+}
+
+.diary-day-summary {
+  position: relative;
+  padding: 12px 42px 12px 14px;
+  color: var(--gold);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.diary-day-body {
+  padding: 0 12px 12px;
+}
+
+.diary-day-fold .diary-entry {
+  margin-bottom: 0;
+}
+
+.diary-day-fold .diary-entry-date {
+  display: none;
+}
+
 .diary-entry {
   margin-bottom: 14px;
   padding: 14px 16px;

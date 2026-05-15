@@ -234,7 +234,7 @@ function initSearch() {
             if (idx !== -1) {
               diaryMatches.push({
                 entry: entry,
-                date: dateEl ? dateEl.textContent : '日记条目',
+                date: entry.dataset.diaryLabel || (dateEl ? dateEl.textContent : '日记条目'),
                 text: text,
                 index: idx
               });
@@ -267,6 +267,7 @@ function initSearch() {
             item.appendChild(dateDiv);
             item.appendChild(ctxDiv);
             item.addEventListener('click', function() {
+              openDiaryAncestors(match.entry);
               match.entry.scrollIntoView({ behavior: 'smooth', block: 'center' });
               match.entry.classList.add('diary-entry-focus');
               window.setTimeout(function() {
@@ -332,6 +333,138 @@ function initSearch() {
         return escapeHtml(snippet).replace(new RegExp('(' + safeQuery + ')', 'g'), '<mark>$1</mark>');
       }
     });
+}
+
+function initDiaryHierarchy() {
+  var volumes = Array.prototype.slice.call(document.querySelectorAll('.diary-volume'));
+  if (!volumes.length || document.querySelector('.diary-volume-fold')) return;
+
+  var initialMonths = [
+    { year: 1923, month: 8 },
+    { year: 1923, month: 10 },
+    { year: 1924, month: 2 },
+    { year: 1924, month: 6 },
+    { year: 1924, month: 8 }
+  ];
+
+  volumes.forEach(function(volume, index) {
+    var title = volume.querySelector('.diary-volume-title');
+    var note = volume.querySelector(':scope > .diary-source-note');
+    var entries = Array.prototype.slice.call(volume.querySelectorAll(':scope > .diary-entry'));
+    if (!title || !entries.length) return;
+
+    var fold = document.createElement('details');
+    fold.className = 'diary-volume-fold';
+
+    var summary = document.createElement('summary');
+    summary.className = 'diary-volume-summary';
+
+    var titleText = document.createElement('span');
+    titleText.className = 'diary-volume-summary-title';
+    titleText.textContent = title.textContent;
+    summary.appendChild(titleText);
+
+    if (note) {
+      var noteText = document.createElement('span');
+      noteText.className = 'diary-volume-summary-note';
+      noteText.innerHTML = note.innerHTML;
+      summary.appendChild(noteText);
+    }
+
+    var body = document.createElement('div');
+    body.className = 'diary-volume-body';
+
+    fold.appendChild(summary);
+    fold.appendChild(body);
+    volume.replaceWith(fold);
+
+    var seed = initialMonths[index] || initialMonths[0];
+    var currentYear = seed.year;
+    var currentMonth = seed.month;
+    var monthFolds = {};
+
+    entries.forEach(function(entry) {
+      var dateEl = entry.querySelector('.diary-entry-date');
+      var rawLabel = dateEl ? dateEl.textContent.trim() : '日记条目';
+      var label = cleanDiaryDateLabel(rawLabel);
+      if (dateEl) dateEl.textContent = label;
+      entry.dataset.diaryLabel = label;
+      var explicitMonth = detectExplicitDiaryMonth(label);
+      var isMeta = isDiaryMetaEntry(label);
+
+      if (explicitMonth) {
+        if (explicitMonth < currentMonth && currentMonth - explicitMonth >= 6) {
+          currentYear += 1;
+        }
+        currentMonth = explicitMonth;
+      }
+
+      var monthKey = isMeta ? '说明' : currentYear + '-' + currentMonth;
+      if (!monthFolds[monthKey]) {
+        monthFolds[monthKey] = createDiaryMonthFold(
+          isMeta ? '说明' : currentYear + '年' + currentMonth + '月'
+        );
+        body.appendChild(monthFolds[monthKey]);
+      }
+
+      var dayFold = document.createElement('details');
+      dayFold.className = 'diary-day-fold';
+
+      var daySummary = document.createElement('summary');
+      daySummary.className = 'diary-day-summary';
+      daySummary.textContent = label;
+
+      var dayBody = document.createElement('div');
+      dayBody.className = 'diary-day-body';
+      dayBody.appendChild(entry);
+
+      dayFold.appendChild(daySummary);
+      dayFold.appendChild(dayBody);
+      monthFolds[monthKey].querySelector('.diary-month-body').appendChild(dayFold);
+    });
+  });
+}
+
+function createDiaryMonthFold(label) {
+  var fold = document.createElement('details');
+  fold.className = 'diary-month-fold';
+
+  var summary = document.createElement('summary');
+  summary.className = 'diary-month-summary';
+  summary.textContent = label;
+
+  var body = document.createElement('div');
+  body.className = 'diary-month-body';
+
+  fold.appendChild(summary);
+  fold.appendChild(body);
+  return fold;
+}
+
+function detectExplicitDiaryMonth(label) {
+  var monthMap = {
+    '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6,
+    '七': 7, '八': 8, '九': 9, '十': 10, '十一': 11, '十二': 12
+  };
+  var direct = label.match(/^【?([一二三四五六七八九十]{1,2})月/);
+  if (direct && monthMap[direct[1]]) return monthMap[direct[1]];
+  return null;
+}
+
+function isDiaryMetaEntry(label) {
+  return label === '编者按与自序' || label.indexOf('《自序》') === 0;
+}
+
+function cleanDiaryDateLabel(label) {
+  return label.replace(/^中华民国十二年八月\(系阳历\)起\s*·\s*/, '');
+}
+
+function openDiaryAncestors(entry) {
+  var detail = entry.closest('details');
+  while (detail) {
+    detail.open = true;
+    detail = detail.parentElement ? detail.parentElement.closest('details') : null;
+  }
 }
 
 function toggleSubsection(id) {

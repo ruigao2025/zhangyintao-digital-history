@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>首页字体预览 · 张隐韬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&family=Long+Cang&family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'LocalMaShanZheng';
+  src: url('assets/fonts/MaShanZheng-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --gold: #c9a84c;
+  --cream: #f5f0e8;
+  --red: #b22222;
+  --text-light: #a09a8c;
+  --bg: #090909;
+  --card: #151313;
+  --border: #333;
+  --sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --serif: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--serif);
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(5,5,5,.72), rgba(12,4,4,.88) 55%, rgba(5,5,5,.95)),
+    url('assets/images/zhang-diary-facsimile.png') center 45% / cover no-repeat;
+  filter: sepia(.22) saturate(.78) contrast(1.02);
+}
+.wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 36px 24px 56px;
+}
+.intro {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.intro h1 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  font-family: var(--sans);
+}
+.intro p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.sample {
+  position: relative;
+  overflow: hidden;
+  min-height: 430px;
+  padding: 20px 20px 22px;
+  border: 1px solid rgba(245,240,232,.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(245,240,232,.03), transparent 45%),
+    rgba(12,12,12,.76);
+  box-shadow: 0 18px 42px rgba(0,0,0,.36);
+}
+.mini-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  color: var(--text-light);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 1px;
+  opacity: .78;
+}
+.logo {
+  color: var(--gold);
+  font-size: 18px;
+  letter-spacing: 4px;
+}
+.hero {
+  text-align: center;
+  padding: 10px 4px 0;
+}
+.subtitle {
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: 15px;
+  letter-spacing: 6px;
+  line-height: 1.8;
+  margin-bottom: 44px;
+}
+.subtitle span {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 5px;
+}
+.name {
+  margin: 0 0 30px;
+  color: var(--cream);
+  font-size: 82px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 10px;
+  text-shadow: 0 0 36px rgba(178,34,34,.38), 0 3px 16px rgba(0,0,0,.76);
+}
+.years {
+  color: var(--red);
+  font-size: 26px;
+  letter-spacing: 12px;
+  font-weight: 700;
+  font-family: var(--serif);
+}
+.note {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(201,168,76,.18);
+  color: var(--text-light);
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.font-local .name,
+.font-local .logo { font-family: 'LocalMaShanZheng', cursive; }
+.font-local .subtitle span { font-family: 'LocalMaShanZheng', cursive; }
+
+.font-mashan .name,
+.font-mashan .logo { font-family: 'Ma Shan Zheng', cursive; }
+.font-mashan .subtitle span { font-family: 'Ma Shan Zheng', cursive; }
+
+.font-zhimang .name,
+.font-zhimang .logo { font-family: 'Zhi Mang Xing', cursive; }
+.font-zhimang .subtitle span { font-family: 'Zhi Mang Xing', cursive; }
+.font-zhimang .name { letter-spacing: 6px; font-size: 88px; }
+
+.font-longcang .name,
+.font-longcang .logo { font-family: 'Long Cang', cursive; }
+.font-longcang .subtitle span { font-family: 'Long Cang', cursive; }
+.font-longcang .name { font-size: 92px; letter-spacing: 8px; }
+
+.font-liujian .name,
+.font-liujian .logo { font-family: 'Liu Jian Mao Cao', cursive; }
+.font-liujian .subtitle span { font-family: 'Liu Jian Mao Cao', cursive; }
+.font-liujian .name { font-size: 92px; letter-spacing: 5px; }
+
+.wide {
+  grid-column: 1 / -1;
+}
+.wide .hero {
+  max-width: 760px;
+  margin: 0 auto;
+}
+@media (max-width: 760px) {
+  .grid { grid-template-columns: 1fr; }
+  .wide { grid-column: auto; }
+  .name { font-size: 64px; }
+  .sample { min-height: 400px; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="intro">
+    <h1>首页行楷风格字体预览</h1>
+    <p>这里只是效果页，不改正式首页。重点看“张隐韬”和上方导航小字是否稳重、清楚、不过分书法化。</p>
+  </div>
+
+  <section class="grid">
+    <article class="sample font-local">
+      <div class="mini-nav"><span class="logo">张隐韬</span><span>引言 破壁 狂飙 觉醒 燎原</span></div>
+      <div class="hero">
+        <div class="subtitle">Diary, Routes, Networks<span>日记、路线与人际关系</span></div>
+        <h2 class="name">张隐韬</h2>
+        <div class="years">1902 — 1926</div>
+      </div>
+      <div class="note"><b>方案 A：Ma Shan Zheng 本地版。</b>项目里已经有字体文件，最稳定；字形厚重、有碑帖感，适合标题。</div>
+    </article>
+
+    <article class="sample font-zhimang">
+      <div class="mini-nav"><span class="logo">张隐韬</span><span>引言 破壁 狂飙 觉醒 燎原</span></div>
+      <div class="hero">
+        <div class="subtitle">Diary, Routes, Networks<span>日记、路线与人际关系</span></div>
+        <h2 class="name">张隐韬</h2>
+        <div class="years">1902 — 1926</div>
+      </div>
+      <div class="note"><b>方案 B：Zhi Mang Xing。</b>更接近行草，情绪强，但“韬”字辨识度可能偏低。</div>
+    </article>
+
+    <article class="sample font-longcang">
+      <div class="mini-nav"><span class="logo">张隐韬</span><span>引言 破壁 狂飙 觉醒 燎原</span></div>
+      <div class="hero">
+        <div class="subtitle">Diary, Routes, Networks<span>日记、路线与人际关系</span></div>
+        <h2 class="name">张隐韬</h2>
+        <div class="years">1902 — 1926</div>
+      </div>
+      <div class="note"><b>方案 C：Long Cang。</b>更飘逸、文气更重；如果觉得首页太沉，可以考虑。</div>
+    </article>
+
+    <article class="sample font-liujian">
+      <div class="mini-nav"><span class="logo">张隐韬</span><span>引言 破壁 狂飙 觉醒 燎原</span></div>
+      <div class="hero">
+        <div class="subtitle">Diary, Routes, Networks<span>日记、路线与人际关系</span></div>
+        <h2 class="name">张隐韬</h2>
+        <div class="years">1902 — 1926</div>
+      </div>
+      <div class="note"><b>方案 D：Liu Jian Mao Cao。</b>最有草书感，但公共网站标题可能太难读，不建议优先。</div>
+    </article>
+
+    <article class="sample font-mashan wide">
+      <div class="mini-nav"><span class="logo">张隐韬</span><span>引言 破壁 狂飙 觉醒 燎原　|　日记　史料</span></div>
+      <div class="hero">
+        <div class="subtitle">Diary, Routes, Networks<span>日记、路线与人际关系</span></div>
+        <h2 class="name">张隐韬</h2>
+        <div class="years">1902 — 1926</div>
+      </div>
+      <div class="note"><b>推荐方向：</b>标题“张隐韬”和左上角 logo 用 Ma Shan Zheng；正文、章节入口仍保持现在的宋体/黑体。这样有历史感，但不会牺牲可读性。</div>
+    </article>
+  </section>
+</main>
+</body>
+</html>

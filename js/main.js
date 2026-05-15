@@ -452,6 +452,7 @@ function ensureRouteMapContainers() {
 }
 
 function initSideRail() {
+  if (document.body.classList.contains('home-page')) return;
   if (document.querySelector('.side-rail')) return;
 
   var links = [
@@ -530,6 +531,94 @@ function initSideRail() {
   document.body.appendChild(rail);
 }
 
+function initPageTransitions() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var prefetched = {};
+
+  function getInternalPageLink(target) {
+    var link = target && target.closest ? target.closest('a[href]') : null;
+    if (!link) return null;
+    if (link.target && link.target !== '_self') return null;
+    if (link.hasAttribute('download')) return null;
+
+    var url;
+    try {
+      url = new URL(link.href, window.location.href);
+    } catch (err) {
+      return null;
+    }
+
+    if (url.origin !== window.location.origin) return null;
+    if (!(/\.html$/.test(url.pathname) || /\/$/.test(url.pathname))) return null;
+    return { link: link, url: url };
+  }
+
+  document.addEventListener('mouseover', function(e) {
+    var item = getInternalPageLink(e.target);
+    if (!item) return;
+    if (prefetched[item.url.href]) return;
+    prefetched[item.url.href] = true;
+    var hint = document.createElement('link');
+    hint.rel = 'prefetch';
+    hint.href = item.url.href;
+    document.head.appendChild(hint);
+  });
+
+  document.addEventListener('click', function(e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var item = getInternalPageLink(e.target);
+    if (!item) return;
+
+    var samePath = item.url.pathname === window.location.pathname && item.url.search === window.location.search;
+    if (samePath && item.url.hash) return;
+
+    e.preventDefault();
+    document.body.classList.add('is-page-leaving');
+    window.setTimeout(function() {
+      window.location.href = item.url.href;
+    }, 115);
+  });
+}
+
+function initHomeScrollEntry() {
+  if (!document.body.classList.contains('home-page')) return;
+
+  var isNavigating = false;
+  var touchStartY = null;
+
+  function goIntro() {
+    if (isNavigating) return;
+    isNavigating = true;
+    document.body.classList.add('is-page-leaving');
+    window.setTimeout(function() {
+      window.location.href = 'introduction.html';
+    }, 115);
+  }
+
+  window.addEventListener('wheel', function(e) {
+    if (e.deltaY > 18) {
+      e.preventDefault();
+      goIntro();
+    }
+  }, { passive: false });
+
+  window.addEventListener('touchstart', function(e) {
+    if (e.touches && e.touches.length) {
+      touchStartY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', function(e) {
+    if (touchStartY === null || !e.touches || !e.touches.length) return;
+    var delta = touchStartY - e.touches[0].clientY;
+    if (delta > 28) {
+      e.preventDefault();
+      goIntro();
+    }
+  }, { passive: false });
+}
+
 document.addEventListener('click', function(e) {
   if (e.target.classList.contains('src-warn')) {
     e.target.classList.toggle('show-tip');
@@ -541,6 +630,8 @@ document.addEventListener('click', function(e) {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+  initPageTransitions();
+  initHomeScrollEntry();
   initSideRail();
   initCollapsibleNotes();
   ensureRouteMapContainers();

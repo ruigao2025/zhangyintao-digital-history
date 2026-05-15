@@ -1063,7 +1063,9 @@ blockquote.diary-quote cite {
   top: 50%;
   right: 8px;
   transform: translateY(-50%);
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 22px;
   height: 22px;
   padding: 0;
@@ -1074,13 +1076,14 @@ blockquote.diary-quote cite {
   font-size: 16px;
   line-height: 1;
   letter-spacing: 0;
+  opacity: .58;
+  cursor: default;
 }
-.search-box #search-clear.visible {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.search-box #search-clear.has-value {
+  opacity: 1;
+  cursor: pointer;
 }
-.search-box #search-clear:hover {
+.search-box #search-clear.has-value:hover {
   color: var(--cream);
   border-color: rgba(201,166,74,.6);
 }
@@ -1207,6 +1210,10 @@ blockquote.diary-quote cite {
   padding: 0 18px 18px;
 }
 
+.diary-preface {
+  margin-top: 12px;
+}
+
 .diary-month-fold {
   margin-top: 12px;
   border: 1px solid var(--border);
@@ -1273,6 +1280,7 @@ blockquote.diary-quote cite {
   color: var(--text);
   font-size: 13px;
   line-height: 2.05;
+  text-indent: 2em;
 }
 
 .diary-entry p:last-child {
@@ -1282,6 +1290,11 @@ blockquote.diary-quote cite {
 .diary-note {
   color: var(--text-light) !important;
   font-size: 12px !important;
+}
+
+.diary-align-right {
+  text-align: right;
+  text-indent: 0 !important;
 }
 
 .diary-mark {

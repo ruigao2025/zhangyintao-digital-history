@@ -250,7 +250,8 @@ function initSearch() {
             if (idx !== -1) {
               diaryMatches.push({
                 entry: entry,
-                date: entry.dataset.diaryLabel || (dateEl ? dateEl.textContent : '日记条目'),
+                date: (entry.dataset.diaryMonthLabel ? entry.dataset.diaryMonthLabel + ' ' : '') +
+                  (entry.dataset.diaryLabel || (dateEl ? dateEl.textContent : '日记条目')),
                 text: text,
                 index: idx
               });
@@ -351,7 +352,9 @@ function initSearch() {
 
       function updateClearButton() {
         if (!clearBtn) return;
-        clearBtn.classList.toggle('visible', input.value.trim().length > 0);
+        var hasValue = input.value.trim().length > 0;
+        clearBtn.classList.toggle('has-value', hasValue);
+        clearBtn.disabled = !hasValue;
       }
     });
 }
@@ -403,15 +406,18 @@ function initDiaryHierarchy() {
     var currentYear = seed.year;
     var currentMonth = seed.month;
     var monthFolds = {};
+    var preface = null;
 
     entries.forEach(function(entry) {
       var dateEl = entry.querySelector('.diary-entry-date');
       var rawLabel = dateEl ? dateEl.textContent.trim() : '日记条目';
-      var label = normalizeDiaryDateLabel(cleanDiaryDateLabel(rawLabel));
+      var cleanedLabel = cleanDiaryDateLabel(rawLabel);
+      var explicitMonth = detectExplicitDiaryMonth(cleanedLabel);
+      var label = normalizeDiaryDateLabel(cleanedLabel);
       if (dateEl) dateEl.textContent = label;
       entry.dataset.diaryLabel = label;
-      var explicitMonth = detectExplicitDiaryMonth(label);
       var isMeta = isDiaryMetaEntry(label);
+      styleDiaryParagraphs(entry);
 
       if (explicitMonth) {
         if (explicitMonth < currentMonth && currentMonth - explicitMonth >= 6) {
@@ -420,28 +426,24 @@ function initDiaryHierarchy() {
         currentMonth = explicitMonth;
       }
 
-      var monthKey = isMeta ? '说明' : currentYear + '-' + currentMonth;
-      if (!monthFolds[monthKey]) {
-        monthFolds[monthKey] = createDiaryMonthFold(
-          isMeta ? '说明' : currentYear + '年' + currentMonth + '月'
-        );
-        body.appendChild(monthFolds[monthKey]);
+      entry.dataset.diaryMonthLabel = currentYear + '年' + currentMonth + '月';
+
+      if (isMeta) {
+        if (!preface) {
+          preface = document.createElement('div');
+          preface.className = 'diary-preface';
+          body.appendChild(preface);
+        }
+        preface.appendChild(createDiaryDayFold(entry, label));
+        return;
       }
 
-      var dayFold = document.createElement('details');
-      dayFold.className = 'diary-day-fold';
-
-      var daySummary = document.createElement('summary');
-      daySummary.className = 'diary-day-summary';
-      daySummary.textContent = label;
-
-      var dayBody = document.createElement('div');
-      dayBody.className = 'diary-day-body';
-      dayBody.appendChild(entry);
-
-      dayFold.appendChild(daySummary);
-      dayFold.appendChild(dayBody);
-      monthFolds[monthKey].querySelector('.diary-month-body').appendChild(dayFold);
+      var monthKey = currentYear + '-' + currentMonth;
+      if (!monthFolds[monthKey]) {
+        monthFolds[monthKey] = createDiaryMonthFold(currentYear + '年' + currentMonth + '月');
+        body.appendChild(monthFolds[monthKey]);
+      }
+      monthFolds[monthKey].querySelector('.diary-month-body').appendChild(createDiaryDayFold(entry, label));
     });
   });
 }
@@ -483,16 +485,52 @@ function cleanDiaryDateLabel(label) {
 function normalizeDiaryDateLabel(label) {
   if (isDiaryMetaEntry(label)) return label;
 
-  var dayMatch = label.match(/^(【?[一二三四五六七八九十]{1,2}月】?)?([一二三四五六七八九十廿卅]{1,3}日)(.*)$/);
+  var dayMatch = label.match(/^(?:【?[一二三四五六七八九十]{1,2}月】?)?([一二三四五六七八九十廿卅]{1,3}日)(?:[（(][^）)]*[）)])*\s*(.*)$/);
   if (!dayMatch) return label;
 
-  var month = dayMatch[1] || '';
-  var day = dayMatch[2];
-  var rest = (dayMatch[3] || '').trim();
-  var weatherMatch = rest.match(/^(天晴|上午晴，午后阴|上午晴，午后雨|上午晴|午后阴|午后雨|晴天|晴|稍阴|阴雨|阴|大雨|小雨|雨)(?:[，。]|$)/);
-  var weather = weatherMatch ? weatherMatch[1] : '';
+  var day = dayMatch[1];
+  var rest = (dayMatch[2] || '').trim();
+  var weather = extractDiaryWeather(rest);
 
-  return (month + day + (weather ? ' ' + weather : '')).trim();
+  return (day + (weather ? ' ' + weather : '')).trim();
+}
+
+function extractDiaryWeather(rest) {
+  var weatherLead = /^(上午晴|下午晴|天晴|晴天|稍阴|天阴|阴雨|晴|阴|大雨|小雨|夜雨|雨|大风)/;
+  var lead = rest.match(weatherLead);
+  if (!lead) return '';
+
+  var firstSentence = rest.split(/[。；]/)[0].trim();
+  if (firstSentence && firstSentence.length <= 18) {
+    return firstSentence;
+  }
+  return lead[1];
+}
+
+function createDiaryDayFold(entry, label) {
+  var dayFold = document.createElement('details');
+  dayFold.className = 'diary-day-fold';
+
+  var daySummary = document.createElement('summary');
+  daySummary.className = 'diary-day-summary';
+  daySummary.textContent = label;
+
+  var dayBody = document.createElement('div');
+  dayBody.className = 'diary-day-body';
+  dayBody.appendChild(entry);
+
+  dayFold.appendChild(daySummary);
+  dayFold.appendChild(dayBody);
+  return dayFold;
+}
+
+function styleDiaryParagraphs(entry) {
+  Array.prototype.forEach.call(entry.querySelectorAll('p'), function(paragraph) {
+    var text = paragraph.textContent.trim();
+    if (text.indexOf('——编者') === 0 || text.indexOf('《张隐韬烈士日记》') === 0) {
+      paragraph.classList.add('diary-align-right');
+    }
+  });
 }
 
 function openDiaryAncestors(entry) {

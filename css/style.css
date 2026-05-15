@@ -170,6 +170,9 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
     letter-spacing: 0;
     opacity: .7;
   }
+  .side-rail-meta:empty {
+    display: none;
+  }
   .side-rail-main.active .side-rail-meta {
     color: var(--gold);
     opacity: 1;
@@ -187,7 +190,8 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   .side-rail-submenu {
     position: absolute;
     left: calc(100% + 4px);
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     display: none;
     min-width: 138px;
     padding: 6px;

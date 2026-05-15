@@ -762,8 +762,8 @@ function initSideRail() {
       ['chapter4.html#s4-2', '农民自卫军'],
       ['chapter4.html#s4-3', '为什么牺牲']
     ]],
-    ['appendix-diary.html', '日记', '日记原文', 'appendix', [
-      ['appendix-diary.html', '日记摘录']
+    ['appendix-diary.html', '日记', '', 'appendix', [
+      ['appendix-diary.html', '日记原文']
     ]],
     ['appendix-sources.html', '史料', '史料说明', 'appendix', [
       ['appendix-sources.html', '史料与方法']

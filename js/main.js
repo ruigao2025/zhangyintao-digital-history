@@ -179,6 +179,7 @@ function loadChat(conversationId, containerId) {
 function initSearch() {
   var input = document.getElementById('search-input');
   var btn = document.getElementById('search-btn');
+  var clearBtn = document.getElementById('search-clear');
   var results = document.getElementById('search-results');
   if (!input || !btn || !results) return;
 
@@ -203,6 +204,7 @@ function initSearch() {
               el.classList.remove('active');
             });
             chip.classList.add('active');
+            updateClearButton();
             doSearch();
           });
           presets.appendChild(chip);
@@ -214,15 +216,29 @@ function initSearch() {
         document.querySelectorAll('.keyword-chip.active').forEach(function(el) {
           el.classList.remove('active');
         });
+        updateClearButton();
       });
       input.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') doSearch();
       });
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+          input.value = '';
+          results.innerHTML = '';
+          document.querySelectorAll('.keyword-chip.active').forEach(function(el) {
+            el.classList.remove('active');
+          });
+          updateClearButton();
+          input.focus();
+        });
+      }
+      updateClearButton();
 
       function doSearch() {
         var query = input.value.trim();
         if (!query) return;
         results.innerHTML = '';
+        updateClearButton();
 
         var diaryEntries = Array.prototype.slice.call(document.querySelectorAll('.diary-entry'));
         if (diaryEntries.length) {
@@ -332,6 +348,11 @@ function initSearch() {
         var safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         return escapeHtml(snippet).replace(new RegExp('(' + safeQuery + ')', 'g'), '<mark>$1</mark>');
       }
+
+      function updateClearButton() {
+        if (!clearBtn) return;
+        clearBtn.classList.toggle('visible', input.value.trim().length > 0);
+      }
     });
 }
 
@@ -386,7 +407,7 @@ function initDiaryHierarchy() {
     entries.forEach(function(entry) {
       var dateEl = entry.querySelector('.diary-entry-date');
       var rawLabel = dateEl ? dateEl.textContent.trim() : '日记条目';
-      var label = cleanDiaryDateLabel(rawLabel);
+      var label = normalizeDiaryDateLabel(cleanDiaryDateLabel(rawLabel));
       if (dateEl) dateEl.textContent = label;
       entry.dataset.diaryLabel = label;
       var explicitMonth = detectExplicitDiaryMonth(label);
@@ -457,6 +478,21 @@ function isDiaryMetaEntry(label) {
 
 function cleanDiaryDateLabel(label) {
   return label.replace(/^中华民国十二年八月\(系阳历\)起\s*·\s*/, '');
+}
+
+function normalizeDiaryDateLabel(label) {
+  if (isDiaryMetaEntry(label)) return label;
+
+  var dayMatch = label.match(/^(【?[一二三四五六七八九十]{1,2}月】?)?([一二三四五六七八九十廿卅]{1,3}日)(.*)$/);
+  if (!dayMatch) return label;
+
+  var month = dayMatch[1] || '';
+  var day = dayMatch[2];
+  var rest = (dayMatch[3] || '').trim();
+  var weatherMatch = rest.match(/^(天晴|上午晴，午后阴|上午晴，午后雨|上午晴|午后阴|午后雨|晴天|晴|稍阴|阴雨|阴|大雨|小雨|雨)(?:[，。]|$)/);
+  var weather = weatherMatch ? weatherMatch[1] : '';
+
+  return (month + day + (weather ? ' ' + weather : '')).trim();
 }
 
 function openDiaryAncestors(entry) {

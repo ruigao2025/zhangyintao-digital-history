@@ -187,12 +187,16 @@ function initSearch() {
     .then(function(data) {
       var presets = document.getElementById('keyword-presets');
       if (presets) {
-        data.keywords.forEach(function(kw) {
+        data.keywords
+          .slice()
+          .sort(function(a, b) {
+            return b.occurrences.length - a.occurrences.length;
+          })
+          .forEach(function(kw) {
           var chip = document.createElement('button');
           chip.type = 'button';
           chip.className = 'keyword-chip';
-          chip.textContent = kw.display + ' (' + kw.occurrences.length + ')';
-          chip.style.fontSize = Math.min(22, 12 + kw.occurrences.length * 2) + 'px';
+          chip.textContent = kw.display;
           chip.addEventListener('click', function() {
             input.value = kw.word;
             document.querySelectorAll('.keyword-chip.active').forEach(function(el) {
@@ -206,6 +210,11 @@ function initSearch() {
       }
 
       btn.addEventListener('click', doSearch);
+      input.addEventListener('input', function() {
+        document.querySelectorAll('.keyword-chip.active').forEach(function(el) {
+          el.classList.remove('active');
+        });
+      });
       input.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') doSearch();
       });
@@ -214,6 +223,60 @@ function initSearch() {
         var query = input.value.trim();
         if (!query) return;
         results.innerHTML = '';
+
+        var diaryEntries = Array.prototype.slice.call(document.querySelectorAll('.diary-entry'));
+        if (diaryEntries.length) {
+          var diaryMatches = [];
+          diaryEntries.forEach(function(entry) {
+            var dateEl = entry.querySelector('.diary-entry-date');
+            var text = entry.textContent.replace(/\s+/g, ' ').trim();
+            var idx = text.indexOf(query);
+            if (idx !== -1) {
+              diaryMatches.push({
+                entry: entry,
+                date: dateEl ? dateEl.textContent : '日记条目',
+                text: text,
+                index: idx
+              });
+            }
+          });
+
+          if (diaryMatches.length === 0) {
+            results.innerHTML = '<p style="color:var(--text-light);font-size:13px;">未找到"' + escapeHtml(query) + '"的相关记录</p>';
+            return;
+          }
+
+          var diarySummary = document.createElement('p');
+          diarySummary.style.cssText = 'color:var(--text-light);font-size:12px;margin-bottom:10px;font-family:var(--sans);';
+          diarySummary.textContent = '在日记全文中找到 ' + diaryMatches.length + ' 条相关记录。';
+          results.appendChild(diarySummary);
+
+          diaryMatches.slice(0, 80).forEach(function(match) {
+            var item = document.createElement('button');
+            item.type = 'button';
+            item.className = 'search-result-item';
+
+            var dateDiv = document.createElement('div');
+            dateDiv.className = 'sr-date';
+            dateDiv.textContent = match.date;
+
+            var ctxDiv = document.createElement('div');
+            ctxDiv.className = 'sr-context';
+            ctxDiv.innerHTML = makeSnippet(match.text, match.index, query);
+
+            item.appendChild(dateDiv);
+            item.appendChild(ctxDiv);
+            item.addEventListener('click', function() {
+              match.entry.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              match.entry.classList.add('diary-entry-focus');
+              window.setTimeout(function() {
+                match.entry.classList.remove('diary-entry-focus');
+              }, 1400);
+            });
+            results.appendChild(item);
+          });
+          return;
+        }
 
         var matches = data.keywords.filter(function(kw) {
           return kw.word.indexOf(query) !== -1 || kw.display.indexOf(query) !== -1;
@@ -253,6 +316,20 @@ function initSearch() {
             results.appendChild(item);
           });
         });
+      }
+
+      function escapeHtml(str) {
+        return str.replace(/[&<>"']/g, function(ch) {
+          return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch];
+        });
+      }
+
+      function makeSnippet(text, index, query) {
+        var start = Math.max(0, index - 46);
+        var end = Math.min(text.length, index + query.length + 70);
+        var snippet = (start > 0 ? '…' : '') + text.slice(start, end) + (end < text.length ? '…' : '');
+        var safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        return escapeHtml(snippet).replace(new RegExp('(' + safeQuery + ')', 'g'), '<mark>$1</mark>');
       }
     });
 }

@@ -1246,14 +1246,96 @@ blockquote.diary-quote cite {
 
 .diary-day-summary {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
   padding: 12px 42px 12px 14px;
   color: var(--gold);
   font-size: 13px;
   line-height: 1.8;
 }
 
+.diary-day-label {
+  display: inline-block;
+}
+
+.diary-day-hint {
+  display: inline-block;
+  border: 1px solid rgba(201, 166, 74, .24);
+  border-radius: 999px;
+  padding: 1px 8px;
+  background: rgba(201, 166, 74, .06);
+  color: var(--text-light);
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: 1px;
+}
+
 .diary-day-body {
   padding: 0 12px 12px;
+}
+
+.diary-return-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.diary-return-button {
+  border: 1px solid rgba(201, 166, 74, .28);
+  border-radius: 999px;
+  padding: 5px 11px;
+  background: rgba(201, 166, 74, .06);
+  color: var(--text-light);
+  font-size: 12px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: border-color .18s ease, color .18s ease, background .18s ease;
+}
+
+.diary-return-button:hover,
+.diary-return-button:focus-visible {
+  border-color: rgba(201, 166, 74, .56);
+  background: rgba(201, 166, 74, .12);
+  color: var(--cream);
+}
+
+.diary-return-volume {
+  margin-top: 12px;
+  padding-top: 2px;
+}
+
+.diary-back-top {
+  position: fixed;
+  right: 28px;
+  bottom: 26px;
+  z-index: 40;
+  border: 1px solid rgba(201, 166, 74, .42);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(10, 10, 10, .88);
+  color: var(--cream);
+  font-size: 13px;
+  letter-spacing: 1px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .26);
+  transition: opacity .18s ease, transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.diary-back-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.diary-back-top:hover,
+.diary-back-top:focus-visible {
+  border-color: rgba(201, 166, 74, .72);
+  background: rgba(28, 23, 15, .94);
 }
 
 .diary-day-fold .diary-entry {
@@ -1261,7 +1343,7 @@ blockquote.diary-quote cite {
 }
 
 .diary-day-fold .diary-entry-date {
-  display: none;
+  display: block;
 }
 
 .diary-entry {
@@ -1464,6 +1546,10 @@ footer .dedication {
     background: rgba(13,13,13,.72);
     border-color: rgba(245,240,232,.09);
     border-left-color: var(--note-accent);
+  }
+  .diary-back-top {
+    right: 16px;
+    bottom: 16px;
   }
 }
 @media (max-width: 480px) {

@@ -374,6 +374,7 @@ function initDiaryHierarchy() {
   volumes.forEach(function(volume, index) {
     var title = volume.querySelector('.diary-volume-title');
     var note = volume.querySelector(':scope > .diary-source-note');
+    splitEmbeddedDiaryEntries(volume);
     var entries = Array.prototype.slice.call(volume.querySelectorAll(':scope > .diary-entry'));
     if (!title || !entries.length) return;
 
@@ -414,7 +415,6 @@ function initDiaryHierarchy() {
       var cleanedLabel = cleanDiaryDateLabel(rawLabel);
       var explicitMonth = detectExplicitDiaryMonth(cleanedLabel);
       var label = normalizeDiaryDateLabel(cleanedLabel);
-      if (dateEl) dateEl.textContent = label;
       entry.dataset.diaryLabel = label;
       var isMeta = isDiaryMetaEntry(label);
       styleDiaryParagraphs(entry);
@@ -434,7 +434,7 @@ function initDiaryHierarchy() {
           preface.className = 'diary-preface';
           body.appendChild(preface);
         }
-        preface.appendChild(createDiaryDayFold(entry, label));
+        preface.appendChild(createDiaryDayFold(entry, label, false));
         return;
       }
 
@@ -443,9 +443,55 @@ function initDiaryHierarchy() {
         monthFolds[monthKey] = createDiaryMonthFold(currentYear + '年' + currentMonth + '月');
         body.appendChild(monthFolds[monthKey]);
       }
-      monthFolds[monthKey].querySelector('.diary-month-body').appendChild(createDiaryDayFold(entry, label));
+      monthFolds[monthKey].querySelector('.diary-month-body').appendChild(createDiaryDayFold(entry, label, true));
+    });
+
+    Object.keys(monthFolds).forEach(function(monthKey) {
+      addDiaryMonthReturn(monthFolds[monthKey]);
     });
   });
+
+  initDiaryBackToTop();
+}
+
+function splitEmbeddedDiaryEntries(volume) {
+  var entries = Array.prototype.slice.call(volume.querySelectorAll(':scope > .diary-entry'));
+
+  entries.forEach(function(entry) {
+    var dateEl = entry.querySelector(':scope > .diary-entry-date');
+    if (!dateEl) return;
+
+    var currentArticle = entry;
+    var child = dateEl.nextElementSibling;
+
+    while (child) {
+      var next = child.nextElementSibling;
+
+      if (isEmbeddedDiaryDateParagraph(child)) {
+        var newArticle = document.createElement('article');
+        newArticle.className = 'diary-entry';
+
+        var newDate = document.createElement('div');
+        newDate.className = 'diary-entry-date';
+        newDate.innerHTML = child.innerHTML;
+        newArticle.appendChild(newDate);
+
+        currentArticle.after(newArticle);
+        child.remove();
+        currentArticle = newArticle;
+      } else if (currentArticle !== entry) {
+        currentArticle.appendChild(child);
+      }
+
+      child = next;
+    }
+  });
+}
+
+function isEmbeddedDiaryDateParagraph(node) {
+  if (!node || node.tagName !== 'P' || node.classList.contains('diary-note')) return false;
+  var text = node.textContent.trim();
+  return /^(?:【?[一二三四五六七八九十]{1,2}月】?)?[一二三四五六七八九十廿卅]{1,3}日(?!之)/.test(text);
 }
 
 function createDiaryMonthFold(label) {
@@ -507,21 +553,107 @@ function extractDiaryWeather(rest) {
   return lead[1];
 }
 
-function createDiaryDayFold(entry, label) {
+function createDiaryDayFold(entry, label, withMonthReturn) {
   var dayFold = document.createElement('details');
   dayFold.className = 'diary-day-fold';
 
   var daySummary = document.createElement('summary');
   daySummary.className = 'diary-day-summary';
-  daySummary.textContent = label;
+  var labelText = document.createElement('span');
+  labelText.className = 'diary-day-label';
+  labelText.textContent = label;
+  daySummary.appendChild(labelText);
+
+  var hint = getDiaryEntryHint(entry);
+  if (hint) {
+    var hintText = document.createElement('span');
+    hintText.className = 'diary-day-hint';
+    hintText.textContent = hint;
+    daySummary.appendChild(hintText);
+  }
 
   var dayBody = document.createElement('div');
   dayBody.className = 'diary-day-body';
   dayBody.appendChild(entry);
+  if (withMonthReturn) {
+    dayBody.appendChild(createDiaryReturnButton('返回本月', function() {
+      var monthFold = dayFold.closest('.diary-month-fold');
+      dayFold.open = false;
+      if (monthFold) {
+        monthFold.querySelector('.diary-month-summary').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }));
+  }
 
   dayFold.appendChild(daySummary);
   dayFold.appendChild(dayBody);
   return dayFold;
+}
+
+function getDiaryEntryHint(entry) {
+  var text = entry.textContent || '';
+  if (text.indexOf('五五代卖社') !== -1) return '五五书报代卖社';
+  if (text.indexOf('学生消费合作社') !== -1 || text.indexOf('乡村图书馆') !== -1) return '乡村书铺';
+  if (text.indexOf('此信，真我病之药石也') !== -1) return '罗章龙来信';
+  if (text.indexOf('颇觉气象焕然一新') !== -1) return '张家口';
+  if (text.indexOf('京绥总工会开会日期') !== -1) return '京绥总工会';
+  if (text.indexOf('环龙路之国民党执行部') !== -1) return '上海赴考';
+  if (text.indexOf('为主义预备而来') !== -1) return '为主义预备';
+  if (text.indexOf('陈廉伯私运军火之事') !== -1) return '商团事变';
+  if (text.indexOf('痛定思痛') !== -1) return '日记写法';
+  return '';
+}
+
+function addDiaryMonthReturn(monthFold) {
+  var monthBody = monthFold.querySelector('.diary-month-body');
+  if (!monthBody || monthBody.querySelector(':scope > .diary-return-volume')) return;
+
+  var action = createDiaryReturnButton('返回本连载', function() {
+    var volumeFold = monthFold.closest('.diary-volume-fold');
+    monthFold.open = false;
+    if (volumeFold) {
+      volumeFold.querySelector('.diary-volume-summary').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+  action.classList.add('diary-return-volume');
+  monthBody.appendChild(action);
+}
+
+function createDiaryReturnButton(label, onClick) {
+  var wrap = document.createElement('div');
+  wrap.className = 'diary-return-row';
+
+  var button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'diary-return-button';
+  button.textContent = label;
+  button.addEventListener('click', onClick);
+
+  wrap.appendChild(button);
+  return wrap;
+}
+
+function initDiaryBackToTop() {
+  if (document.querySelector('.diary-back-top')) return;
+
+  var button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'diary-back-top';
+  button.textContent = '回到顶部';
+  button.setAttribute('aria-label', '回到页面顶部');
+  button.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.body.appendChild(button);
+  updateDiaryBackToTop(button);
+  window.addEventListener('scroll', function() {
+    updateDiaryBackToTop(button);
+  }, { passive: true });
+}
+
+function updateDiaryBackToTop(button) {
+  button.classList.toggle('is-visible', window.scrollY > 420);
 }
 
 function styleDiaryParagraphs(entry) {

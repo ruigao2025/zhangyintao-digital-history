@@ -1044,6 +1044,9 @@ blockquote.diary-quote cite {
   margin: 0 0 18px; padding: 14px;
   background: #0d0d0d; border: 1px solid var(--border); border-radius: 6px;
 }
+.keyword-presets:empty {
+  display: none;
+}
 .keyword-chip {
   padding: 7px 10px; border: 1px solid rgba(201,166,74,.18); border-radius: 4px;
   background: rgba(255,255,255,.025); color: var(--text-light); cursor: pointer;

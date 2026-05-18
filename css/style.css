@@ -1525,7 +1525,21 @@ blockquote.diary-quote cite {
   padding: 8px 16px; border: 1px solid var(--border); border-radius: 4px;
   transition: all .3s; font-family: var(--sans);
 }
+.chapter-nav-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cream);
+}
+.chapter-nav-years {
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
 .chapter-nav a:hover { border-color: var(--red); color: var(--gold); }
+.chapter-nav a:hover .chapter-nav-label {
+  color: var(--gold);
+}
 
 /* FOOTER */
 footer {
@@ -1535,6 +1549,25 @@ footer {
 
 footer .footer-text {
   font-size: 12px; color: var(--text-light); letter-spacing: 2px; line-height: 2;
+}
+.source-footer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.source-footer .source-heading {
+  text-align: left;
+  margin-bottom: 8px;
+}
+.source-footer .source-list {
+  text-align: center;
+  letter-spacing: 1px;
+}
+.source-footer .source-list div {
+  line-height: 2;
+}
+.source-footer .project-note {
+  margin-top: 12px;
+  text-align: center;
 }
 footer .dedication {
   color: var(--red); font-size: 14px; margin-top: 12px; letter-spacing: 4px;

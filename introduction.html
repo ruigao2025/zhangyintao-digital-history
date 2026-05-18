@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>“非典型”革命者 · 张隐韬</title>
-<link rel="stylesheet" href="css/style.css?v=20260516a">
+<link rel="stylesheet" href="css/style.css?v=20260518b">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
@@ -75,7 +75,7 @@
 
 <div class="chapter-nav">
   <a href="index.html">← 首页</a>
-  <a href="chapter1.html">一、破壁 →</a>
+  <a href="chapter1.html">第一章 破壁 →</a>
 </div>
 
 <footer>
@@ -88,12 +88,30 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 (function(){
-  var map1 = L.map('map').setView([38.5,117],8);
+  var map1 = L.map('map', { scrollWheelZoom: false }).setView([38.5,117],8);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:12}).addTo(map1);
   var pts1=[[38.05,116.85],[39.12,117.20]];
   var n1=['唐家务村','天津'];
-  pts1.forEach(function(p,i){L.marker(p).addTo(map1).bindPopup('<b>'+n1[i]+'</b>');});
-  L.polyline(pts1,{color:'#b22222',weight:3,dashArray:'8,6'}).addTo(map1);
+  pts1.forEach(function(p,i){
+    var kind = i === 0 ? 'start' : 'end';
+    L.marker(p,{
+      icon: L.divIcon({
+        className: '',
+        html: '<div class="origin-map-pin '+kind+'"></div>',
+        iconSize: [22,22],
+        iconAnchor: [11,11]
+      })
+    }).addTo(map1).bindTooltip(
+      '<span>'+n1[i]+' · '+(i === 0 ? '起点' : '终点')+'</span>',
+      {
+        permanent: true,
+        direction: i === 0 ? 'left' : 'right',
+        offset: i === 0 ? [-16,0] : [16,0],
+        className: 'origin-map-label '+kind
+      }
+    );
+  });
+  L.polyline(pts1,{color:'#b22222',weight:4,dashArray:'8,6'}).addTo(map1);
   map1.fitBounds(L.latLngBounds(pts1).pad(0.3));
 })();
 </script>

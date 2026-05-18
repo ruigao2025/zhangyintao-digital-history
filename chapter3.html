@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>觉醒 · 张隐韬</title>
-<link rel="stylesheet" href="css/style.css?v=20260518g">
+<link rel="stylesheet" href="css/style.css?v=20260518m">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
@@ -37,8 +37,8 @@
   <div class="subsection" id="s3-1">
     <h2 class="subsection-title"><span class="sec-num">3.1</span> 上海——等考的十几天</h2>
     <div class="narrative">
-      <p>1924年3月14日抵达上海，等待黄埔军校补考。这一等就是十几天。每餐仅用铜元十余枚。负责人孙铁人一味延拖，"孙故推脱不见"。他在上海第一次看清了革命组织的官僚化——那些坐在办公室里的人如何对待从基层赶来的人。</p>
-      <p>3月23日补考，5月经统考入学，<span class="note-anchor" id="anchor-whampoa-context">编入第二队</span>。第二册日记恰好覆盖了这段过渡期——但第二册缺失，我们永远不知道那本日记里写了什么。</p>
+      <p>1924年3月14日抵达上海后，他又等了十几天才参加<span class="note-anchor" id="anchor-whampoa-context">黄埔军校</span>补考。每餐仅用铜元十余枚，负责人孙铁人又一味延拖，"孙故推脱不见"。这段经历更像前一章南下赴考的尾声：在真正进入黄埔前，他先跨过了经济困境和组织门槛。</p>
+      <p>3月23日补考，5月经统考入学，编入第二队。第二册日记恰好覆盖了这段过渡期——但第二册缺失，我们永远不知道那本日记里写了什么。</p>
       <aside class="micro-note context-card note-right" data-anchor-target="anchor-whampoa-context">
         <div class="micro-label">历史背景</div>
         <h3>第一次国共合作下的黄埔</h3>
@@ -74,10 +74,8 @@
       <p><strong>"不知有没有人还愿当个实行家？"——他一辈子都在回答这个问题。</strong></p>
     </div>
 
-    <p class="inline-diary-link">相关词频与日记检索见<a href="appendix-diary.html#diary-search">日记全文页</a>。</p>
-
     <div class="component-container">
-      <div class="component-title">黄埔时期人物网络</div>
+      <div class="component-title">人物网络</div>
       <div id="network-graph"></div>
     </div>
 
@@ -89,10 +87,15 @@
       </blockquote>
     </div>
 
-    <div class="component-container">
-      <div class="component-title">书信摘录：于树德广州会面</div>
-      <div class="chat-container" id="chat-yushude"></div>
-    </div>
+    <details class="secondary-component letter-secondary">
+      <summary>
+        <span class="secondary-kicker">补充书信</span>
+        <span class="secondary-title">于树德广州会面</span>
+      </summary>
+      <div class="secondary-body">
+        <div class="chat-container" id="chat-yushude"></div>
+      </div>
+    </details>
 
     <div class="narrative">
       <p>8月22日，宣侠父因坚持党权独立于校权被开除，他"佩服其敌抗的精神"但认为"一点代价没有，无乃有点不值得"。</p>
@@ -140,21 +143,18 @@
           <div class="event-desc">第一个也是最直白的阶级判断——</div>
           <blockquote>主持阶级调和、代表各阶级利益的孙中山，反为资本家所反对。何若明明白白的表明态度，代表无产者，与此麻木不仁的资本家决战，以完成一劳永逸的彻底革命！</blockquote>
         </div>
-        <div class="event-item">
-          <div class="event-date">8月15日 · 军阀与商团勾结</div>
-          <div class="event-desc">革命政府最大的敌人不是北洋军阀，而是内部的军阀——这个判断比很多党内高层的认识都早。</div>
-          <blockquote>许崇智及其他的武人，均派人向大元帅或直接来本校索枪械及子弹。这种目无帅戍、自私自立的军队不法之行动，非全体解散之不足以定粤之局。</blockquote>
-        </div>
-        <div class="event-item">
-          <div class="event-date">8月24日 · 佛山罢市</div>
-          <div class="event-desc">真心拥护政府者，乃是无产者。</div>
-          <blockquote>参加此会者，多属工人、农人，商人特少。真心拥护政府者，乃是无产者。不知代表资产阶级利害者，作何感想？</blockquote>
-        </div>
-        <div class="event-item">
-          <div class="event-date">8月25日 · 南方资本家分析</div>
-          <div class="event-desc">如若无产者的革命暴发于最近的将来时，必严防南方的资本家之结合。</div>
-          <blockquote>南方有稍觉悟的劳动者，同时也有坚固联合防御的资本家。所以我看，如若无产者的革命暴发于最近的将来时，必严防南方的资本家之结合。</blockquote>
-        </div>
+        <details class="event-item secondary event-collapsible">
+          <summary class="event-date">8月15日 · 军阀与商团勾结</summary>
+          <div class="event-desc">他已经把商团危机和内部军阀问题连在一起看。</div>
+        </details>
+        <details class="event-item secondary event-collapsible">
+          <summary class="event-date">8月24日 · 佛山罢市</summary>
+          <div class="event-desc">他注意到真正出面支持政府的，多是工人和农人。</div>
+        </details>
+        <details class="event-item secondary event-collapsible">
+          <summary class="event-date">8月25日 · 南方资本家分析</summary>
+          <div class="event-desc">商团不再只是局部事件，而被他看成资本联合的信号。</div>
+        </details>
         <div class="event-item highlight">
           <div class="event-date">8月29日 · 夜间警戒——"彻底革命"</div>
           <div class="event-desc">静观天象，见黑暗昏沌的宇宙中，充满凄惨的景象……</div>
@@ -165,22 +165,35 @@
           <div class="event-desc">甲、妥协性太甚。乙、魄力缺乏。丙、祸乱潜机更形利害。丁、面子扫地。——后来十月事态的发展，使他对风险扩大的判断显得更有警惕性。</div>
           <blockquote>甲、孙中山的妥协性太甚。乙、老孙的作事魄力还缺乏。丙、既将枪械交还商团，以后的祸乱潜机更形利害。丁、等到罢市的威胁而交还，简直面子扫地，太无价值。——如长此以往，国民党没有希望！</blockquote>
         </div>
-        <div class="event-item">
-          <div class="event-date">10月10日 · 双十惨案</div>
+        <details class="event-item secondary event-collapsible">
+          <summary class="event-date">10月10日 · 双十惨案</summary>
           <div class="event-desc">商团开枪射击游行群众，后续事态显示，他先前对风险扩大的担忧并非无据。</div>
-        </div>
+        </details>
       </div>
     </div>
 
-    <div class="component-container">
-      <div class="component-title">书信摘录：魏华池来信——北方消息</div>
-      <div class="chat-container" id="chat-wei"></div>
-      <p style="font-size:12px;color:var(--text-light);margin-top:12px;line-height:1.8;">武汉事件、张国焘案波及京绥路七人、张家口水灾——北方的消息让他更加感到：自己与那边的联系正在一条一条被切断。</p>
-    </div>
+    <details class="secondary-component letter-secondary">
+      <summary>
+        <span class="secondary-kicker">补充书信</span>
+        <span class="secondary-title">魏华池来信——北方消息</span>
+      </summary>
+      <div class="secondary-body">
+        <div class="chat-container" id="chat-wei"></div>
+        <p class="secondary-note">武汉事件、张国焘案波及京绥路七人、张家口水灾——北方的消息让他更加感到：自己与那边的联系正在一条一条被切断。</p>
+      </div>
+    </details>
 
     <div class="narrative">
       <p><strong>工运受挫、乡间见闻、对国民党内部运作的失望、黄埔生活和商团事变，共同推动他越来越重视独立武装与更彻底的组织行动。</strong></p>
     </div>
+  </div>
+
+  <div class="footnotes">
+    <h3>本章引用</h3>
+    <ol>
+      <li id="fn3-1">河北省南皮县档案馆：《张隐韬烈士日记》连载三至五。</li>
+      <li id="fn3-2">石慧：《一名共产党员学生眼中的黄埔军校——以〈张隐韬日记〉为中心的考察》，《广东党史与文献研究》2024年第5期，第88—98页。</li>
+    </ol>
   </div>
 
 </div>
@@ -198,13 +211,40 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"></script>
-<script src="js/main.js?v=20260516a"></script>
+<script src="js/main.js?v=20260518m"></script>
 <script>
 (function(){
-  var map = L.map('map-gz').setView([23.1,113.3],11);
+  function addRouteMarker(map, point, label, kind, permanent, labelOptions) {
+    var icon = L.divIcon({
+      className: '',
+      html: '<div class="route-map-pin ' + (kind === 'hub' ? 'hub' : '') + '"></div>',
+      iconSize: [20,20],
+      iconAnchor: [10,10]
+    });
+    var marker = L.marker(point, {icon: icon}).addTo(map);
+    if (label) {
+      marker.bindTooltip(label, Object.assign({
+        permanent: !!permanent,
+        direction: 'top',
+        offset: [0, -14],
+        className: 'route-map-label ' + (kind === 'hub' ? 'hub' : '')
+      }, labelOptions || {}));
+    }
+    return marker;
+  }
+
+  var map = L.map('map-gz', {scrollWheelZoom:false}).setView([23.1,113.3],11);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:14}).addTo(map);
   var pts=[[23.09,113.44,'黄埔军校（长洲岛）'],[23.13,113.27,'广州市内'],[23.12,113.24,'西关（资本家聚集地）'],[23.02,113.12,'佛山（罢市）']];
-  pts.forEach(function(p){L.marker([p[0],p[1]]).addTo(map).bindPopup('<b>'+p[2]+'</b>');});
+  var mapLabelOptions = {
+    '黄埔军校（长洲岛）': { direction: 'right', offset: [14, 0] },
+    '广州市内': { direction: 'top', offset: [0, -16] },
+    '西关（资本家聚集地）': { direction: 'left', offset: [-14, 0] },
+    '佛山（罢市）': { direction: 'bottom', offset: [0, 16] }
+  };
+  pts.forEach(function(p,i){
+    addRouteMarker(map,[p[0],p[1]],p[2],i===0?'hub':'',true,mapLabelOptions[p[2]]).bindPopup('<b>'+p[2]+'</b>');
+  });
   map.fitBounds(L.latLngBounds(pts.map(function(p){return[p[0],p[1]];})).pad(0.15));
 })();
 

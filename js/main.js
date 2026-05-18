@@ -51,7 +51,24 @@ function loadNetwork(chapterFilter) {
   fetch('data/network.json')
     .then(function(r) { return r.json(); })
     .then(function(data) {
+      var fourCircleIds = {
+        zhangyintao: true,
+        luozhanglong: true,
+        hemengxiong: true,
+        zhangkundi: true,
+        zhengye: true,
+        weihuachi: true,
+        zhouzhensheng: true,
+        cuiqingyuan: true,
+        zhaoyuzhen: true,
+        shikexuan: true,
+        chenxiufu: true,
+        liugeping: true
+      };
       var filteredNodes = data.nodes.filter(function(n) {
+        if (chapterFilter === 'four-circles') {
+          return !!fourCircleIds[n.id];
+        }
         if (chapterFilter) {
           return n.id === 'zhangyintao' || (n.chapters && n.chapters.indexOf(chapterFilter) !== -1);
         }
@@ -62,6 +79,11 @@ function loadNetwork(chapterFilter) {
       filteredNodes.forEach(function(n) { nodeIds[n.id] = true; });
 
       var filteredLinks = data.links.filter(function(l) {
+        if (chapterFilter === 'four-circles') {
+          return l.source === 'zhangyintao' &&
+            nodeIds[l.source] &&
+            nodeIds[l.target];
+        }
         if (chapterFilter && l.chapter !== chapterFilter) return false;
         return nodeIds[l.source] && nodeIds[l.target];
       });
@@ -738,9 +760,8 @@ function alignMarginalNotes() {
       lastBottom = adjustedTop + note.getBoundingClientRect().height;
     });
 
-    if (Number.isFinite(lastBottom)) {
-      narrative.style.minHeight = Math.ceil(lastBottom + 28) + 'px';
-    }
+    // Side notes are overlays on desktop. Keep them from changing the text column's
+    // flow when expanded; only their own right-side stack should move.
   });
 }
 

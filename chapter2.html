@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>狂飙 · 张隐韬</title>
-<link rel="stylesheet" href="css/style.css?v=20260518g">
+<link rel="stylesheet" href="css/style.css?v=20260518m">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
@@ -70,8 +70,7 @@
       <aside class="micro-note deep-dive note-left" data-anchor-target="anchor-village-bookshop">
         <div class="micro-label">微观史</div>
         <h3>一个乡村书铺能做什么？</h3>
-        <p>《党史博采》的地方叙述把这段日记重新放回沧州现场：9月23日，他路过天津，碰上南皮旅津学生同乡会；9月25日到沧州“与沧州诸友相见”；10月18日与韩宝和携酒到村南土丘，彻夜谈时局；10月24日又与崔清源商量办书铺。这里不是多添几个人名，而是能看见他的组织方法正在回到乡间。</p>
-        <p>书铺只是入口。它后面接着乡村图书馆、农民阅报室、农民消费社：读什么书、在哪里见面、谁能被留下来继续谈，这些小事共同构成了乡村政治动员的基础设施。革命不是突然落到南皮的，它先以同乡会、同学关系和一间想象中的书铺出现。<a class="fn" href="#fn2-1">[1]</a></p>
+        <p>书铺只是入口。它后面接着乡村图书馆、农民阅报室、农民消费社：读什么书、在哪里见面、谁能被留下来继续谈，这些小事共同构成了乡村组织的基础设施。革命不是突然落到南皮的，它先以同乡会、同学关系和一间想象中的书铺出现。<a class="fn" href="#fn2-1">[1]</a></p>
       </aside>
       <p>从一个小小的书铺，他已经看到了整个乡村组织网络。</p>
       <p>11月5日，他"联合我极可靠的同志，及在沧的故同学，设立西北运动促进会，专办理新、蒙及三特区诸事宜"。从乡村消费合作社到西北边疆运动，他的组织视野不断扩张。</p>
@@ -88,18 +87,23 @@
       <div class="chat-container" id="chat-luo"></div>
     </div>
 
-    <div class="component-container">
-      <div class="component-title">书信摘录：贾纤青来信——同样的挣扎</div>
-      <div class="chat-container" id="chat-jia"></div>
-    </div>
+    <details class="secondary-component letter-secondary">
+      <summary>
+        <span class="secondary-kicker">补充书信</span>
+        <span class="secondary-title">贾纤青来信——同样的挣扎</span>
+      </summary>
+      <div class="secondary-body">
+        <div class="chat-container" id="chat-jia"></div>
+      </div>
+    </details>
 
     <div class="narrative">
       <p><strong>他不是天生坚定的，他的坚定是被一次次失望、又一次次被人拉回来之后形成的。</strong>不是"英雄不怕苦"，而是"怕苦但还是要做"。罗章龙信里的"失望中渐去求希望"，和张隐韬读信后的"此信，真我病之药石也"，正好说明了这种支撑关系。</p>
     </div>
 
-    <div class="component-container">
+    <div class="component-container route-map-secondary">
       <div class="component-title">回乡路线</div>
-      <div id="map" class="route-map" style="height:400px;min-height:400px;"></div>
+      <div id="map" class="route-map route-map-compact" style="height:280px;min-height:280px;"></div>
     </div>
   </div>
 
@@ -123,8 +127,7 @@
       <aside class="micro-note marginal-note note-left" data-anchor-target="anchor-zhangjiakou-node">
         <div class="micro-label">史料旁注</div>
         <h3>张家口：通向西北的节点</h3>
-        <p>“李大钊在河北的建党活动”一章把张家口、京绥铁路、大同铁路工人放在同一条组织线上：1920年代初，北京区委在张家口发展铁路工人党员，并向大同等站点延伸。这里要谨慎使用，因为该章把张隐韬放到1921年9月“共产党员”的叙述中，和其他材料所见1922年入党时间并不完全一致。</p>
-        <p>但这个说法至少提醒我们：张家口不是地图边缘，而是京绥铁路和西北工作的入口。北方党组织的工作也并不只围绕城市和铁路，还同时向农村社会延伸。张隐韬去这些地方，不只是“跑远路”，而是在组织网络尚未密实的地方补节点。<a class="fn" href="#fn2-4">[4]</a><a class="fn" href="#fn2-5">[5]</a></p>
+        <p>张家口不是地图边缘，而是京绥铁路和西北工作的入口。相关材料把张家口、大同和北方农村党组织放在同一条延伸线上；虽然其中关于张隐韬入党时间的说法与其他材料存在张力，但它仍提醒我们：他去这些地方，不只是“跑远路”，而是在组织网络尚未密实的地方补节点。<a class="fn" href="#fn2-4">[4]</a><a class="fn" href="#fn2-5">[5]</a></p>
       </aside>
       <aside class="micro-note deep-dive note-right" data-anchor-target="anchor-travel-cost">
         <div class="micro-label">微观分析</div>
@@ -146,7 +149,7 @@
     </div>
 
     <div class="component-container">
-      <div class="component-title">北上奔走路线：环形路线</div>
+      <div class="component-title">北上奔走路线</div>
       <div id="map-2" class="route-map" style="height:400px;min-height:400px;"></div>
     </div>
   </div>
@@ -189,7 +192,7 @@
     </div>
 
     <div class="component-container">
-      <div class="component-title">第二章人物网络</div>
+      <div class="component-title">人物网络</div>
       <div id="network-graph"></div>
       <p class="component-note">第二章的网络重点不是“关系越多越好”，而是看他如何在工人、铁路、北京党团联系人之间来回转换位置：他能被派到不同地方，正因为这些圈层都需要一个能落地执行的人。</p>
     </div>
@@ -198,12 +201,12 @@
   <div class="footnotes">
     <h3>本章引用</h3>
 	    <ol>
-	      <li id="fn2-1">何智强、孙靖：《沧州革命星火中的张隐韬》，《党史博采》，2024年第10期。</li>
+	      <li id="fn2-1">何智强、孙靖：《沧州革命星火中的张隐韬》，《党史博采》，2024年第10期，第65—68页。</li>
 	      <li id="fn2-2">方显廷：《Cotton Industry and Trade in China》，天津：南开大学，1932年，第128页；《Cook's Guide to Peking, North China, South Manchuria and Korea》，北京：Thomas Cook & Son，1924年，第85页。</li>
 	      <li id="fn2-3">H. G. W. Woodhead 编：《The China Year Book 1921-2》，天津：The Tientsin Press，1921年，关于京绥铁路通车里程及“北京至丰镇266英里”“张家口距北京125英里”的记载。</li>
-	      <li id="fn2-4">甄树声、解永会主编：《播撒火种的先驱：唐山之旅》中的“李大钊在河北的建党活动”，2005年。该章关于张隐韬1921年即参与张家口工作的记述，与其他材料中的入党时间存在张力，本文仅作为组织网络背景参照。</li>
+	      <li id="fn2-4">甄树声、解永会主编：《李大钊在河北的建党活动》，收入《播撒火种的先驱：唐山之旅》（2005），第48—52页。该章关于张隐韬1921年即参与张家口工作的记述，与其他材料中的入党时间存在张力，本文仅作为组织网络背景参照。</li>
 	      <li id="fn2-5">河北省李大钊研究会编：《李大钊研究（第1辑）》中的“李大钊与北方农村党组织的建立”，1991年，第259—267页。用于补充北方农村党组织建立的宏观背景。</li>
-	      <li id="fn2-6">河北省政协文史资料委员会、河北省档案局编：《毛泽东与张隐韬》。关于1924年3月张隐韬等人抵沪、环龙路44号国民党上海执行部、毛泽东接待黄埔考生及1954年毛泽东回忆的整理。</li>
+	      <li id="fn2-6">《毛泽东与张隐韬》，收入河北省政协文史资料委员会、河北省档案局编《毛泽东与河北（下）》（2006），第285—287页。关于1924年3月张隐韬等人抵沪、环龙路44号国民党上海执行部、毛泽东接待黄埔考生及1954年毛泽东回忆的整理。</li>
 	    </ol>
   </div>
 
@@ -222,34 +225,59 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"></script>
-<script src="js/main.js?v=20260516a"></script>
+<script src="js/main.js?v=20260518m"></script>
 <script>
 loadChat('luo-zhang-1923', 'chat-luo');
 loadChat('jia-zhang-1923', 'chat-jia');
 
 (function(){
-  var map1 = L.map('map').setView([38.5, 116], 8);
+  function addRouteMarker(map, point, label, kind, permanent) {
+    var icon = L.divIcon({
+      className: '',
+      html: '<div class="route-map-pin ' + (kind === 'hub' ? 'hub' : '') + '"></div>',
+      iconSize: [20,20],
+      iconAnchor: [10,10]
+    });
+    var marker = L.marker(point, {icon: icon}).addTo(map);
+    if (label) {
+      marker.bindTooltip(label, {
+        permanent: !!permanent,
+        direction: 'top',
+        offset: [0, -14],
+        className: 'route-map-label ' + (kind === 'hub' ? 'hub' : '')
+      });
+    }
+    return marker;
+  }
+
+  var map1 = L.map('map', {scrollWheelZoom:false}).setView([38.5, 116], 8);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:12}).addTo(map1);
   var routePts = [[40.81,114.88],[39.90,116.40],[38.30,116.84],[38.04,116.84]];
   routePts.forEach(function(p,i){
     var names = ['张家口','北京','沧州','南皮'];
     var descs = ['铁委工作','中转','中转','回乡'];
-    L.marker(p).addTo(map1).bindPopup('<b>'+names[i]+'</b><br>'+descs[i]);
+    addRouteMarker(map1, p, names[i], (i === 0 || i === 3) ? 'hub' : '', true)
+      .bindPopup('<b>'+names[i]+'</b><br>'+descs[i]);
   });
   L.polyline(routePts,{color:'#c9a84c',weight:3,dashArray:'8,6'}).addTo(map1);
   map1.fitBounds(L.latLngBounds(routePts).pad(0.2));
 
-  var map2 = L.map('map-2').setView([40.5,114.5],7);
+  var map2 = L.map('map-2', {scrollWheelZoom:false}).setView([40.5,114.5],7);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:12}).addTo(map2);
   var pts2 = [[39.90,116.40],[40.36,115.79],[40.81,114.88],[40.03,113.75],[40.12,113.90],[40.08,113.30],[40.81,114.88],[39.90,116.40]];
   var names2 = ['北京','康庄','张家口','阳高','王官人屯','大同','张家口','北京'];
+  var highlightedNodes = {};
   pts2.forEach(function(p,i){
-    L.marker(p).addTo(map2).bindPopup('<b>'+names2[i]+'</b>');
+    var isHub = ['北京','张家口','大同'].includes(names2[i]);
+    var showPermanentLabel = isHub && !highlightedNodes[names2[i]];
+    highlightedNodes[names2[i]] = highlightedNodes[names2[i]] || isHub;
+    addRouteMarker(map2, p, names2[i], isHub ? 'hub' : '', showPermanentLabel)
+      .bindPopup('<b>'+names2[i]+'</b>');
   });
   L.polyline(pts2,{color:'#c9a84c',weight:3,dashArray:'8,6'}).addTo(map2);
   map2.fitBounds(L.latLngBounds(pts2).pad(0.2));
 
-  var map3 = L.map('map-3').setView([34,118],6);
+  var map3 = L.map('map-3', {scrollWheelZoom:false}).setView([34,118],6);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:12}).addTo(map3);
   var pts3 = [[39.90,116.40],[39.12,117.20],[36.65,116.99],[34.26,117.19],[32.10,118.73],[32.06,118.79],[31.23,121.47]];
   var names3 = ['北京','天津','济南','徐州','浦口','南京','上海'];

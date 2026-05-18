@@ -1051,14 +1051,20 @@ function initHomeScrollEntry() {
 
   var isNavigating = false;
   var touchStartY = null;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function goIntro() {
     if (isNavigating) return;
     isNavigating = true;
-    document.body.classList.add('is-page-leaving');
+    document.body.classList.add('is-home-leaving');
     window.setTimeout(function() {
       window.location.href = 'introduction.html';
-    }, 115);
+    }, reduceMotion ? 0 : 420);
+  }
+
+  var scrollCue = document.querySelector('.scroll-cue');
+  if (scrollCue) {
+    scrollCue.addEventListener('click', goIntro);
   }
 
   window.addEventListener('wheel', function(e) {

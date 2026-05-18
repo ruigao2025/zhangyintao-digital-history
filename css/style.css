@@ -54,6 +54,13 @@ body.is-page-leaving {
     opacity: 1;
     filter: none;
   }
+  body.home-page .hero,
+  body.home-page nav {
+    transition: none;
+  }
+  .scroll-cue {
+    animation: none;
+  }
 }
 body::before {
   content: '';
@@ -242,6 +249,7 @@ body.home-page .hero {
   min-height: 78vh;
   align-items: flex-end;
   padding: 92px 16px 64px;
+  transition: opacity .42s ease, transform .42s ease;
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
@@ -307,10 +315,49 @@ body.home-page .hero-summary {
   margin-bottom: 26px;
 }
 .scroll-cue {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  padding: 0;
   font-size: 12px;
   color: var(--text-light);
   letter-spacing: 2px;
   font-family: var(--sans);
+  cursor: pointer;
+  animation: scroll-cue-float 2.1s ease-in-out infinite;
+}
+.scroll-cue-arrow {
+  font-size: 18px;
+  line-height: 1;
+  color: var(--gold);
+}
+.scroll-cue-text {
+  line-height: 1.7;
+  text-align: center;
+}
+.scroll-cue:hover,
+.scroll-cue:focus-visible {
+  color: var(--cream);
+}
+body.home-page nav {
+  transition: opacity .42s ease, transform .42s ease;
+}
+body.home-page.is-home-leaving nav {
+  opacity: .32;
+  transform: translateY(-8px);
+}
+body.home-page.is-home-leaving .hero {
+  opacity: .18;
+  transform: translateY(-12px);
+}
+@keyframes scroll-cue-float {
+  0%, 100% { transform: translateY(0); opacity: .84; }
+  50% { transform: translateY(5px); opacity: 1; }
 }
 /* CHAPTER NAV TIMELINE (for index.html) */
 .chapter-timeline {

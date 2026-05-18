@@ -753,15 +753,43 @@ function alignMarginalNotes() {
     });
 
     var lastBottom = -Infinity;
+    var requiredNarrativeHeight = narrative.getBoundingClientRect().height;
     sideNotes.forEach(function(note) {
       var naturalTop = parseFloat(note.dataset.naturalTop || '0');
       var adjustedTop = Math.max(naturalTop, lastBottom + 12);
+
+      var content = note.querySelector('.micro-note-content');
+      note.style.maxHeight = '';
+      if (content) content.style.maxHeight = '';
+
+      if (note.classList.contains('is-expanded')) {
+        var toggle = note.querySelector('.micro-note-toggle');
+        var toggleHeight = toggle ? toggle.getBoundingClientRect().height : 0;
+        var narrativeHeight = narrative.getBoundingClientRect().height;
+        var fullHeight = note.scrollHeight;
+        var minExpandedHeight = toggleHeight + 72;
+        var viewportLimit = Math.max(toggleHeight + 72, window.innerHeight - 132);
+        var noteLimit = Math.min(fullHeight, viewportLimit);
+        var latestTop = Math.max(0, narrativeHeight - noteLimit - 12);
+
+        if (adjustedTop > latestTop) {
+          adjustedTop = Math.max(lastBottom + 12, latestTop);
+        }
+
+        note.style.maxHeight = noteLimit + 'px';
+        if (content) {
+          content.style.maxHeight = Math.max(72, noteLimit - toggleHeight) + 'px';
+        }
+      }
+
       note.style.top = adjustedTop + 'px';
       lastBottom = adjustedTop + note.getBoundingClientRect().height;
+      requiredNarrativeHeight = Math.max(requiredNarrativeHeight, lastBottom + 12);
     });
 
-    // Side notes are overlays on desktop. Keep them from changing the text column's
-    // flow when expanded; only their own right-side stack should move.
+    if (Number.isFinite(requiredNarrativeHeight)) {
+      narrative.style.minHeight = Math.ceil(requiredNarrativeHeight) + 'px';
+    }
   });
 }
 

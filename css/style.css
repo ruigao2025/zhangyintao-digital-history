@@ -820,13 +820,12 @@ body.home-page .section {
   .micro-note.is-collapsible.is-expanded {
     width: 280px;
     max-width: 280px;
-    max-height: calc(100vh - 132px);
     overflow: hidden;
     margin: 0;
   }
 
   .micro-note.is-collapsible.is-expanded .micro-note-content {
-    max-height: calc(100vh - 230px);
+    overflow-y: auto;
   }
 }
 

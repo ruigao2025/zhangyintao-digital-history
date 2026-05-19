@@ -545,6 +545,11 @@ body.home-page.is-home-leaving .hero {
   color: var(--cream);
   font-size: 20px;
   font-weight: 700;
+  font-family: var(--serif);
+  letter-spacing: 0;
+}
+.advisor-line a {
+  color: inherit;
 }
 .about-credit a,
 .about-citation a,
@@ -552,6 +557,7 @@ body.home-page.is-home-leaving .hero {
   border-bottom: 1px solid rgba(201,168,76,.5);
   padding: 0 2px 1px;
   border-radius: 2px;
+  letter-spacing: 0;
   transition: color .18s ease, background .18s ease, border-color .18s ease;
 }
 .about-credit a:hover,

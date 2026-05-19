@@ -551,7 +551,8 @@ body.home-page.is-home-leaving .hero {
 .about-credit p.advisor-credit,
 .about-credit p.project-credit {
   margin-bottom: 8px;
-  text-indent: 0;
+  padding-left: 0;
+  text-indent: 0 !important;
 }
 .advisor-line {
   color: var(--cream);

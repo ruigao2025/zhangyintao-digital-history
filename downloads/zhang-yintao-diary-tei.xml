@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:lang="zh-Hans">
   <teiHeader>
     <fileDesc>
@@ -16,7 +18,10 @@
         <p>据《张隐韬烈士日记》连载一至五的整理发表文本校读转录。现存日记仅见第一册和第三册，第二册缺失；本 XML 保留网页日记页中的日期、正文和原连载整理者注释。</p>
       </sourceDesc>
     </fileDesc>
-    <encodingDesc><p>本文件由网站 HTML 日记全文机械转换而成，按连载与条目分层；note 元素主要对应原连载整理者或网页中标为注释的段落。</p></encodingDesc>
+    <encodingDesc>
+      <projectDesc><p>本文件采用 TEI P5 命名空间，并在 XML 声明后提供 TEI All Relax NG 与 Schematron 的 xml-model schema 声明，便于数字人文研究者校验与再利用。</p></projectDesc>
+      <p>本文件由网站 HTML 日记全文机械转换而成，按连载与条目分层；note 元素主要对应原连载整理者或网页中标为注释的段落。</p>
+    </encodingDesc>
   </teiHeader>
   <text>
     <body>

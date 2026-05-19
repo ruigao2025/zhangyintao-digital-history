@@ -541,6 +541,11 @@ body.home-page.is-home-leaving .hero {
   font-size: 14px;
   line-height: 1.95;
 }
+.advisor-line {
+  color: var(--cream);
+  font-size: 16px;
+  font-weight: 600;
+}
 .about-essay {
   display: grid;
   gap: 0;

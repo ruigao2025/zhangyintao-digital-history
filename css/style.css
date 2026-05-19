@@ -548,7 +548,8 @@ body.home-page.is-home-leaving .hero {
   line-height: 1.95;
   text-indent: 2em;
 }
-.about-credit p.advisor-credit {
+.about-credit p.advisor-credit,
+.about-credit p.project-credit {
   margin-bottom: 8px;
   text-indent: 0;
 }

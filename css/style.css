@@ -482,7 +482,7 @@ body.home-page.is-home-leaving .hero {
 }
 .about-hero {
   max-width: 800px;
-  margin: 0 auto 48px;
+  margin: 0 auto 36px;
   text-align: center;
 }
 .about-eyebrow {
@@ -517,8 +517,9 @@ body.home-page.is-home-leaving .hero {
   display: grid;
   grid-template-columns: 250px minmax(0, 1fr);
   column-gap: 42px;
-  padding: 32px 0;
+  padding: 24px 0;
   border-bottom: 1px solid rgba(245,240,232,.1);
+  align-items: start;
 }
 .about-credit span,
 .about-citation span {
@@ -529,6 +530,9 @@ body.home-page.is-home-leaving .hero {
   font-weight: 700;
   letter-spacing: 2px;
   line-height: 1.7;
+}
+.about-item-body {
+  grid-column: 2;
 }
 .about-credit strong {
   display: block;
@@ -542,11 +546,7 @@ body.home-page.is-home-leaving .hero {
   color: #c7c0b4;
   font-size: 14px;
   line-height: 1.95;
-}
-.about-credit strong,
-.about-credit p,
-.about-citation p {
-  grid-column: 2;
+  text-indent: 2em;
 }
 .advisor-line {
   color: var(--cream);
@@ -2152,6 +2152,9 @@ footer .dedication {
   .about-citation {
     display: block;
     padding: 20px 0;
+  }
+  .about-item-body {
+    margin-top: 10px;
   }
   .about-essay article {
     display: block;

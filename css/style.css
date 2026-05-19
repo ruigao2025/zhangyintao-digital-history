@@ -543,8 +543,27 @@ body.home-page.is-home-leaving .hero {
 }
 .advisor-line {
   color: var(--cream);
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
+}
+.about-credit a,
+.about-citation a,
+.about-essay a {
+  border-bottom: 1px solid rgba(201,168,76,.5);
+  padding: 0 2px 1px;
+  border-radius: 2px;
+  transition: color .18s ease, background .18s ease, border-color .18s ease;
+}
+.about-credit a:hover,
+.about-credit a:focus-visible,
+.about-citation a:hover,
+.about-citation a:focus-visible,
+.about-essay a:hover,
+.about-essay a:focus-visible {
+  color: #fff3bf;
+  background: rgba(201,168,76,.14);
+  border-bottom-color: #fff3bf;
+  outline: none;
 }
 .about-essay {
   display: grid;

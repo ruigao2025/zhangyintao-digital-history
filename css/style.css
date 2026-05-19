@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'LetterXingkai';
-  src: url('../assets/fonts/MaShanZheng-Regular.ttf') format('truetype');
+  src: url('../assets/fonts/MaShanZheng-Subset.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -1411,7 +1411,11 @@ blockquote.diary-quote cite {
   margin-bottom: 14px; max-width: 100%; padding: 16px 18px;
   border-radius: 2px; font-size: 14px; line-height: 2;
   position: relative;
-  color: #2c2116; background: #e4d2ad;
+  color: #2c2116;
+  background:
+    linear-gradient(90deg, rgba(112,79,35,.08) 1px, transparent 1px) 0 0 / 2.15em 100%,
+    linear-gradient(0deg, rgba(255,255,255,.1), rgba(112,79,35,.04)),
+    #e7d6b5;
   border: 1px solid #b99658;
   box-shadow: 0 3px 10px rgba(0,0,0,.25);
 }
@@ -1419,7 +1423,7 @@ blockquote.diary-quote cite {
   margin-right: 24px;
 }
 .chat-bubble.from-self {
-  margin-left: 24px; background: #d9c59a;
+  margin-left: 24px;
 }
 .chat-bubble .chat-name {
   font-size: 12px; color: #6a1f16; margin-bottom: 6px;
@@ -1435,9 +1439,6 @@ blockquote.diary-quote cite {
 }
 .chat-bubble.letter-vertical {
   min-height: 290px;
-  background:
-    linear-gradient(90deg, rgba(112,79,35,.08) 1px, transparent 1px) 0 0 / 2.15em 100%,
-    #e7d6b5;
 }
 .chat-bubble.letter-vertical .letter-text {
   writing-mode: vertical-rl;

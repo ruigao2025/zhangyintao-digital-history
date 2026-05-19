@@ -1433,6 +1433,24 @@ blockquote.diary-quote cite {
   font-weight: 400;
   text-align: left;
 }
+.chat-bubble.letter-vertical {
+  min-height: 290px;
+  background:
+    linear-gradient(90deg, rgba(112,79,35,.08) 1px, transparent 1px) 0 0 / 2.15em 100%,
+    #e7d6b5;
+}
+.chat-bubble.letter-vertical .letter-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  width: 100%;
+  height: min(360px, 52vh);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 6px 2px;
+  line-height: 2.15;
+  letter-spacing: .12em;
+  text-align: start;
+}
 .chat-bubble .chat-date {
   font-size: 11px; color: #6f624f; text-align: right; margin-top: 8px;
   font-family: var(--sans);

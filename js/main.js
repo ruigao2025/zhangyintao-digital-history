@@ -175,8 +175,10 @@ function loadChat(conversationId, containerId) {
       }
 
       conv.messages.forEach(function(msg) {
+        var isVerticalLetter = conv.id !== 'yushude-guangzhou-1924' && msg.from !== 'zhangyintao';
         var bubble = document.createElement('div');
         bubble.className = 'chat-bubble ' + (msg.from === 'zhangyintao' ? 'from-self' : 'from-other');
+        if (isVerticalLetter) bubble.className += ' letter-vertical';
 
         var nameEl = document.createElement('div');
         nameEl.className = 'chat-name';

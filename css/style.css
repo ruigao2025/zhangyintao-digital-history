@@ -1275,13 +1275,29 @@ blockquote.diary-quote cite {
 #map-2,
 #map-3,
 #map-gz {
+  width: 100%;
   height: 400px;
+  min-height: 400px;
   border-radius: 6px;
   z-index: 1;
+  background: #151510;
+  overflow: hidden;
+}
+.route-map-compact {
+  height: 280px !important;
+  min-height: 280px !important;
 }
 .route-map-expanded {
   height: 460px !important;
   min-height: 460px !important;
+}
+.leaflet-container,
+.leaflet-pane,
+.leaflet-map-pane {
+  width: 100%;
+}
+.leaflet-tile {
+  max-width: none !important;
 }
 .leaflet-popup-content { font-family: var(--sans); font-size: 13px; }
 .origin-map-pin {
@@ -2106,6 +2122,11 @@ footer .dedication {
   #map-3,
   #map-gz {
     height: 300px;
+    min-height: 300px;
+  }
+  .route-map-compact {
+    height: 300px !important;
+    min-height: 300px !important;
   }
   #network-graph { height: 350px; }
   .section { padding: 40px 16px 30px; }

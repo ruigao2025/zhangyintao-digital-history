@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>燎原 · 张隐韬数字历史</title>
 <link rel="preload" href="assets/fonts/MaShanZheng-Subset.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=20260520b">
+<link rel="stylesheet" href="css/style.css?v=20260520c">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
@@ -177,7 +177,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"></script>
-<script src="js/main.js?v=20260520b"></script>
+<script src="js/main.js?v=20260520c"></script>
 <script>
 (function(){
   function addRouteMarker(map, point, label, kind, permanent, labelOptions) {
@@ -213,6 +213,7 @@
   });
   L.polyline(pts1,{color:'#8b0000',weight:3,dashArray:'8,6'}).addTo(map1);
   map1.fitBounds(L.latLngBounds(pts1).pad(0.2));
+  registerRouteMap(map1);
 
   var map2 = L.map('map-2', {scrollWheelZoom:false}).setView([37,116.5],8);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:12}).addTo(map2);
@@ -231,6 +232,7 @@
   });
   L.polyline(pts2,{color:'#8b0000',weight:3,dashArray:'8,6'}).addTo(map2);
   map2.fitBounds(L.latLngBounds(pts2).pad(0.2));
+  registerRouteMap(map2);
 })();
 
 loadNetwork('four-circles');

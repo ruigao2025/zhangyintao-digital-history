@@ -3,6 +3,7 @@ function loadMap(routeId) {
   if (!container) return;
 
   var map = L.map('map').setView([36, 112], 5);
+  registerRouteMap(map);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap',
     maxZoom: 12
@@ -909,13 +910,38 @@ function ensureRouteMapContainers() {
     if (!el) return;
 
     var isMobile = window.matchMedia('(max-width: 768px)').matches;
-    var expectedHeight = isMobile ? '300px' : '400px';
+    var expectedHeight = '400px';
+    if (el.classList.contains('route-map-compact')) expectedHeight = '280px';
+    if (el.classList.contains('route-map-expanded')) expectedHeight = '460px';
+    if (isMobile && !el.classList.contains('route-map-expanded')) expectedHeight = '300px';
+    el.style.width = '100%';
     el.style.minHeight = expectedHeight;
 
     if (el.getBoundingClientRect().height < 80) {
       el.style.height = expectedHeight;
     }
   });
+}
+
+function refreshRouteMaps() {
+  ensureRouteMapContainers();
+  if (!window.__routeMaps) return;
+  window.__routeMaps.forEach(function(map) {
+    if (!map || typeof map.invalidateSize !== 'function') return;
+    map.invalidateSize(false);
+  });
+}
+
+function registerRouteMap(map) {
+  if (!map) return map;
+  window.__routeMaps = window.__routeMaps || [];
+  if (window.__routeMaps.indexOf(map) === -1) window.__routeMaps.push(map);
+  [0, 80, 240, 600].forEach(function(delay) {
+    window.setTimeout(function() {
+      if (typeof map.invalidateSize === 'function') map.invalidateSize(false);
+    }, delay);
+  });
+  return map;
 }
 
 function initSideRail() {
@@ -1070,7 +1096,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initHomeScrollEntry();
   initSideRail();
   initCollapsibleNotes();
-  ensureRouteMapContainers();
+  refreshRouteMaps();
   alignMarginalNotes();
   window.setTimeout(alignMarginalNotes, 80);
   window.setTimeout(alignMarginalNotes, 300);
@@ -1078,7 +1104,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 window.addEventListener('load', function() {
   initCollapsibleNotes();
-  ensureRouteMapContainers();
+  refreshRouteMaps();
   alignMarginalNotes();
 });
 
@@ -1086,7 +1112,7 @@ var marginalResizeTimer;
 window.addEventListener('resize', function() {
   window.clearTimeout(marginalResizeTimer);
   marginalResizeTimer = window.setTimeout(function() {
-    ensureRouteMapContainers();
+    refreshRouteMaps();
     alignMarginalNotes();
   }, 120);
 });

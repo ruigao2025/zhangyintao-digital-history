@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>引言 · 张隐韬数字历史</title>
 <link rel="preload" href="assets/fonts/MaShanZheng-Subset.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=20260520b">
+<link rel="stylesheet" href="css/style.css?v=20260520c">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
@@ -114,8 +114,9 @@
   });
   L.polyline(pts1,{color:'#b22222',weight:4,dashArray:'8,6'}).addTo(map1);
   map1.fitBounds(L.latLngBounds(pts1).pad(0.3));
+  registerRouteMap(map1);
 })();
 </script>
-<script src="js/main.js?v=20260520b"></script>
+<script src="js/main.js?v=20260520c"></script>
 </body>
 </html>

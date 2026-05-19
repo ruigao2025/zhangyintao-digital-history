@@ -948,6 +948,9 @@ function initSideRail() {
     ]],
     ['appendix-sources.html', '史料', '史料说明', 'appendix', [
       ['appendix-sources.html', '史料与方法']
+    ]],
+    ['about.html', '关于', '项目说明', 'appendix', [
+      ['about.html', '创作者与许可']
     ]]
   ];
   var current = window.location.pathname.split('/').pop() || 'index.html';
@@ -1048,46 +1051,6 @@ function initPageTransitions() {
 
 function initHomeScrollEntry() {
   if (!document.body.classList.contains('home-page')) return;
-
-  var isNavigating = false;
-  var touchStartY = null;
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function goIntro() {
-    if (isNavigating) return;
-    isNavigating = true;
-    document.body.classList.add('is-home-leaving');
-    window.setTimeout(function() {
-      window.location.href = 'introduction.html';
-    }, reduceMotion ? 0 : 420);
-  }
-
-  var scrollCue = document.querySelector('.scroll-cue');
-  if (scrollCue) {
-    scrollCue.addEventListener('click', goIntro);
-  }
-
-  window.addEventListener('wheel', function(e) {
-    if (e.deltaY > 18) {
-      e.preventDefault();
-      goIntro();
-    }
-  }, { passive: false });
-
-  window.addEventListener('touchstart', function(e) {
-    if (e.touches && e.touches.length) {
-      touchStartY = e.touches[0].clientY;
-    }
-  }, { passive: true });
-
-  window.addEventListener('touchmove', function(e) {
-    if (touchStartY === null || !e.touches || !e.touches.length) return;
-    var delta = touchStartY - e.touches[0].clientY;
-    if (delta > 28) {
-      e.preventDefault();
-      goIntro();
-    }
-  }, { passive: false });
 }
 
 document.addEventListener('click', function(e) {

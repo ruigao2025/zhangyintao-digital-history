@@ -208,7 +208,7 @@ function initSearch() {
   var results = document.getElementById('search-results');
   if (!input || !btn || !results) return;
 
-  fetch('data/keywords.json')
+  fetch('data/keywords.json?v=20260521b')
     .then(function(r) { return r.json(); })
     .then(function(data) {
       var presets = document.getElementById('keyword-presets');
@@ -216,13 +216,19 @@ function initSearch() {
         data.keywords
           .slice()
           .sort(function(a, b) {
-            return b.occurrences.length - a.occurrences.length;
+            var aCount = typeof a.count === 'number' ? a.count : (a.occurrences ? a.occurrences.length : 0);
+            var bCount = typeof b.count === 'number' ? b.count : (b.occurrences ? b.occurrences.length : 0);
+            return bCount - aCount;
           })
           .forEach(function(kw) {
           var chip = document.createElement('button');
           chip.type = 'button';
           chip.className = 'keyword-chip';
           chip.textContent = kw.display;
+          if (kw.category || typeof kw.count === 'number') {
+            chip.title = (kw.category ? kw.category + ' · ' : '') +
+              (typeof kw.count === 'number' ? '全文出现约 ' + kw.count + ' 次' : '');
+          }
           chip.addEventListener('click', function() {
             input.value = kw.word;
             document.querySelectorAll('.keyword-chip.active').forEach(function(el) {

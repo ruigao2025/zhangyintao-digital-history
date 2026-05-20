@@ -246,9 +246,14 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   background: #070707;
 }
 body.home-page .hero {
-  min-height: 92vh;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(280px, 520px) minmax(360px, 620px);
+  gap: clamp(24px, 6vw, 90px);
   align-items: center;
-  padding: 92px 16px 52px;
+  justify-content: center;
+  padding: 64px clamp(28px, 7vw, 110px) 34px;
+  text-align: left;
   transition: opacity .42s ease, transform .42s ease;
 }
 .hero::before {
@@ -260,6 +265,13 @@ body.home-page .hero {
   filter: sepia(.22) saturate(.82) contrast(1.02);
   transform: scale(1.03);
 }
+body.home-page .hero::before {
+  background:
+    linear-gradient(180deg, rgba(5,5,5,.68), rgba(12,4,4,.82) 52%, rgba(5,5,5,.92)),
+    linear-gradient(90deg, rgba(0,0,0,.92), rgba(0,0,0,.28) 45%, rgba(0,0,0,.9)),
+    url('../assets/images/zhang-diary-facsimile.png') center 47% / cover no-repeat;
+  filter: sepia(.22) saturate(.82) contrast(1.02);
+}
 .hero::after {
   content: '';
   position: absolute;
@@ -268,9 +280,19 @@ body.home-page .hero {
     radial-gradient(ellipse at center, rgba(178,34,34,.12) 0%, transparent 55%),
     linear-gradient(180deg, transparent 74%, var(--bg-body) 100%);
 }
+body.home-page .hero::after {
+  background:
+    radial-gradient(circle at 34% 56%, rgba(245,240,232,.08) 0 15%, transparent 32%),
+    radial-gradient(circle at 78% 47%, rgba(178,34,34,.15), transparent 26%),
+    linear-gradient(180deg, transparent 72%, var(--bg-body) 100%);
+}
 .hero-content { position: relative; z-index: 1; padding: 24px; max-width: 800px; }
 body.home-page .hero-content {
   padding-bottom: 0;
+  max-width: 620px;
+  justify-self: center;
+  text-align: center;
+  transform: translateY(-3vh);
 }
 .hero-content::before {
   content: '';
@@ -288,9 +310,12 @@ body.home-page .hero-content {
 }
 body.home-page .hero h1 {
   font-family: var(--letter);
-  font-size: 94px;
+  font-size: clamp(72px, 8vw, 128px);
   font-weight: 400;
-  letter-spacing: 11px;
+  letter-spacing: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(178,34,34,.72);
 }
 .hero .subtitle {
   font-size: 16px; color: var(--gold); letter-spacing: 6px; margin-bottom: 24px;
@@ -300,6 +325,9 @@ body.home-page .hero .subtitle {
   font-family: "Times New Roman", Times, serif;
   font-size: 17px;
   font-weight: 400;
+  color: rgba(245,240,232,.82);
+  letter-spacing: 4px;
+  margin-bottom: 28px;
 }
 .hero .subtitle span {
   font-size: .75em;
@@ -329,6 +357,38 @@ body.home-page .hero-summary {
   line-height: 1.9;
   letter-spacing: 1px;
   text-shadow: 0 2px 18px rgba(0,0,0,.72);
+}
+body.home-page .hero-question {
+  margin: 0 auto;
+  max-width: 620px;
+  color: rgba(245,240,232,.88);
+  font-size: 26px;
+  line-height: 1.7;
+  text-align: center;
+}
+.hero-portrait {
+  position: relative;
+  z-index: 1;
+  width: min(35vw, 470px);
+  min-width: 260px;
+  aspect-ratio: .62 / 1;
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  transform: translateY(-3vh);
+}
+.hero-portrait img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: .92;
+  filter: saturate(.9) contrast(1.02) brightness(.9) drop-shadow(0 22px 34px rgba(0,0,0,.26));
+  border-radius: 0;
+  transform: scaleX(.82) scaleY(1.08);
 }
 .scroll-cue {
   appearance: none;
@@ -420,12 +480,27 @@ body.home-page.is-home-leaving .hero {
   margin: 0 auto;
 }
 .home-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 12px;
   color: var(--gold);
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 3px;
+}
+.home-kicker::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow:
+    0 0 0 4px rgba(178,34,34,.1),
+    0 0 12px rgba(178,34,34,.5);
+  filter: blur(.15px);
 }
 .home-panel h2 {
   margin-bottom: 22px;
@@ -661,6 +736,7 @@ body.sources-page .section p {
 body.sources-page .project-brief p {
   color: #d3ccc0 !important;
 }
+
 /* CHAPTER NAV TIMELINE (for index.html) */
 .chapter-timeline {
   display: flex; justify-content: center; gap: 0; max-width: 900px; margin: 0 auto 60px;
@@ -2258,12 +2334,47 @@ footer .dedication {
     padding: 24px 22px;
   }
   body.home-page .hero {
-    min-height: 86vh;
-    padding-bottom: 42px;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    padding: 76px 18px 34px;
+  }
+  .hero-portrait {
+    width: min(60vw, 300px);
+    min-width: 0;
+    justify-self: auto;
+    align-self: center;
+    margin: 4px auto 0;
+    transform: none;
+  }
+  .hero-portrait::before,
+  .hero-portrait::after {
+    display: none;
+  }
+  body.home-page .hero-content {
+    padding: 6px 0 0;
+    transform: none;
+  }
+  body.home-page .hero-content::before {
+    display: none;
+  }
+  body.home-page .hero .subtitle {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+  body.home-page .hero .subtitle span {
+    letter-spacing: 2px;
   }
   body.home-page .hero h1 {
     font-size: 58px;
     letter-spacing: 7px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
   }
   .hero-summary {
     font-size: 14px;
@@ -2273,6 +2384,11 @@ footer .dedication {
     font-size: 18px;
     line-height: 1.85;
     letter-spacing: 0;
+  }
+  body.home-page .hero-question {
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 520px;
   }
   .home-panel {
     min-height: auto;

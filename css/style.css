@@ -492,15 +492,13 @@ body.home-page.is-home-leaving .hero {
 }
 .home-kicker::before {
   content: '';
-  width: 9px;
-  height: 9px;
-  flex: 0 0 9px;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
   border-radius: 50%;
-  background: var(--red);
-  box-shadow:
-    0 0 0 4px rgba(178,34,34,.1),
-    0 0 12px rgba(178,34,34,.5);
-  filter: blur(.15px);
+  background: url('../assets/images/home-section-dot.png') center / contain no-repeat;
+  filter: saturate(.82) brightness(.92);
+  opacity: .88;
 }
 .home-panel h2 {
   margin-bottom: 22px;

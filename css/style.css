@@ -92,7 +92,7 @@ nav .logo { font-size: 18px; font-weight: 700; color: var(--gold); letter-spacin
 nav .links { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
 nav .links a {
   font-size: 11px; color: var(--text-light); letter-spacing: 1px;
-  padding: 4px 10px; border-radius: 3px; transition: all .3s;
+  padding: 4px 10px; border-radius:0; transition: all .3s;
   font-family: var(--sans); text-align: center; line-height: 1.4;
   opacity: .68;
 }
@@ -131,7 +131,7 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
     overflow: visible;
     padding: 8px;
     border: 1px solid rgba(245,240,232,.08);
-    border-radius: 6px;
+    border-radius:0;
     background: rgba(10,10,10,.72);
     backdrop-filter: blur(10px);
   }
@@ -142,7 +142,7 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
     display: block;
     width: 100%;
     padding: 7px 8px;
-    border-radius: 4px;
+    border-radius:0;
     color: var(--text-light);
     font-family: var(--sans);
     text-align: center;
@@ -159,7 +159,7 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
     background:
       linear-gradient(90deg, rgba(178,34,34,.18), rgba(201,168,76,.095)),
       rgba(201,168,76,.07);
-    box-shadow: inset 3px 0 0 rgba(201,168,76,.72);
+    box-shadow: inset 0 -1px 0 rgba(201,168,76,.55);
   }
   .side-rail-title {
     display: block;
@@ -203,7 +203,7 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
     min-width: 138px;
     padding: 6px;
     border: 1px solid rgba(201,168,76,.28);
-    border-radius: 6px;
+    border-radius:0;
     background: rgba(10,10,10,.92);
     backdrop-filter: blur(10px);
     box-shadow: 0 12px 28px rgba(0,0,0,.32);
@@ -223,7 +223,7 @@ nav .links .sep { color: var(--border); padding: 0 2px; user-select: none; }
   .side-rail-submenu a {
     display: block;
     padding: 6px 7px;
-    border-radius: 4px;
+    border-radius:0;
     color: var(--text-light);
     font-family: var(--sans);
     font-size: 11px;
@@ -387,7 +387,7 @@ body.home-page .hero-question {
   object-position: center;
   opacity: .92;
   filter: saturate(.9) contrast(1.02) brightness(.9) drop-shadow(0 22px 34px rgba(0,0,0,.26));
-  border-radius: 0;
+  border-radius:0;
   transform: scaleX(.82) scaleY(1.08);
 }
 .scroll-cue {
@@ -456,7 +456,7 @@ body.home-page.is-home-leaving .hero {
   right: max(24px, calc((100vw - 1060px) / 2));
   width: 210px;
   height: 310px;
-  border-radius: 48% 48% 42% 42%;
+  border-radius:0;
   background:
     radial-gradient(circle at 50% 19%, rgba(201,168,76,.26) 0 18%, transparent 19%),
     linear-gradient(180deg, rgba(245,240,232,.08), rgba(178,34,34,.12) 44%, rgba(0,0,0,.38));
@@ -495,7 +495,7 @@ body.home-page.is-home-leaving .hero {
   width: 26px;
   height: 26px;
   flex: 0 0 26px;
-  border-radius: 50%;
+  border-radius:0;
   background: url('../assets/images/home-section-dot.png') center / contain no-repeat;
   filter: saturate(.82) brightness(.92);
   opacity: .88;
@@ -533,7 +533,7 @@ body.home-page.is-home-leaving .hero {
   min-height: 40px;
   padding: 8px 18px;
   border: 1px solid rgba(201,168,76,.52);
-  border-radius: 4px;
+  border-radius:0;
   background: rgba(201,168,76,.1);
   color: var(--cream);
   font-family: var(--sans);
@@ -645,7 +645,7 @@ body.home-page.is-home-leaving .hero {
 .about-essay a {
   border-bottom: 1px solid rgba(201,168,76,.5);
   padding: 0 2px 1px;
-  border-radius: 2px;
+  border-radius:0;
   letter-spacing: 0;
   transition: color .18s ease, background .18s ease, border-color .18s ease;
 }
@@ -695,7 +695,7 @@ body.home-page.is-home-leaving .hero {
   margin-top: 14px;
   padding: 7px 13px;
   border: 1px solid rgba(201,168,76,.42);
-  border-radius: 4px;
+  border-radius:0;
   background: rgba(201,168,76,.08);
   font-family: var(--sans);
   font-size: 13px;
@@ -706,7 +706,7 @@ body.home-page.is-home-leaving .hero {
   color: var(--gold);
   border-bottom: 1px solid rgba(201,168,76,.55);
   padding: 0 2px 1px;
-  border-radius: 2px;
+  border-radius:0;
   text-decoration: none;
   transition: color .18s ease, background .18s ease, border-color .18s ease;
 }
@@ -762,7 +762,7 @@ body.sources-page .project-brief p {
 .chapter-node {
   flex: 1; min-width: 180px; padding: 24px 16px;
   text-align: center; cursor: pointer; transition: all .3s;
-  border: 1px solid var(--border); border-radius: 6px;
+  border: 1px solid var(--border); border-radius:0;
   background:
     linear-gradient(180deg, rgba(245,240,232,.025), transparent 38%),
     var(--bg-card);
@@ -808,8 +808,9 @@ body.sources-page .project-brief p {
     linear-gradient(90deg, rgba(201,168,76,.055), transparent 28%),
     var(--bg-card);
   border: 1px solid var(--border);
-  border-left: 3px solid rgba(201,168,76,.58);
-  border-radius: 6px;
+  border-left: 1px solid rgba(201,168,76,.32);
+  border-top-color: rgba(201,168,76,.46);
+  border-radius:0;
 }
 .project-brief h3 {
   font-size: 16px;
@@ -889,7 +890,7 @@ body.home-page .section {
   background: var(--anchor-soft);
   border-bottom: 1px solid color-mix(in srgb, var(--anchor-accent) 34%, transparent);
   padding: 1px 3px;
-  border-radius: 2px;
+  border-radius:0;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   transition: background .18s ease, border-color .18s ease, color .18s ease;
@@ -919,13 +920,27 @@ body.home-page .section {
 
 /* MICRO HISTORY NOTES */
 .micro-note {
+  position: relative;
   margin: 28px 0;
   padding: 18px 20px;
   background: #151510;
   border: 1px solid rgba(201,168,76,.38);
-  border-left: 4px solid var(--gold);
-  border-radius: 6px;
+  border-left: 1px solid rgba(201,168,76,.42);
+  border-top-color: rgba(201,168,76,.5);
+  border-radius:0;
   overflow: visible;
+}
+.micro-note:not(.is-collapsible)::after {
+  content: '';
+  position: absolute;
+  top: 9px;
+  right: 12px;
+  width: 18px;
+  height: 1px;
+  background: rgba(201,168,76,.55);
+  transform: rotate(-4deg);
+  opacity: .62;
+  pointer-events: none;
 }
 .micro-note.marginal-note {
   width: 230px;
@@ -933,7 +948,7 @@ body.home-page .section {
   padding: 14px 16px;
   background: #141414;
   border-color: rgba(201,168,76,.28);
-  border-left-width: 3px;
+  border-left-width: 1px;
 }
 .micro-note.context-card {
   width: 240px;
@@ -975,7 +990,7 @@ body.home-page .section {
   padding: 3px 9px;
   background: rgba(201,168,76,.12);
   border: 1px solid rgba(201,168,76,.45);
-  border-radius: 3px;
+  border-radius:0;
   color: var(--gold);
   font-family: var(--sans);
   font-size: 10px;
@@ -1071,7 +1086,7 @@ body.home-page .section {
   width: fit-content;
   padding: 2px 8px;
   border: 1px solid var(--note-border);
-  border-radius: 3px;
+  border-radius:0;
   color: var(--note-accent);
   background: var(--note-accent-soft);
   font-size: 10px;
@@ -1274,7 +1289,7 @@ body.home-page .section {
   padding: 10px 12px;
   background: #151510;
   border: 1px solid var(--gold);
-  border-radius: 4px;
+  border-radius:0;
   color: var(--text);
   font-family: var(--sans);
   font-size: 12px;
@@ -1289,7 +1304,7 @@ blockquote.diary-quote {
   background:
     linear-gradient(90deg, rgba(178,34,34,.08), rgba(178,34,34,.025) 44%, transparent),
     #111;
-  border-left: 3px solid var(--red);
+  border-left: 1px solid rgba(178,34,34,.55);
   border-top: 1px solid rgba(201,168,76,.12);
   border-bottom: 1px solid rgba(201,168,76,.08);
   font-size: 14px; line-height: 2; color: var(--text);
@@ -1306,13 +1321,36 @@ blockquote.diary-quote cite {
 
 /* COMPONENT CONTAINERS */
 .component-container {
+  position: relative;
   max-width: 860px; margin: 40px auto; padding: 24px;
   background:
     linear-gradient(180deg, rgba(245,240,232,.025), transparent 30%),
     var(--bg-card);
   border: 1px solid var(--border);
   border-top-color: rgba(201,168,76,.38);
-  border-radius: 6px;
+  border-radius:0;
+}
+.component-container::before,
+.component-container::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+.component-container::before {
+  left: 12px;
+  bottom: 10px;
+  width: 18px;
+  height: 18px;
+  border-left: 1px solid rgba(201,168,76,.28);
+  border-bottom: 1px solid rgba(201,168,76,.22);
+}
+.component-container::after {
+  top: 11px;
+  right: 14px;
+  width: 38px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(178,34,34,.56), rgba(201,168,76,.38), transparent);
+  opacity: .7;
 }
 .component-title {
   font-size: 14px; color: var(--gold); letter-spacing: 2px;
@@ -1320,7 +1358,7 @@ blockquote.diary-quote cite {
 }
 .component-title::before {
   content: ''; display: inline-block; width: 8px; height: 8px;
-  background: var(--red); border-radius: 50%; margin-right: 8px;
+  background: var(--red); border-radius:0; margin-right: 8px;
   vertical-align: middle;
 }
 .component-note {
@@ -1338,14 +1376,14 @@ blockquote.diary-quote cite {
   padding: 16px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius:0;
   overflow: hidden;
 }
 .archive-figure img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 4px;
+  border-radius:0;
 }
 .archive-figure.diary-facsimile img {
   width: calc(100% + 8px);
@@ -1370,7 +1408,7 @@ blockquote.diary-quote cite {
   width: 100%;
   height: 400px;
   min-height: 400px;
-  border-radius: 6px;
+  border-radius:0;
   z-index: 1;
   background: #151510;
   overflow: hidden;
@@ -1396,7 +1434,7 @@ blockquote.diary-quote cite {
   position: relative;
   width: 22px;
   height: 22px;
-  border-radius: 999px;
+  border-radius:0;
   border: 2px solid rgba(245,240,232,.94);
   background: var(--red);
   box-shadow:
@@ -1414,7 +1452,7 @@ blockquote.diary-quote cite {
 .origin-map-label {
   margin-top: -4px;
   padding: 8px 11px 9px;
-  border-radius: 5px;
+  border-radius:0;
   border: 1px solid rgba(245,240,232,.18);
   background: rgba(10,10,10,.92);
   color: #fffaf2;
@@ -1441,7 +1479,7 @@ blockquote.diary-quote cite {
   position: relative;
   width: 20px;
   height: 20px;
-  border-radius: 999px;
+  border-radius:0;
   border: 2px solid rgba(255,250,242,.98);
   background: var(--red);
   box-shadow:
@@ -1458,7 +1496,7 @@ blockquote.diary-quote cite {
 }
 .route-map-label {
   padding: 7px 10px 8px;
-  border-radius: 5px;
+  border-radius:0;
   border: 1px solid rgba(178,34,34,.68);
   background: rgba(10,10,10,.94);
   color: #fffdf8;
@@ -1482,7 +1520,7 @@ blockquote.diary-quote cite {
 /* NETWORK */
 #network-graph {
   height: 580px;
-  border-radius: 6px;
+  border-radius:0;
   background: #0d0d0d;
   border: 1px solid rgba(201,168,76,.16);
   transition: border-color .18s ease, box-shadow .18s ease;
@@ -1503,7 +1541,7 @@ blockquote.diary-quote cite {
   color: var(--cream) !important;
   background: rgba(18,17,15,.96) !important;
   border: 1px solid rgba(201,168,76,.58) !important;
-  border-radius: 6px !important;
+  border-radius:0;
   box-shadow: 0 12px 28px rgba(0,0,0,.45) !important;
   z-index: 1000 !important;
   pointer-events: none !important;
@@ -1513,11 +1551,11 @@ blockquote.diary-quote cite {
 .chat-container {
   max-width: 500px; margin: 0 auto;
   padding: 20px; background: #12100b; border: 1px solid #403624;
-  border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(201,168,76,.08);
+  border-radius:0; box-shadow: inset 0 0 0 1px rgba(201,168,76,.08);
 }
 .chat-bubble {
   margin-bottom: 14px; max-width: 100%; padding: 16px 18px;
-  border-radius: 2px; font-size: 14px; line-height: 2;
+  border-radius:0; font-size: 14px; line-height: 2;
   position: relative;
   color: #2c2116;
   background:
@@ -1569,8 +1607,9 @@ blockquote.diary-quote cite {
   max-width: 680px;
   margin: 18px auto 24px;
   border: 1px solid rgba(245,240,232,.12);
-  border-left: 3px solid rgba(201,168,76,.55);
-  border-radius: 6px;
+  border-left: 1px solid rgba(201,168,76,.32);
+  border-top-color: rgba(201,168,76,.38);
+  border-radius:0;
   background: rgba(16,16,16,.84);
   overflow: hidden;
 }
@@ -1602,7 +1641,7 @@ blockquote.diary-quote cite {
   width: fit-content;
   padding: 2px 8px;
   border: 1px solid rgba(201,168,76,.34);
-  border-radius: 3px;
+  border-radius:0;
   color: var(--gold);
   background: rgba(201,168,76,.1);
   font-size: 10px;
@@ -1640,8 +1679,9 @@ blockquote.diary-quote cite {
   margin-bottom: 26px;
   padding: 18px 20px;
   border: 1px solid rgba(201,168,76,.28);
-  border-left: 3px solid var(--gold);
-  border-radius: 6px;
+  border-left: 1px solid rgba(201,168,76,.42);
+  border-top-color: rgba(201,168,76,.46);
+  border-radius:0;
   background:
     linear-gradient(180deg, rgba(201,168,76,.07), transparent 70%),
     rgba(18,17,15,.96);
@@ -1672,7 +1712,7 @@ blockquote.diary-quote cite {
   padding: 22px 22px 4px;
   border: 1px solid rgba(245,240,232,.1);
   border-top-color: rgba(201,168,76,.35);
-  border-radius: 6px;
+  border-radius:0;
   background: rgba(13,13,13,.72);
 }
 .event-stage-label {
@@ -1680,7 +1720,7 @@ blockquote.diary-quote cite {
   margin-bottom: 8px;
   padding: 2px 8px;
   border: 1px solid rgba(201,168,76,.32);
-  border-radius: 3px;
+  border-radius:0;
   color: var(--gold);
   background: rgba(201,168,76,.08);
   font-family: var(--sans);
@@ -1698,7 +1738,7 @@ blockquote.diary-quote cite {
   position: relative; margin-bottom: 32px; padding-left: 20px;
 }
 .event-item.highlight {
-  border-left: 2px solid var(--red); padding-left: 18px; margin-left: -1px;
+  border-left: 1px solid rgba(178,34,34,.62); padding-left: 18px; margin-left: 0;
 }
 .event-item.secondary {
   margin-bottom: 20px;
@@ -1775,8 +1815,9 @@ blockquote.diary-quote cite {
 .event-why {
   padding: 18px 20px;
   border: 1px solid rgba(178,34,34,.28);
-  border-left: 3px solid var(--red);
-  border-radius: 6px;
+  border-left: 1px solid rgba(178,34,34,.5);
+  border-top-color: rgba(178,34,34,.28);
+  border-radius:0;
   background: rgba(178,34,34,.06);
 }
 .event-why h3 {
@@ -1810,13 +1851,13 @@ blockquote.diary-quote cite {
 .keyword-presets {
   display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px;
   margin: 0 0 18px; padding: 14px;
-  background: #0d0d0d; border: 1px solid var(--border); border-radius: 6px;
+  background: #0d0d0d; border: 1px solid var(--border); border-radius:0;
 }
 .keyword-presets:empty {
   display: none;
 }
 .keyword-chip {
-  padding: 7px 10px; border: 1px solid rgba(201,166,74,.18); border-radius: 4px;
+  padding: 7px 10px; border: 1px solid rgba(201,166,74,.18); border-radius:0;
   background: rgba(255,255,255,.025); color: var(--text-light); cursor: pointer;
   font-family: var(--sans); transition: all .2s;
   font-size: 14px;
@@ -1829,7 +1870,7 @@ blockquote.diary-quote cite {
 }
 .search-box input {
   width: 100%; padding: 8px 38px 8px 12px; border: 1px solid var(--border);
-  background: #0d0d0d; color: var(--text); border-radius: 4px;
+  background: #0d0d0d; color: var(--text); border-radius:0;
   font-family: var(--sans); font-size: 14px;
 }
 .search-box input::placeholder { color: var(--text-light); }
@@ -1845,7 +1886,7 @@ blockquote.diary-quote cite {
   height: 22px;
   padding: 0;
   border: 1px solid rgba(201,166,74,.28);
-  border-radius: 50%;
+  border-radius:0;
   background: rgba(255,255,255,.04);
   color: var(--text-light);
   font-size: 16px;
@@ -1864,7 +1905,7 @@ blockquote.diary-quote cite {
 }
 .search-box button {
   padding: 8px 16px; background: var(--dark-red); color: var(--cream);
-  border: none; border-radius: 4px; cursor: pointer;
+  border: none; border-radius:0; cursor: pointer;
   font-family: var(--sans); font-size: 13px; letter-spacing: 1px;
   transition: background .3s;
 }
@@ -1874,7 +1915,8 @@ blockquote.diary-quote cite {
   max-width: 860px;
   margin: 18px auto 30px;
   padding: 12px 16px;
-  border-left: 3px solid rgba(201, 166, 74, .65);
+  border-left: 1px solid rgba(201, 166, 74, .45);
+  border-top: 1px solid rgba(201, 166, 74, .18);
   background: rgba(201, 166, 74, .08);
   color: var(--text-light);
   font-size: 14px;
@@ -1926,7 +1968,7 @@ blockquote.diary-quote cite {
 .diary-volume-fold {
   margin-bottom: 16px;
   border: 1px solid rgba(201,166,74,.28);
-  border-radius: 8px;
+  border-radius:0;
   background: rgba(255,255,255,.025);
 }
 
@@ -1992,7 +2034,7 @@ blockquote.diary-quote cite {
 .diary-month-fold {
   margin-top: 12px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius:0;
   background: rgba(0,0,0,.18);
 }
 
@@ -2011,7 +2053,7 @@ blockquote.diary-quote cite {
 .diary-day-fold {
   margin-top: 10px;
   border: 1px solid rgba(255,255,255,.08);
-  border-radius: 8px;
+  border-radius:0;
   background: rgba(255,255,255,.02);
 }
 
@@ -2034,7 +2076,7 @@ blockquote.diary-quote cite {
 .diary-day-hint {
   display: inline-block;
   border: 1px solid rgba(201, 166, 74, .24);
-  border-radius: 999px;
+  border-radius:0;
   padding: 1px 8px;
   background: rgba(201, 166, 74, .06);
   color: var(--text-light);
@@ -2055,7 +2097,7 @@ blockquote.diary-quote cite {
 
 .diary-return-button {
   border: 1px solid rgba(201, 166, 74, .28);
-  border-radius: 999px;
+  border-radius:0;
   padding: 5px 11px;
   background: rgba(201, 166, 74, .06);
   color: var(--text-light);
@@ -2083,7 +2125,7 @@ blockquote.diary-quote cite {
   bottom: 26px;
   z-index: 40;
   border: 1px solid rgba(201, 166, 74, .42);
-  border-radius: 999px;
+  border-radius:0;
   padding: 10px 14px;
   background: rgba(10, 10, 10, .88);
   color: var(--cream);
@@ -2122,7 +2164,7 @@ blockquote.diary-quote cite {
   padding: 14px 16px;
   background: rgba(255, 255, 255, .035);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius:0;
 }
 
 .diary-entry-date {
@@ -2162,7 +2204,7 @@ blockquote.diary-quote cite {
   padding: 22px;
   background: rgba(178, 34, 34, .06);
   border: 1px solid rgba(178, 34, 34, .2);
-  border-radius: 8px;
+  border-radius:0;
   color: var(--cream);
   font-size: 14px;
   line-height: 2;
@@ -2174,7 +2216,7 @@ blockquote.diary-quote cite {
   width: 100%;
   text-align: left;
   padding: 12px; margin-bottom: 8px; background: #0d0d0d;
-  border: 1px solid var(--border); border-radius: 4px;
+  border: 1px solid var(--border); border-radius:0;
   cursor: pointer;
   font-family: inherit;
 }
@@ -2189,7 +2231,7 @@ blockquote.diary-quote cite {
   background: rgba(201,166,74,.28);
   color: #fffaf0;
   padding: 1px 4px;
-  border-radius: 3px;
+  border-radius:0;
   box-shadow: inset 0 -1px 0 rgba(201,166,74,.85);
 }
 .diary-entry-focus {
@@ -2204,7 +2246,7 @@ blockquote.diary-quote cite {
 }
 .chapter-nav a {
   font-size: 14px; color: var(--text-light); letter-spacing: 2px;
-  padding: 8px 16px; border: 1px solid var(--border); border-radius: 4px;
+  padding: 8px 16px; border: 1px solid var(--border); border-radius:0;
   transition: all .3s; font-family: var(--sans);
 }
 .chapter-nav-label {
@@ -2276,8 +2318,9 @@ footer .dedication {
 .thought-analysis { margin: 40px 0; }
 .thought-item {
   margin-bottom: 20px; padding: 16px 20px;
-  background: var(--bg-card); border-left: 3px solid var(--gold);
-  border-radius: 0 6px 6px 0;
+  background: var(--bg-card); border-left: 1px solid rgba(201,168,76,.42);
+  border-top: 1px solid rgba(201,168,76,.22);
+  border-radius:0;
 }
 .thought-item .thought-label {
   font-size: 13px; color: var(--gold); font-weight: 600;
@@ -2506,5 +2549,5 @@ footer .dedication {
 .footnotes li::marker { color: var(--gold); }
 .src-warn { font-size: 0.75em; vertical-align: super; color: var(--red); cursor: help; margin: 0 2px; font-family: var(--sans); font-weight: 600; position: relative; }
 .src-warn { font-size: 0.75em; vertical-align: super; color: var(--red); cursor: help; margin: 0 2px; font-family: var(--sans); font-weight: 600; position: relative; }
-.src-warn:hover::after, .src-warn:focus::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: #1a1a1a; color: var(--cream); font-size: 12px; font-weight: 400; line-height: 1.6; padding: 8px 12px; border-radius: 4px; border: 1px solid var(--red); white-space: normal; width: max-content; max-width: 280px; z-index: 100; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,.6); }
-.src-warn.show-tip::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: #1a1a1a; color: var(--cream); font-size: 12px; font-weight: 400; line-height: 1.6; padding: 8px 12px; border-radius: 4px; border: 1px solid var(--red); white-space: normal; width: max-content; max-width: 280px; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,.6); }
+.src-warn:hover::after, .src-warn:focus::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: #1a1a1a; color: var(--cream); font-size: 12px; font-weight: 400; line-height: 1.6; padding: 8px 12px; border-radius:0; border: 1px solid var(--red); white-space: normal; width: max-content; max-width: 280px; z-index: 100; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,.6); }
+.src-warn.show-tip::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: #1a1a1a; color: var(--cream); font-size: 12px; font-weight: 400; line-height: 1.6; padding: 8px 12px; border-radius:0; border: 1px solid var(--red); white-space: normal; width: max-content; max-width: 280px; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,.6); }

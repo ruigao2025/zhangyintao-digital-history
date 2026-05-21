@@ -148,7 +148,7 @@
       "group": "nationalist",
       "label": "张继（张溥泉）",
       "chapters": [2],
-      "relation": "帮忙解决经济困难→后来成为右派"
+      "relation": "帮助解决赴考期间的经济困难"
     },
     {
       "id": "suntieren",
@@ -156,7 +156,7 @@
       "group": "nationalist",
       "label": "孙铁人",
       "chapters": [3],
-      "relation": "黄埔招考负责人，延拖不见"
+      "relation": "黄埔招考负责人，未能及时见面"
     },
     {
       "id": "jiangjieshi",
@@ -164,7 +164,7 @@
       "group": "nationalist",
       "label": "蒋介石（校长）",
       "chapters": [3],
-      "relation": "专制批判"
+      "relation": "日记中对校内管理有所批评"
     },
     {
       "id": "wangjingwei",
@@ -180,7 +180,7 @@
       "group": "huangpu",
       "label": "李之龙",
       "chapters": [3],
-      "relation": "「狗委员」批评"
+      "relation": "日记中有尖锐评价"
     },
     {
       "id": "xuanxiafu",
@@ -188,7 +188,7 @@
       "group": "huangpu",
       "label": "宣侠父",
       "chapters": [3],
-      "relation": "被开除，「佩服但觉得不值得」"
+      "relation": "被开除事件引发张隐韬讨论"
     },
     {
       "id": "jinfozhuang",
@@ -244,7 +244,7 @@
       "group": "nationalist",
       "label": "孙中山（总理）",
       "chapters": [3],
-      "relation": "商团妥协批判"
+      "relation": "商团事件中的妥协问题"
     }
   ],
   "links": [
@@ -377,7 +377,7 @@
     {
       "source": "zhangyintao",
       "target": "suntieren",
-      "type": "招考延拖",
+      "type": "招考交涉",
       "chapter": 3,
       "subsection": "3.1",
       "strength": 2,
@@ -386,7 +386,7 @@
     {
       "source": "zhangyintao",
       "target": "jiangjieshi",
-      "type": "专制批判",
+      "type": "校内管理批评",
       "chapter": 3,
       "subsection": "3.2",
       "strength": 3,
@@ -395,7 +395,7 @@
     {
       "source": "zhangyintao",
       "target": "lizhilong",
-      "type": "「狗委员」批评",
+      "type": "日记中的尖锐评价",
       "chapter": 3,
       "subsection": "3.2",
       "strength": 2,

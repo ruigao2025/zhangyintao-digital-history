@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>觉醒 · 张隐韬数字历史</title>
 <link rel="preload" href="assets/fonts/MaShanZheng-Subset.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=20260520d">
+<link rel="stylesheet" href="css/style.css?v=20260521e">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
@@ -117,9 +117,9 @@
   </div>
 
   <div class="subsection" id="s3-3">
-    <h2 class="subsection-title"><span class="sec-num">3.3</span> 商团——一个组织者的阶级直觉</h2>
+    <h2 class="subsection-title"><span class="sec-num">3.3</span> 商团——张隐韬看到的政治裂缝</h2>
     <div class="narrative">
-      <p>1924年8月，<span class="note-anchor" id="anchor-merchant-corps"><span class="gloss-term" data-tip="1924年广州商团与孙中山革命政府围绕军火、商人武装和城市控制权发生的冲突，最终以武力镇压告终。">广州商团事变</span></span>。这是张隐韬亲历的最重大事件。</p>
+      <p>1924年8月，<span class="note-anchor" id="anchor-merchant-corps"><span class="gloss-term" data-tip="1924年广州商团与孙中山革命政府围绕军火、商人武装和城市控制权发生的冲突，最终以军事行动告终。">广州商团事变</span></span>。这是张隐韬亲历的最重大事件。</p>
     </div>
 
     <div class="component-container">
@@ -174,7 +174,7 @@
 
         <section class="event-stage">
           <div class="event-stage-label">第三阶段</div>
-          <h3>武装解决：妥协失败后的镇压逻辑</h3>
+          <h3>武装解决：冲突进入军事阶段</h3>
           <div class="event-item highlight">
             <div class="event-date">9月1日 · 张隐韬批评“妥协”</div>
             <div class="event-desc">当政府一度交还枪械、试图缓和局势时，张隐韬看到的不是和平解决，而是风险被推迟。他的四条感想其实都在说同一件事：革命政府如果在商团武装面前退让，之后可能要付出更高代价。</div>
@@ -184,8 +184,8 @@
             </details>
           </div>
           <div class="event-item">
-            <div class="event-date">10月10日以后 · 街头冲突走向武装镇压</div>
-            <div class="event-desc">双十惨案和随后镇压商团，显示这场冲突最终没有停留在谈判桌上。对张隐韬来说，它验证了他此前对“祸乱潜机”的担忧：城市政治危机一旦牵涉武装力量，就会迅速进入军事解决。</div>
+            <div class="event-date">10月10日以后 · 街头冲突走向军事解决</div>
+            <div class="event-desc">双十惨案和随后针对商团的军事行动，显示这场冲突最终没有停留在谈判桌上。对张隐韬来说，它验证了他此前对“祸乱潜机”的担忧：城市政治危机一旦牵涉武装力量，就会迅速进入军事解决。</div>
           </div>
         </section>
       </div>
@@ -260,11 +260,11 @@
 
   var map = L.map('map-gz', {scrollWheelZoom:false}).setView([23.1,113.3],11);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap',maxZoom:14}).addTo(map);
-  var pts=[[23.09,113.44,'黄埔军校（长洲岛）'],[23.13,113.27,'广州市内'],[23.12,113.24,'西关（资本家聚集地）'],[23.02,113.12,'佛山（罢市）']];
+  var pts=[[23.09,113.44,'黄埔军校（长洲岛）'],[23.13,113.27,'广州市内'],[23.12,113.24,'西关（商团活动集中区域）'],[23.02,113.12,'佛山（罢市）']];
   var mapLabelOptions = {
     '黄埔军校（长洲岛）': { direction: 'right', offset: [14, 0] },
     '广州市内': { direction: 'top', offset: [0, -16] },
-    '西关（资本家聚集地）': { direction: 'left', offset: [-14, 0] },
+    '西关（商团活动集中区域）': { direction: 'left', offset: [-14, 0] },
     '佛山（罢市）': { direction: 'bottom', offset: [0, 16] }
   };
   pts.forEach(function(p,i){

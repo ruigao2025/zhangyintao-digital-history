@@ -441,10 +441,10 @@ body.home-page.is-home-leaving .hero {
     linear-gradient(180deg, var(--bg-body), #11100d 42%, #090909);
 }
 .home-panel {
-  min-height: 82vh;
+  min-height: 68vh;
   display: flex;
   align-items: center;
-  padding: 82px 24px;
+  padding: 58px 24px;
   border-top: 1px solid rgba(245,240,232,.07);
   position: relative;
   overflow: hidden;
@@ -476,18 +476,18 @@ body.home-page.is-home-leaving .hero {
 .home-panel-inner {
   position: relative;
   z-index: 1;
-  width: min(820px, 100%);
+  width: min(900px, 100%);
   margin: 0 auto;
 }
 .home-kicker {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: 12px;
+  margin-bottom: 16px;
   color: var(--gold);
   font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 800;
   letter-spacing: 3px;
 }
 .home-kicker::before {
@@ -501,20 +501,23 @@ body.home-page.is-home-leaving .hero {
   opacity: .88;
 }
 .home-panel h2 {
-  margin-bottom: 22px;
+  max-width: 900px;
+  margin-bottom: 24px;
   color: var(--cream);
-  font-size: 38px;
-  line-height: 1.35;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.32;
   letter-spacing: 2px;
 }
-.home-panel p {
+.home-panel-inner > p:not(.home-kicker) {
   max-width: 760px;
   color: #c8c1b5;
   font-size: 18px;
-  line-height: 2.1;
+  line-height: 2.05;
+  letter-spacing: 0;
 }
 .home-panel-method {
-  min-height: 78vh;
+  min-height: 66vh;
 }
 .home-action-row {
   display: flex;
@@ -2390,7 +2393,7 @@ footer .dedication {
   }
   .home-panel {
     min-height: auto;
-    padding: 64px 18px;
+    padding: 46px 18px;
   }
   .home-panel::before {
     width: 132px;
@@ -2401,12 +2404,23 @@ footer .dedication {
   .home-panel:nth-child(even)::before {
     left: -22px;
   }
+  .home-kicker {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+  .home-kicker::before {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
+  }
   .home-panel h2 {
-    font-size: 25px;
+    font-size: 31px;
+    font-weight: 800;
+    line-height: 1.38;
     letter-spacing: 2px;
   }
-  .home-panel p {
-    font-size: 15px;
+  .home-panel-inner > p:not(.home-kicker) {
+    font-size: 17px;
     line-height: 2;
   }
   .about-page-main {
